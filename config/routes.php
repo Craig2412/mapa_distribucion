@@ -106,4 +106,16 @@ return function (App $app) {
         }
     );
 
+
+     // Config
+     $app->group(
+        '/config',
+        function (RouteCollectorProxy $app) {
+            $app->get('', \App\Action\Config\ConfigFinderAction::class);//
+            $app->get('/{config_id}', \App\Action\Config\ConfigReaderAction::class);//
+            $app->post('', \App\Action\Config\ConfigCreatorAction::class);//
+            $app->put('/{config_id}', \App\Action\Config\ConfigUpdaterAction::class);//
+            $app->delete('/{config_id}', \App\Action\Config\ConfigDeleterAction::class);//
+        }
+    );
 };

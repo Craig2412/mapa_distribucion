@@ -10,6 +10,7 @@ class CConfiguracion extends AbstractSeed
         $data = [
             [
                 'id'    => 1,
+                'nombre_entidad_principal'    => 'POR DEFINIR',
                 'nombre_entidad'    => 'POR DEFINIR',
                 'id_estatus_aplicacion'    => 1
             ]
