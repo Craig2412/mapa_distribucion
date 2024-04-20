@@ -61,11 +61,11 @@ return function (App $app) {
      $app->group(
         '/estatus',
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\Estatus\EstatusFinderAction::class);//
-            $app->get('/{estatus_id}', \App\Action\Estatus\EstatusReaderAction::class);//
-            $app->post('', \App\Action\Estatus\EstatusCreatorAction::class);//
-            $app->put('/{estatus_id}', \App\Action\Estatus\EstatusUpdaterAction::class);//
-            $app->delete('/{estatus_id}', \App\Action\Estatus\EstatusDeleterAction::class);//
+            $app->get('', \App\Action\Estatus\EstatusFinderAction::class);//completed
+            $app->get('/{estatus_id}', \App\Action\Estatus\EstatusReaderAction::class);//completed
+            $app->post('', \App\Action\Estatus\EstatusCreatorAction::class);//completed
+            $app->put('/{estatus_id}', \App\Action\Estatus\EstatusUpdaterAction::class);//completed
+            $app->delete('/{estatus_id}', \App\Action\Estatus\EstatusDeleterAction::class);//completed
         }
     );
 
@@ -73,11 +73,11 @@ return function (App $app) {
      $app->group(
         '/preguntas',
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\Preguntas\PreguntasFinderAction::class);//
-            $app->get('/{preguntas_id}', \App\Action\Preguntas\PreguntasReaderAction::class);//
-            $app->post('', \App\Action\Preguntas\PreguntasCreatorAction::class);//
-            $app->put('/{preguntas_id}', \App\Action\Preguntas\PreguntasUpdaterAction::class);//
-            $app->delete('/{preguntas_id}', \App\Action\Preguntas\PreguntasDeleterAction::class);//
+            $app->get('', \App\Action\Preguntas\PreguntasFinderAction::class);//completed
+            $app->get('/{preguntas_id}', \App\Action\Preguntas\PreguntasReaderAction::class);//completed
+            $app->post('', \App\Action\Preguntas\PreguntasCreatorAction::class);//completed
+            $app->put('/{preguntas_id}', \App\Action\Preguntas\PreguntasUpdaterAction::class);//completed
+            $app->delete('/{preguntas_id}', \App\Action\Preguntas\PreguntasDeleterAction::class);//completed
         }
     );
 
@@ -86,11 +86,11 @@ return function (App $app) {
      $app->group(
         '/funcionarios',
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\Funcionarios\FuncionariosFinderAction::class);//
-            $app->get('/{funcionarios_cedula}', \App\Action\Funcionarios\FuncionariosReaderAction::class);//
-            $app->post('', \App\Action\Funcionarios\FuncionariosCreatorAction::class);//
-            $app->put('/{funcionarios_id}', \App\Action\Funcionarios\FuncionariosUpdaterAction::class);//
-            $app->delete('/{funcionarios_id}', \App\Action\Funcionarios\FuncionariosDeleterAction::class);//
+            $app->get('', \App\Action\Funcionarios\FuncionariosFinderAction::class);//completed
+            $app->get('/{funcionarios_cedula}', \App\Action\Funcionarios\FuncionariosReaderAction::class);//completed
+            $app->post('', \App\Action\Funcionarios\FuncionariosCreatorAction::class);//completed
+            $app->put('/{funcionarios_id}', \App\Action\Funcionarios\FuncionariosUpdaterAction::class);//completed
+            $app->delete('/{funcionarios_id}', \App\Action\Funcionarios\FuncionariosDeleterAction::class);//completed
         }
     );
 
@@ -99,10 +99,11 @@ return function (App $app) {
         '/encuesta',
         function (RouteCollectorProxy $app) {
             $app->get('/byPresFunc/{preguntas_funcionarios}/{id}/{nro_pag}/{cant_registros}', \App\Action\Encuesta\EncuestaFiltroPregFuncFinderAction::class);//en la primera variable se elige bajo que metodo quieres buscar si por preguntas o por funcionarios (1-2) y en la segunda el id de la pregunta o del funcionario de lo cual quieres todo, las otras 3 son de un paginador cualquiera
-            $app->get('', \App\Action\Encuesta\EncuestaFinderAction::class);//
-            $app->post('', \App\Action\Encuesta\EncuestaCreatorAction::class);//
-            $app->put('/{encuesta_id}', \App\Action\Encuesta\EncuestaUpdaterAction::class);//
-            $app->delete('/{encuesta_id}', \App\Action\Encuesta\EncuestaDeleterAction::class);//
+            //completed
+            $app->get('', \App\Action\Encuesta\EncuestaFinderAction::class);//completed
+            $app->post('', \App\Action\Encuesta\EncuestaCreatorAction::class);//completed
+            $app->put('/{encuesta_id}', \App\Action\Encuesta\EncuestaUpdaterAction::class);//completed
+            $app->delete('/{encuesta_id}', \App\Action\Encuesta\EncuestaDeleterAction::class);//completed
         }
     );
 
@@ -116,6 +117,16 @@ return function (App $app) {
             $app->post('', \App\Action\Config\ConfigCreatorAction::class);//
             $app->put('/{config_id}', \App\Action\Config\ConfigUpdaterAction::class);//
             $app->delete('/{config_id}', \App\Action\Config\ConfigDeleterAction::class);//
+        }
+    );
+
+
+     // Dashboard
+     $app->group(
+        '/dashboard',
+        function (RouteCollectorProxy $app) {
+            $app->get('/funcionariosByEstados/{estatus}', \App\Action\Funcionarios\FuncionariosByEstadoFinderAction::class);// el filtro de estatus puede ser 1, 2 o 3 (Si voto, No voto, Sin definir)
+            $app->get('/funcionariosByEstatus', \App\Action\Funcionarios\FuncionariosByEstatusFinderAction::class);// 
         }
     );
 };

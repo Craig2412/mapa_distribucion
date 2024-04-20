@@ -14,14 +14,14 @@ final class argValidator
         foreach ($params as $filas => $value) {
 
             switch ($filas) {
-                case 'area':
-                    $filas = 'areas.area';
+                case 'estado':
+                    $filas = 'funcionarios.estado';
                     $value = strtoupper($value);
                     $where = [...$where,$filas => "$value"];   
                     break;
                 
-                case 'status':
-                    $filas = 'status.state';
+                case 'id_estatus':
+                    $filas = 'funcionarios.id_estatus';
                     $value = strtoupper($value);
                     $where = [...$where,$filas => "$value"];   
                     break;
