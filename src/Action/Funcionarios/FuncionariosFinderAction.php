@@ -49,6 +49,7 @@ final class FuncionariosFinderAction
                 'localidad' => $funcionarios->localidad,
                 'nombre_centro_votacion' => $funcionarios->nombre_centro_votacion,
                 'id_estatus' => $funcionarios->id_estatus,
+                'estatus' => $funcionarios->estatus,
                 'created' => $funcionarios->created,
                 'updated' => $funcionarios->updated
             ];
