@@ -63,7 +63,7 @@ final class UserRepository
         $verify = $pas->verifyPass($row['pass']);
 
         if (!$verify) {
-            throw new DomainException(sprintf('User not found: %s', $email));
+            throw new DomainException(sprintf('Credenciales incorrectas'));
         }
         return $row;
     }
