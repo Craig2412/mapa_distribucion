@@ -47,7 +47,7 @@ final class FuncionariosValidator
                     [
                         $constraint->notBlank(),
                         $constraint->positive(),
-                        $constraint->length(6, 9),
+                        $constraint->length(6, 10),
                     ]
                     ),
                 'apellidos_nombres' => $constraint->required(
@@ -58,29 +58,22 @@ final class FuncionariosValidator
                 ),
                 'telefono' => $constraint->required(
                     [
-                        $constraint->notBlank(),
-                        $constraint->length(10,11),
-                        $constraint->positive()
+                        $constraint->length(1,11)
                     ]
                 ),
                 'correo' => $constraint->required(
                     [
-                        $constraint->email(),
-                        $constraint->length(7, 50)
+                        $constraint->length(1, 200)
                     ]
                 ),
                 'serial_carnet' => $constraint->required(
                     [
-                        $constraint->notBlank(),
-                        $constraint->length(10),
-                        $constraint->positive()
+                        $constraint->length(1,10)
                     ]
                 ),
                 'codigo_carnet' => $constraint->required(
                     [
-                        $constraint->notBlank(),
-                        $constraint->length(10),
-                        $constraint->positive()
+                        $constraint->length(1,10)
                     ]
                 ),
                 'estado' => $constraint->required(
@@ -91,19 +84,16 @@ final class FuncionariosValidator
                 ),
                 'municipio' => $constraint->required(
                     [
-                        $constraint->notBlank(),
                         $constraint->length(5,250),
                     ]
                 ),
                 'localidad' => $constraint->required(
                     [
-                        $constraint->notBlank(),
                         $constraint->length(5,250),
                     ]
                 ),
                 'nombre_centro_votacion' => $constraint->required(
                     [
-                        $constraint->notBlank(),
                         $constraint->length(5,250),
                     ]
                 )
