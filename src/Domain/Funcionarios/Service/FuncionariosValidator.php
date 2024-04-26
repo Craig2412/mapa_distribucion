@@ -58,43 +58,43 @@ final class FuncionariosValidator
                 ),
                 'telefono' => $constraint->required(
                     [
-                        $constraint->length(1,11)
+                        $constraint->length(null,11)
                     ]
                 ),
                 'correo' => $constraint->required(
                     [
-                        $constraint->length(1, 200)
+                        $constraint->length(null, 200)
                     ]
                 ),
                 'serial_carnet' => $constraint->required(
                     [
-                        $constraint->length(1,10)
+                        $constraint->length(null,10)
                     ]
                 ),
                 'codigo_carnet' => $constraint->required(
                     [
-                        $constraint->length(1,10)
+                        $constraint->length(null,10)
                     ]
                 ),
                 'estado' => $constraint->required(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(5,250),
+                        $constraint->length(3,250),
                     ]
                 ),
                 'municipio' => $constraint->required(
                     [
-                        $constraint->length(5,250),
+                        $constraint->length(3,250),
                     ]
                 ),
                 'localidad' => $constraint->required(
                     [
-                        $constraint->length(5,250),
+                        $constraint->length(3,250),
                     ]
                 ),
                 'nombre_centro_votacion' => $constraint->required(
                     [
-                        $constraint->length(5,250),
+                        $constraint->length(3,250),
                     ]
                 )
             ]

@@ -24,7 +24,6 @@ final class FuncionariosCreatorAction
     {
         // Extract the form data from the request body
         $data = (array)$request->getParsedBody();
-var_dump($data);
         // Invoke the Domain with inputs and retain the result
         $funcionariosId = $this->funcionariosCreator->createFuncionarios($data);
 
