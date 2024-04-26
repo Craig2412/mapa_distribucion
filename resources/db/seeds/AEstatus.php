@@ -18,7 +18,7 @@ class AEstatus extends AbstractSeed
     
             ],[
                 'id'    => 3,
-                'estatus'    => 'SIN DEFINIR'
+                'estatus'    => 'POR DEFINIR'
             ]
             ];
 

@@ -44,11 +44,12 @@ final class FuncionariosFinderAction
                 'correo' => $funcionarios->correo,
                 'serial_carnet' => $funcionarios->serial_carnet,
                 'codigo_carnet' => $funcionarios->codigo_carnet,
-                'estado' => $funcionarios->estado,
+                'estado' => strtoupper($funcionarios->estado),
                 'municipio' => $funcionarios->municipio,
                 'localidad' => $funcionarios->localidad,
                 'nombre_centro_votacion' => $funcionarios->nombre_centro_votacion,
                 'id_estatus' => $funcionarios->id_estatus,
+                'estatus' => $funcionarios->estatus,
                 'created' => $funcionarios->created,
                 'updated' => $funcionarios->updated
             ];

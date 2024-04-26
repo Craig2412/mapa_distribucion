@@ -36,9 +36,8 @@ final class UserLogin
     public function loginUser(array $data): UserLoginResult
     {
         // Get user and get new user ID
-        $data = json_decode($data['body']);
-        $data = [ 'email' => $data->user,
-                  'pass' => $data->pass];
+        $data = [ 'email' => $data["user"],
+                  'pass' => $data["pass"]];
        // var_dump($data->user);
         $user = $this->repository->getUserLogin($data['email'], $data['pass']);
         $token = $this->tokenFinder->finderToken($user['id']);

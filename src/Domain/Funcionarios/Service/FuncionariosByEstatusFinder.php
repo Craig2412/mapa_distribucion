@@ -18,7 +18,7 @@ function obtenerEstatuss($data) {
               'total' => 0
              ],
         2 => [
-              'estatus' => 'SIN DEFINIR',
+              'estatus' => 'POR DEFINIR',
               'total' => 0
              ]
     ];

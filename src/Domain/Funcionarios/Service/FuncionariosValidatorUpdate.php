@@ -47,7 +47,7 @@ final class FuncionariosValidatorUpdate
                     [
                         $constraint->notBlank(),
                         $constraint->positive(),
-                        $constraint->length(6, 9),
+                        $constraint->length(6, 10),
                     ]
                     ),
                 'apellidos_nombres' => $constraint->required(
@@ -72,14 +72,14 @@ final class FuncionariosValidatorUpdate
                 'serial_carnet' => $constraint->required(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(10),
+                        $constraint->length(1,10),
                         $constraint->positive()
                     ]
                 ),
                 'codigo_carnet' => $constraint->required(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(10),
+                        $constraint->length(1,10),
                         $constraint->positive()
                     ]
                 ),
