@@ -107,6 +107,21 @@ final class FuncionariosValidatorUpdate
                         $constraint->length(5,250),
                     ]
                 ),
+                'departamento' => $constraint->required(
+                    [
+                        $constraint->length(2,250),
+                    ]
+                ),
+                'entidad_principal' => $constraint->required(
+                    [
+                        $constraint->length(2,250),
+                    ]
+                ),
+                'entidad_adscripcion' => $constraint->required(
+                    [
+                        $constraint->length(2,250),
+                    ]
+                ),
                 'id_estatus' => $constraint->required(
                     [
                         $constraint->notBlank(),

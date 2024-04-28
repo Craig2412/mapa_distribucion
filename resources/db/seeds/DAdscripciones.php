@@ -3,27 +3,27 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class CRolesSeeders extends AbstractSeed
+class DAdscripciones extends AbstractSeed
 {
     public function run(): void
     {
         $data = [
             [
                 'id'    => 1,
-                'role'    => 'ADMINISTRADOR'
+                'id_role'    => '2',
+                'ente' => 'COMERCIO NACIONAL'
             ],[
                 'id'    => 2,
-                'role'    => 'COMERCIO NACIONAL'
+                'id_role'    => '2',
+                'ente' => 'SAPI'
             ],[
                 'id'    => 3,
-                'role'    => 'SAPI'
-            ],[
-                'id'    => 4,
-                'role'    => 'SENCAMER'
+                'id_role'    => '2',
+                'ente' => 'SENCAMER'
             ]
             ];
 
-        $posts = $this->table('roles');
+        $posts = $this->table('adscripciones');
         $posts->insert($data)
               ->saveData();
     }

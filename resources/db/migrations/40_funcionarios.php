@@ -19,6 +19,9 @@ final class Funcionarios extends AbstractMigration
                         ->addColumn('municipio', 'string' , ['limit' => 100])
                         ->addColumn('localidad', 'string' , ['limit' => 100])
                         ->addColumn('nombre_centro_votacion', 'string' , ['limit' => 100])
+                        ->addColumn('entidad_principal', 'string' , ['limit' => 250])
+                        ->addColumn('entidad_adscripcion', 'string' , ['limit' => 250])
+                        ->addColumn('departamento', 'string' , ['limit' => 250])
                         ->addColumn('id_estatus', 'integer' , ['null' => false, 'signed' => false, 'default' => 3])
 
                         ->addColumn('created', 'datetime')
