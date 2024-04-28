@@ -15,12 +15,12 @@ final class FuncionariosFinder
         $this->repository = $repository;
     }
 
-    public function findFuncionarioss(): FuncionariosFinderResult
+    public function findFuncionarioss($where): FuncionariosFinderResult
     {
         // Input validation
         // ...
 
-        $funcionarioss = $this->repository->findFuncionarioss();
+        $funcionarioss = $this->repository->findFuncionarioss($where);
 
         return $this->createResult($funcionarioss);
     }
@@ -41,6 +41,9 @@ final class FuncionariosFinder
             $funcionarios->estado = $funcionariosRow['estado'];
             $funcionarios->municipio = $funcionariosRow['municipio'];
             $funcionarios->localidad = $funcionariosRow['localidad'];
+            $funcionarios->departamento = $funcionariosRow['departamento'];
+            $funcionarios->entidad_principal = $funcionariosRow['entidad_principal'];
+            $funcionarios->entidad_adscripcion = $funcionariosRow['entidad_adscripcion'];
             $funcionarios->nombre_centro_votacion = $funcionariosRow['nombre_centro_votacion'];
             $funcionarios->id_estatus = $funcionariosRow['id_estatus'];
             $funcionarios->estatus = $funcionariosRow['estatus'];

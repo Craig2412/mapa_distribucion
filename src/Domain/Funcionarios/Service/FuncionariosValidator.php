@@ -90,6 +90,22 @@ final class FuncionariosValidator
                 'localidad' => $constraint->required(
                     [
                         $constraint->length(3,250),
+
+                    ]
+                ),
+                'departamento' => $constraint->required(
+                    [
+                        $constraint->length(2,250),
+                    ]
+                ),
+                'entidad_principal' => $constraint->required(
+                    [
+                        $constraint->length(2,250),
+                    ]
+                ),
+                'entidad_adscripcion' => $constraint->required(
+                    [
+                        $constraint->length(2,250),
                     ]
                 ),
                 'nombre_centro_votacion' => $constraint->required(

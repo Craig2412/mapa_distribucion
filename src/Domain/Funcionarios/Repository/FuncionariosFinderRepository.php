@@ -13,7 +13,7 @@ final class FuncionariosFinderRepository
         $this->queryFactory = $queryFactory;
     }
 
-    public function findFuncionarioss(): array
+    public function findFuncionarioss($where): array
     {
         $query = $this->queryFactory->newSelect('funcionarios');
 
@@ -32,10 +32,31 @@ final class FuncionariosFinderRepository
                 'funcionarios.nombre_centro_votacion',
                 'funcionarios.id_estatus',
                 'estatus.estatus',
+                'funcionarios.departamento',
+                'funcionarios.entidad_adscripcion',
+                'funcionarios.entidad_principal',
                 'funcionarios.created',
                 'funcionarios.updated'
             ]
         )->leftjoin(['estatus'=>'estatus'], 'estatus.id = funcionarios.id_estatus');
+
+        if (isset($where)) {
+            /*
+            */
+            
+            $conditions = [];
+            foreach ($where as $key => $value) {
+                $conditions[] = [$value => $key];
+            }
+            $query->where([
+                'OR' => $conditions                
+            ]);
+            
+            //var_dump($conditions);
+            //$query->where($conditions, [], [], 'OR');
+        }
+        
+
 
         return $query->execute()->fetchAll('assoc') ?: [];
         

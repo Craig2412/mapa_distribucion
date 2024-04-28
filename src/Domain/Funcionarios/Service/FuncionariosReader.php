@@ -52,6 +52,9 @@ final class FuncionariosReader
         $result->estado = $funcionariosRow['estado'];
         $result->municipio = $funcionariosRow['municipio'];
         $result->localidad = $funcionariosRow['localidad'];
+        $result->departamento = $funcionariosRow['departamento'];
+        $result->entidad_principal = $funcionariosRow['entidad_principal'];
+        $result->entidad_adscripcion = $funcionariosRow['entidad_adscripcion'];
         $result->nombre_centro_votacion = $funcionariosRow['nombre_centro_votacion'];
         $result->id_estatus = $funcionariosRow['id_estatus'];
         $result->estatus = $funcionariosRow['estatus'];

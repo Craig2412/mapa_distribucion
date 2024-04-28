@@ -50,6 +50,9 @@ final class FuncionariosReaderAction
                 'localidad' => $funcionarios->localidad,
                 'nombre_centro_votacion' => $funcionarios->nombre_centro_votacion,
                 'id_estatus' => $funcionarios->id_estatus,
+                'entidad_principal' => $funcionarios->entidad_principal,
+                'entidad_adscripcion' => $funcionarios->entidad_adscripcion,
+                'departamento' => $funcionarios->departamento,
                 'created' => $funcionarios->created,
                 'updated' => $funcionarios->updated
         ];

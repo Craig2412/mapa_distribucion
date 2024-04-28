@@ -19,6 +19,9 @@ final class FuncionariosReaderResult
     public ?string $municipio = null;
     public ?string $localidad = null;
     public ?string $nombre_centro_votacion = null;
+    public ?string $departamento = null;
+    public ?string $entidad_principal = null;
+    public ?string $entidad_adscripcion = null;
 
     public ?int $id_estatus = null;
     public ?string $estatus = null;
