@@ -90,6 +90,7 @@ final class FuncionariosValidator
                 'localidad' => $constraint->required(
                     [
                         $constraint->length(3,250),
+
                     ]
                 ),
                 'departamento' => $constraint->required(

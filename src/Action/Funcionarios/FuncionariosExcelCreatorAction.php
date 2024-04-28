@@ -48,14 +48,17 @@ final class FuncionariosExcelCreatorAction
                     "estado" => $array[6],
                     "municipio" => $array[7],
                     "localidad" => $array[8],
+
                     "nombre_centro_votacion" => $array[9],
                     "departamento" => $array[10],             
                     "entidad_principal" => $array[11],
                     "entidad_adscripcion" => $array[12]                
+
                 ];
 
             $funcionarioId = $this->funcionariosCreator->createFuncionarios($data);
             array_push($id_funcionarios, $funcionarioId);                
+
             }
             
             // Cierra el archivo después de usarlo
