@@ -60,11 +60,9 @@ final class FuncionariosFinderAction
                 'nombre_centro_votacion' => $funcionarios->nombre_centro_votacion,
                 'id_estatus' => $funcionarios->id_estatus,
                 'estatus' => $funcionarios->estatus,
-
                 'entidad_principal' => $funcionarios->entidad_principal,
                 'entidad_adscripcion' => $funcionarios->entidad_adscripcion,
                 'departamento' => $funcionarios->departamento,
-
                 'created' => $funcionarios->created,
                 'updated' => $funcionarios->updated
             ];

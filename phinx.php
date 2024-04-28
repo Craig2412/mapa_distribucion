@@ -13,7 +13,7 @@ return
         'production' => [
             'adapter' => 'mysql',
             'host' => 'localhost',//
-            'name' => 'votaciones_general',
+            'name' => 'votaciones',
             'user' =>'root',// 'root',//
             'pass' => '',
             'port' => '3306',//
@@ -22,7 +22,7 @@ return
         'development' => [
             'adapter' => 'mysql',
             'host' => 'localhost',//
-            'name' => 'votaciones_general',
+            'name' => 'votaciones',
             'user' =>'root',// 'root',//
             'pass' => '',
             'port' => '3306',//
@@ -31,7 +31,7 @@ return
         'testing' => [
             'adapter' => 'mysql',
             'host' => 'localhost',//
-            'name' => 'votaciones_general',
+            'name' => 'votaciones',
             'user' =>'root',// 'root',//
             'pass' => '',
             'port' => '3306',//
