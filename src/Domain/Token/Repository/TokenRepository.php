@@ -17,7 +17,6 @@ final class TokenRepository
     public function insertToken(array $token): array
     
     {
-
         $id = $this->queryFactory->newInsert('tokens', $this->toRow($token))
             ->execute()
             ->lastInsertId();
@@ -92,8 +91,7 @@ final class TokenRepository
     {
         return [
             'token' => $usuario['token'],
-            'id_user' => $usuario['id_user']
-            
+            'id_user' => $usuario['id_user'] 
         ];
     }
 }

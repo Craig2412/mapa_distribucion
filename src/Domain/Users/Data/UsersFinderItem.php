@@ -8,7 +8,6 @@ final class UsersFinderItem
 
     public ?string $name = null;
 
-    public ?string $surname = null;
 
     public ?string $email = null;
 

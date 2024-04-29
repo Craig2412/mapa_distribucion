@@ -22,7 +22,6 @@ final class UsersFinderRepository
                 'tokens.id',
                 'tokens.id_user',
                 'users.name',
-                'users.surname',
                 'users.email',
                 'users.identification'
             ]

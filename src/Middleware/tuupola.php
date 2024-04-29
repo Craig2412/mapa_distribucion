@@ -5,7 +5,7 @@ function Tuupola()
 {
     return(new Tuupola\Middleware\JwtAuthentication([
         "attribute" => "jwt",
-        "secret" => 's',
-        "ignore" => ["/api/user/authenticate", "/api/user/info"]
+        "secret" => '1',
+        "ignore" => ["/user/authenticate", "/api/user/info", "/preguntas"]
     ]));
 }

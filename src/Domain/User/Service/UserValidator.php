@@ -50,13 +50,6 @@ final class UserValidator
                         $constraint->length(null, 100),
                     ]
                 ),
-                'surname' => $constraint->optional(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->length(null, 100),
-                        $constraint->positive(),
-                    ]
-                ),
                 'email' => $constraint->required(
                     [
                         $constraint->notBlank(),
@@ -64,25 +57,7 @@ final class UserValidator
                         $constraint->length(null, 100),
                     ]
                 ),
-                'phone' => $constraint->optional(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->length(null, 11),
-                    ]
-                ),
                 'id_role' => $constraint->required(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->positive()
-                    ]
-                ),
-                'id_condition' => $constraint->required(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->positive()
-                    ]
-                ),
-                'id_signature' => $constraint->required(
                     [
                         $constraint->notBlank(),
                         $constraint->positive()
@@ -93,7 +68,7 @@ final class UserValidator
                         $constraint->notBlank(),
                         $constraint->length(null, 10),
                     ]
-                    ),
+                ),
                 'pass' => $constraint->required(
                     [
                         $constraint->notBlank()

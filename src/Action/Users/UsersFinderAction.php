@@ -44,7 +44,6 @@ final class UsersFinderAction
             $user[] = [
                 'id' => $state->id,
                 'name' => $state->name,
-                'surname' => $state->surname,
                 'email' => $state->email,
                 'identificacion' => $state->identification
             ];

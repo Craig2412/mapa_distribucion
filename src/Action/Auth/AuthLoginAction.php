@@ -28,7 +28,6 @@ final class AuthLoginAction
         ): ResponseInterface {
         // Extract the form data from the request body
         $data = (array)$request->getParsedBody();
-        //var_dump();
 
         // Invoke the Domain with inputs and retain the result
         $user = $this->userLogin->loginUser($data);

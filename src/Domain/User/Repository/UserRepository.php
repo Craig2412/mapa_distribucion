@@ -53,9 +53,10 @@ final class UserRepository
             [
                 'users.id',
                 'users.pass',
+                'r.role',
                 'users.id_role'
             ]
-            );
+            )->leftJoin(['r' => 'roles'], 'r.id = users.id_role');
 
         $query->where(['users.email' => $email]);
         
@@ -97,12 +98,8 @@ final class UserRepository
         $pass = new Bcrypt($usuario['pass']);
         return [
             'name' => $usuario['name'],
-            'surname' => $usuario['surname'],
-            'phone' => $usuario['phone'],
             'id_role' => $usuario['id_role'],
             'email' => $usuario['email'],
-            'id_condition' => $usuario['id_condition'],
-            'id_signature' => $usuario['id_signature'],
             'identification' => $usuario['identification'],
             'pass' => $pass->createPass(),
             'created' => date('Y-m-d H:i:s')

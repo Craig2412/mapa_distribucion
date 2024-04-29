@@ -32,7 +32,6 @@ final class UsersFinder
             $users = new UsersFinderItem();
             $users->id = $usersRow['id_user'];
             $users->name = $usersRow['name'];
-            $users->surname = $usersRow['surname'];
             $users->email = $usersRow['email'];
             $users->identification = $usersRow['identification'];
 
