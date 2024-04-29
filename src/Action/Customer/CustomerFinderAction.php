@@ -34,7 +34,6 @@ final class CustomerFinderAction
     }
     public function transform(StatusFinderResult $result): array
     {
-        var_dump('holi');
         $client = new \Goutte\Client();
     
         $client

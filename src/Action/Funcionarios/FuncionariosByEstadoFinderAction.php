@@ -3,6 +3,7 @@
 namespace App\Action\Funcionarios;
 
 use App\Domain\Funcionarios\Data\FuncionariosByEstadoFinderResult;
+use App\Domain\Funcionarios\Service\FuncionariosWhereGenFinder;
 use App\Domain\Funcionarios\Service\FuncionariosByEstadoFinder;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
@@ -13,12 +14,15 @@ final class FuncionariosByEstadoFinderAction
     
     private FuncionariosByEstadoFinder $funcionariosByEstadoFinder;
 
+    private FuncionariosWhereGenFinder $funcionariosWhereGenFinder;
+
     private JsonRenderer $renderer;
 
-    public function __construct(FuncionariosByEstadoFinder $funcionariosByEstadoFinder, JsonRenderer $jsonRenderer)
+    public function __construct(FuncionariosByEstadoFinder $funcionariosByEstadoFinder, JsonRenderer $jsonRenderer, FuncionariosWhereGenFinder $funcionariosWhereGenFinder)
     {
 
         $this->funcionariosByEstadoFinder = $funcionariosByEstadoFinder;
+        $this->funcionariosWhereGenFinder = $funcionariosWhereGenFinder;
         $this->renderer = $jsonRenderer;
     }
 
@@ -27,11 +31,19 @@ final class FuncionariosByEstadoFinderAction
 
         $estatusId = (int)$args['estatus'];
 
-        $funcionariosByEstado = $this->funcionariosByEstadoFinder->findFuncionariosByEstado($estatusId);
-  
+        $token = $request->getAttribute("jwt");
+        $id_rol = $token['data']->scope +0;
+        $rol = $token['data']->ente;
 
-        // Transform result and render to json
-        return $this->renderer->json($response, $this->transform($funcionariosByEstado));
+        $where = $this->funcionariosWhereGenFinder->findFuncionariosWhereGens($id_rol,$rol);
+        if (isset($where)) {
+            $funcionariosByEstado = $this->funcionariosByEstadoFinder->findFuncionariosByEstado($estatusId,$where);
+            // Transform result and render to json
+            return $this->renderer->json($response, $this->transform($funcionariosByEstado));
+        }else {
+            return 'error';
+        }
+
     }
 
     public function transform(FuncionariosByEstadoFinderResult $result): array

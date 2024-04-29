@@ -46,11 +46,11 @@ final class FuncionariosByEstatusFinder
         $this->repository = $repository;
     }
 
-    public function findFuncionariosByEstatus($estatusId): FuncionariosByEstatusFinderResult
+    public function findFuncionariosByEstatus($estatusId,$where): FuncionariosByEstatusFinderResult
     {
         
         // Input validation
-        $funcionariosByEstatus = $this->repository->findFuncionariosByEstatus($estatusId);
+        $funcionariosByEstatus = $this->repository->findFuncionariosByEstatus($estatusId,$where);
        
         $funcionariosByEstatus = obtenerEstatuss($funcionariosByEstatus);
         

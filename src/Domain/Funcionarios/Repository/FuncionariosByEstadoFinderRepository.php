@@ -15,7 +15,7 @@ final class FuncionariosByEstadoFinderRepository
     }
     
 
-    public function findFuncionariosByEstado($estatusId): array
+    public function findFuncionariosByEstado($estatusId,$where): array
     {
         
         $query = $this->queryFactory->newSelect('funcionarios');
@@ -27,7 +27,16 @@ final class FuncionariosByEstadoFinderRepository
 
         $query->where(['funcionarios.id_estatus' => $estatusId]);
 
-
+        if (isset($where)) {
+                   
+            $conditions = [];
+            foreach ($where as $key => $value) {
+                $conditions[] = [$value => $key];
+            }
+            $query->where([
+                'OR' => $conditions                
+            ]);
+        }
         return $query->execute()->fetchAll('assoc') ?: [];
     }
 }

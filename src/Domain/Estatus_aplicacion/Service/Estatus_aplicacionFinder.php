@@ -37,7 +37,6 @@ final class Estatus_aplicacionFinder
 
             $result->estatus_aplicacions[] = $estatus_aplicacion;
         }
-        //var_dump($result);
 
         return $result;
     }

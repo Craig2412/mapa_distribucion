@@ -38,11 +38,11 @@ final class UserLogin
         // Get user and get new user ID
         $data = [ 'email' => $data["user"],
                   'pass' => $data["pass"]];
-       // var_dump($data->user);
+
         $user = $this->repository->getUserLogin($data['email'], $data['pass']);
         $token = $this->tokenFinder->finderToken($user['id']);
         if (count($token)===0) {
-            $token = $this->tokenCreator->createToken(["user_id"=>$user['id'], "scope"=>$user['id_role'], "r"=>$user['role']]);
+            $token = $this->tokenCreator->createToken(["id_user"=>$user['id'], "scope"=>$user['id_role'], "ente"=>$user['role']]);
         }
         // Logging
         $this->logger->info(sprintf('User reader successfully: %s', $user));

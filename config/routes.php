@@ -87,13 +87,14 @@ return function (App $app) {
         '/funcionarios',
         function (RouteCollectorProxy $app) {
             $app->get('', \App\Action\Funcionarios\FuncionariosFinderAction::class);//completed
-            $app->get('/{funcionarios_cedula}', \App\Action\Funcionarios\FuncionariosReaderAction::class);//completed
-            $app->post('', \App\Action\Funcionarios\FuncionariosCreatorAction::class);//completed
+            $app->get('/unico/{funcionario_cedula}', \App\Action\Funcionarios\FuncionariosReaderAction::class);//completed
+            $app->post('/create', \App\Action\Funcionarios\FuncionariosCreatorAction::class);//completed
             $app->post('/excel', \App\Action\Funcionarios\FuncionariosExcelCreatorAction::class);//
             $app->put('/{funcionarios_id}', \App\Action\Funcionarios\FuncionariosUpdaterAction::class);//completed
             $app->delete('/{funcionarios_id}', \App\Action\Funcionarios\FuncionariosDeleterAction::class);//completed
         }
     );
+    
 
     // Encuesta
     $app->group(

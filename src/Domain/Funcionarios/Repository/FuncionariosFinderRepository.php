@@ -52,7 +52,6 @@ final class FuncionariosFinderRepository
                 'OR' => $conditions                
             ]);
             
-            //var_dump($conditions);
             //$query->where($conditions, [], [], 'OR');
         }
         

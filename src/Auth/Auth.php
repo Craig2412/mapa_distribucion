@@ -17,6 +17,7 @@ class Auth {
             'aud' => self::Aud(),
             'data' => [
                 "user_id" => $data["user_id"],
+                "ente" => $data["ente"],
                 "scope" => $data['scope']
             ]
         );

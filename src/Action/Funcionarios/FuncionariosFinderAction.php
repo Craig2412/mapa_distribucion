@@ -27,9 +27,9 @@ final class FuncionariosFinderAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        //$token = $request->getAttribute("jwt");
-        $id_rol = 3;
-        $rol = "SAPI";
+        $token = $request->getAttribute("jwt");
+        $id_rol = $token['data']->scope +0;
+        $rol = $token['data']->ente;
         $where = $this->funcionariosWhereGenFinder->findFuncionariosWhereGens($id_rol,$rol);
         if (isset($where)) {
             $funcionarioss = $this->funcionariosFinder->findFuncionarioss($where);

@@ -53,7 +53,6 @@ final class FuncionariosFinder
 
             $result->funcionarioss[] = $funcionarios;
         }
-        //var_dump($result);
 
         return $result;
     }

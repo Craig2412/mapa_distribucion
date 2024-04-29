@@ -26,7 +26,7 @@ final class FuncionariosWhereGenFinder
     {
 
         if (count($funcionariosWhereGenRows) === 0) {
-           // var_dump('oki');
+
            $funcionariosWhereGenRows = [["ente" => $rol]];
         }
         $where_props = [];

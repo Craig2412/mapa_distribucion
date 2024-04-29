@@ -38,7 +38,6 @@ final class PreguntasFinder
 
             $result->preguntass[] = $preguntas;
         }
-        //var_dump($result);
 
         return $result;
     }

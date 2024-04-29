@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 $auth = Auth::SignIn([
     "user_login" => 14
 ]);
-var_dump($auth);
 
 final class HomeAction
 {

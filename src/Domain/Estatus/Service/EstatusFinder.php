@@ -37,7 +37,6 @@ final class EstatusFinder
 
             $result->estatuss[] = $estatus;
         }
-        //var_dump($result);
 
         return $result;
     }

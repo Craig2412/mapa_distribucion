@@ -25,8 +25,9 @@ final class TokenCreator
 
     public function createToken(array $data): array
     {
-        $token = Auth::SignIn(['user_id'=>$data['id'], 'scope'=>$data['id_role']]);
-        //var_dump($token);
+        $token = Auth::SignIn(['user_id'=>$data['id_user'], 'scope'=>$data['scope'], 'ente'=>$data['ente']]);
+
+
         // Insert customer and get new customer ID
         $token = $this->repository->insertToken(['token'=> $token, 'id_user' => $data['id_user']]);
 

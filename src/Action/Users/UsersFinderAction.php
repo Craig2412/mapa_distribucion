@@ -38,7 +38,6 @@ final class UsersFinderAction
         
         $users = [];
         
-        //var_dump($result);
 
         foreach ($result->users as $state) {
             $user[] = [
