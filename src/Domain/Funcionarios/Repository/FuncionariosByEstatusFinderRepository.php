@@ -26,17 +26,8 @@ final class FuncionariosByEstatusFinderRepository
         ->leftJoin('estatus', 'estatus.id = funcionarios.id_estatus')
         ->group('funcionarios.id_estatus');
 
-        if (isset($where)) {
-                   
-            $conditions = [];
-            foreach ($where as $key => $value) {
-                $conditions[] = [$value => $key];
-            }
-            $query->where([
-                'OR' => $conditions                
-            ]);
-            
-            //$query->where($conditions, [], [], 'OR');
+        if ($where != "ADMINISTRADOR") {
+            $query->where(['funcionarios.entidad_adscripcion' => $where]); 
         }
 
         return $query->execute()->fetchAll('assoc') ?: [];

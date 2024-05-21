@@ -5,6 +5,7 @@ namespace App\Domain\User\Service;
 use App\Domain\User\Repository\UserRepository;
 use App\Domain\Token\Service\TokenFinder;
 use App\Domain\Token\Service\TokenCreator;
+use App\Domain\Token\Service\TokenDeleter;
 use App\Domain\User\Data\UserLoginResult;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
@@ -18,14 +19,17 @@ final class UserLogin
 
     private TokenFinder $tokenFinder;
     private TokenCreator $tokenCreator;
+    private TokenDeleter $tokenDeleter;
 
     public function __construct(
         UserRepository $repository,
         LoggerFactory $loggerFactory,
         TokenFinder $tokenFinder,
-        TokenCreator $tokenCreator
+        TokenCreator $tokenCreator,
+        TokenDeleter $tokenDeleter
     ) {
         $this->repository = $repository;
+        $this->tokenDeleter = $tokenDeleter;
         $this->tokenCreator = $tokenCreator;
         $this->tokenFinder = $tokenFinder;
         $this->logger = $loggerFactory
@@ -42,6 +46,9 @@ final class UserLogin
         $user = $this->repository->getUserLogin($data['email'], $data['pass']);
         $token = $this->tokenFinder->finderToken($user['id']);
         if (count($token)===0) {
+            $token = $this->tokenCreator->createToken(["id_user"=>$user['id'], "scope"=>$user['id_role'], "ente"=>$user['role']]);
+        }else {
+            $deleteToken = $this->tokenDeleter->deleteToken($token["id"]);
             $token = $this->tokenCreator->createToken(["id_user"=>$user['id'], "scope"=>$user['id_role'], "ente"=>$user['role']]);
         }
         // Logging

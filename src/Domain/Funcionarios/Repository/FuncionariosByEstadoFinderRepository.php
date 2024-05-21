@@ -15,28 +15,25 @@ final class FuncionariosByEstadoFinderRepository
     }
     
 
-    public function findFuncionariosByEstado($estatusId,$where): array
+    public function findFuncionariosByEstado($tipo_total,$estatusId,$where): array
     {
         
         $query = $this->queryFactory->newSelect('funcionarios');
         $query->select([
-            'total' => $query->func()->count('*'),
+            $tipo_total => $query->func()->count('*'),
             'funcionarios.estado'
         ])
         ->group('funcionarios.estado');
 
-        $query->where(['funcionarios.id_estatus' => $estatusId]);
-
-        if (isset($where)) {
-                   
-            $conditions = [];
-            foreach ($where as $key => $value) {
-                $conditions[] = [$value => $key];
-            }
-            $query->where([
-                'OR' => $conditions                
-            ]);
+        if ($where == "ADMINISTRADOR") {
+            $query->where(['funcionarios.id_estatus' => $estatusId]);
+        }else {
+            $query->where(['funcionarios.id_estatus' => $estatusId, 'funcionarios.entidad_adscripcion' => $where]);
         }
-        return $query->execute()->fetchAll('assoc') ?: [];
+        
+        $return = $query->execute()->fetchAll('assoc') ?: [];
+
+       // var_dump($return);
+        return $return;
     }
 }

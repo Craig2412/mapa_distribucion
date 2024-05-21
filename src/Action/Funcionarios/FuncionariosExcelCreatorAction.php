@@ -39,25 +39,23 @@ final class FuncionariosExcelCreatorAction
                 // Imprime cada fila como un array
                 $array = explode(";", $fila[0]);
                 $data = [
-                    "cedula" => $array[0],
-                    "apellidos_nombres" => $array[1],
+                    "cedula" => utf8_encode($array[0]),
+                    "apellidos_nombres" => utf8_encode($array[1]),
                     "telefono" => $array[2],
-                    "correo" => $array[3],
+                    "correo" => utf8_encode($array[3]),
                     "serial_carnet" => $array[4],
                     "codigo_carnet" => $array[5],
-                    "estado" => $array[6],
-                    "municipio" => $array[7],
-                    "localidad" => $array[8],
-                    "nombre_centro_votacion" => $array[9],
-                    "departamento" => $array[10],             
-                    "entidad_principal" => $array[11],
-                    "entidad_adscripcion" => $array[12]                
+                    "estado" => utf8_encode($array[6]),
+                    "municipio" => utf8_encode($array[7]),
+                    "localidad" => utf8_encode($array[8]),
+                    "nombre_centro_votacion" => utf8_encode($array[9]),
+                    "departamento" => utf8_encode($array[10]),             
+                    "entidad_principal" => utf8_encode($array[11]),
+                    "entidad_adscripcion" => utf8_encode($array[12])                
                 ];
-
             $funcionarioId = $this->funcionariosCreator->createFuncionarios($data);
-            array_push($id_funcionarios, $funcionarioId);                
+            array_push($id_funcionarios, $funcionarioId);            
             }
-            
             // Cierra el archivo después de usarlo
             fclose($archivo);
         } else {

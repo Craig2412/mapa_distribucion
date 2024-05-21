@@ -35,7 +35,14 @@ final class FuncionariosByEstadoFinderAction
         $id_rol = $token['data']->scope +0;
         $rol = $token['data']->ente;
 
-        $where = $this->funcionariosWhereGenFinder->findFuncionariosWhereGens($id_rol,$rol);
+        if (isset($args['params'])) {
+            $params = explode('/', $args['params']);
+            $where = $params[0];       
+        }else {
+            $where = $rol;       
+        }
+        
+        //$where = $this->funcionariosWhereGenFinder->findFuncionariosWhereGens($id_rol,$rol);
         if (isset($where)) {
             $funcionariosByEstado = $this->funcionariosByEstadoFinder->findFuncionariosByEstado($estatusId,$where);
             // Transform result and render to json
@@ -54,6 +61,8 @@ final class FuncionariosByEstadoFinderAction
             $funcionariosByEstado[] = [
                 'estado' => $funcionarioByEstado->estado,
                 'total' => $funcionarioByEstado->total,
+                'total_no' => $funcionarioByEstado->total_no,
+                'total_sin' => $funcionarioByEstado->total_sin,
             ];
         }
 

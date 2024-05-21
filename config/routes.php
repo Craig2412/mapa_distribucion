@@ -19,6 +19,7 @@ return function (App $app) {
         function (RouteCollectorProxy $app) { 
             $app->post('/user/create', \App\Action\Auth\AuthSigninAction::class);
             $app->post('/user/authentication', \App\Action\Auth\AuthLoginAction::class);
+            $app->get('/token/authentication', \App\Action\Auth\AuthVerificateAction::class);
         }
     );
  
@@ -36,6 +37,7 @@ return function (App $app) {
         function (RouteCollectorProxy $app) {
            
             $app->get('', \App\Action\Roles\RolesFinderAction::class);//completed
+            $app->get('/adscripciones', \App\Action\Roles\AdscripcionesFinderAction::class);//
             $app->get('/{roles_id}', \App\Action\Roles\RolesReaderAction::class);//completed
             $app->post('', \App\Action\Roles\RolesCreatorAction::class);//completed
             $app->put('/{roles_id}', \App\Action\Roles\RolesUpdaterAction::class);//completed
@@ -127,8 +129,8 @@ return function (App $app) {
      $app->group(
         '/dashboard',
         function (RouteCollectorProxy $app) {
-            $app->get('/funcionariosByEstados/{estatus}', \App\Action\Funcionarios\FuncionariosByEstadoFinderAction::class);// el filtro de estatus puede ser 1, 2 o 3 (Si voto, No voto, Sin definir)
-            $app->get('/funcionariosByEstatus', \App\Action\Funcionarios\FuncionariosByEstatusFinderAction::class);// 
+            $app->get('/funcionariosByEstados/{estatus}[/{params:.*}]', \App\Action\Funcionarios\FuncionariosByEstadoFinderAction::class);// el filtro de estatus puede ser 1, 2 o 3 (Si voto, No voto, Sin definir)
+            $app->get('/funcionariosByEstatus[/{params:.*}]', \App\Action\Funcionarios\FuncionariosByEstatusFinderAction::class);// 
         }
     );
 };

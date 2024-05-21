@@ -57,6 +57,42 @@ final class FuncionariosRepository
         
         return $row;
     }
+
+    public function getFuncionariosPorId(int $funcionariosId): array
+    {
+        $query = $this->queryFactory->newSelect('funcionarios');
+        $query->select(
+            [
+                'funcionarios.id',
+                'funcionarios.cedula',
+                'funcionarios.apellidos_nombres',
+                'funcionarios.telefono',
+                'funcionarios.correo',
+                'funcionarios.serial_carnet',
+                'funcionarios.codigo_carnet',
+                'funcionarios.estado',
+                'funcionarios.municipio','funcionarios.departamento',
+                'funcionarios.entidad_adscripcion',
+                'funcionarios.entidad_principal',
+                'funcionarios.localidad',
+                'funcionarios.nombre_centro_votacion',
+                'funcionarios.id_estatus',
+                'estatus.estatus',
+                'funcionarios.created',
+                'funcionarios.updated'
+            ]
+        )->leftjoin(['estatus'=>'estatus'], 'estatus.id = funcionarios.id_estatus');
+            
+            $query->where(['funcionarios.id' => $funcionariosId]);
+            
+            $row = $query->execute()->fetch('assoc');
+            
+            if (!$row) {
+                throw new DomainException(sprintf('Funcionarios not found: %s', $funcionariosId));
+        }
+        
+        return $row;
+    }
     
     public function updateFuncionarios(int $funcionariosId, array $funcionarios): array
     {
