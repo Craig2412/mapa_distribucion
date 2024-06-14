@@ -40,18 +40,18 @@ final class FuncionariosExcelCreatorAction
                 $array = explode(";", $fila[0]);
                 $data = [
                     "cedula" => utf8_encode($array[0]),
-                    "apellidos_nombres" => utf8_encode($array[1]),
+                    "apellidos_nombres" => trim(utf8_encode($array[1])),
                     "telefono" => $array[2],
-                    "correo" => utf8_encode($array[3]),
+                    "correo" => trim(utf8_encode($array[3])),
                     "serial_carnet" => $array[4],
                     "codigo_carnet" => $array[5],
-                    "estado" => utf8_encode($array[6]),
-                    "municipio" => utf8_encode($array[7]),
-                    "localidad" => utf8_encode($array[8]),
-                    "nombre_centro_votacion" => utf8_encode($array[9]),
-                    "departamento" => utf8_encode($array[10]),             
-                    "entidad_principal" => utf8_encode($array[11]),
-                    "entidad_adscripcion" => utf8_encode($array[12])                
+                    "estado" => trim(utf8_encode($array[6])),
+                    "municipio" => trim(utf8_encode($array[7])),
+                    "localidad" => trim(utf8_encode($array[8])),
+                    "nombre_centro_votacion" => trim(utf8_encode($array[9])),
+                    "departamento" => trim(utf8_encode($array[10])),             
+                    "entidad_principal" => trim(utf8_encode($array[11])),
+                    "entidad_adscripcion" => trim(utf8_encode($array[12]))                
                 ];
             $funcionarioId = $this->funcionariosCreator->createFuncionarios($data);
             array_push($id_funcionarios, $funcionarioId);            
