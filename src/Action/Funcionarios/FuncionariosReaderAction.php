@@ -23,22 +23,26 @@ final class FuncionariosReaderAction
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        array $args
+        array $args 
     ): ResponseInterface {
         // Fetch parameters from the request
         $funcionariosId = (int)$args['funcionario_cedula'];
-
+        $type = (int)$args['arg'];
+        
         // Invoke the domain and get the result
-        $funcionarios = $this->funcionariosReader->getFuncionarios($funcionariosId);
+        $funcionarios = $this->funcionariosReader->getFuncionarios($funcionariosId, $type);
 
         // Transform result and render to json
-        return $this->renderer->json($response, $this->transform($funcionarios));
+        return $this->renderer->json($response, $this->transform($funcionarios, $type));
     }
 
-    private function transform(FuncionariosReaderResult $funcionarios): array
+    private function transform(FuncionariosReaderResult $funcionarios, int $type): array
     {
-        return [
-            'id' => $funcionarios->id,
+        if ($funcionarios->id_estatus != 3 && $type==1) {
+            return ['error' => 'Encuesta respondida'];
+        }else {
+            return [
+                'id' => $funcionarios->id,
                 'cedula' => $funcionarios->cedula,
                 'apellidos_nombres' => $funcionarios->apellidos_nombres,
                 'telefono' => $funcionarios->telefono,
@@ -53,8 +57,10 @@ final class FuncionariosReaderAction
                 'entidad_principal' => $funcionarios->entidad_principal,
                 'entidad_adscripcion' => $funcionarios->entidad_adscripcion,
                 'departamento' => $funcionarios->departamento,
+                'responsable' => $funcionarios->responsable,
                 'created' => $funcionarios->created,
                 'updated' => $funcionarios->updated
-        ];
+            ];
+        }
     }
 }

@@ -30,7 +30,7 @@ final class FuncionariosByEstadoFinder
         $this->repository = $repository;
     }
 
-    public function findFuncionariosByEstado($estatusId,$where): FuncionariosByEstadoFinderResult
+    public function findFuncionariosByEstado($estatusId,$where, $tipo_busqueda): FuncionariosByEstadoFinderResult
     {
       $estados = [
             0 => [
@@ -46,7 +46,7 @@ final class FuncionariosByEstadoFinder
                   'sin_total' => 0
                  ],
             2 => [
-                  'estado' => 'ANZOATEGUI',
+                  'estado' => 'ANZOÁTEGUI',
                   'total' => 0,
                   'no_total' => 0,
                   'sin_total' => 0
@@ -70,7 +70,7 @@ final class FuncionariosByEstadoFinder
                   'sin_total' => 0
                  ],
             6 => [
-                  'estado' => 'BOLIVAR',
+                  'estado' => 'BOLÍVAR',
                   'total' => 0,
                   'no_total' => 0,
                   'sin_total' => 0
@@ -94,13 +94,13 @@ final class FuncionariosByEstadoFinder
                   'sin_total' => 0
                   ],
             10 => [
-                  'estado' => 'FALCON',
+                  'estado' => 'FALCÓN',
                   'total' => 0,
                   'no_total' => 0,
                   'sin_total' => 0
                   ],
             11 => [
-                  'estado' => 'GUARICO',
+                  'estado' => 'GUÁRICO',
                   'total' => 0,
                   'no_total' => 0,
                   'sin_total' => 0
@@ -112,7 +112,7 @@ final class FuncionariosByEstadoFinder
                   'sin_total' => 0
                   ],
             13 => [
-                  'estado' => 'MERIDA',
+                  'estado' => 'MÉRIDA',
                   'total' => 0,
                   'no_total' => 0,
                   'sin_total' => 0
@@ -148,7 +148,7 @@ final class FuncionariosByEstadoFinder
                   'sin_total' => 0
                   ],
             19 => [
-                  'estado' => 'TACHIRA',
+                  'estado' => 'TÁCHIRA',
                   'total' => 0,
                   'no_total' => 0,
                   'sin_total' => 0
@@ -191,13 +191,13 @@ final class FuncionariosByEstadoFinder
             ]
         ];
         // Input validation
-        $funcionariosByEstado = $this->repository->findFuncionariosByEstado('total',1,$where);
+        $funcionariosByEstado = $this->repository->findFuncionariosByEstado('total',1,$where, $tipo_busqueda);
         $estados = obtenerEstados('total',$estados,$funcionariosByEstado);
 
-        $funcionariosByEstado2 = $this->repository->findFuncionariosByEstado('no_total',2,$where);
+        $funcionariosByEstado2 = $this->repository->findFuncionariosByEstado('no_total',2,$where, $tipo_busqueda);
         $estados = obtenerEstados('no_total',$estados,$funcionariosByEstado2);
 
-        $funcionariosByEstado3 = $this->repository->findFuncionariosByEstado('sin_total',3,$where);
+        $funcionariosByEstado3 = $this->repository->findFuncionariosByEstado('sin_total',3,$where, $tipo_busqueda);
         $estados = obtenerEstados('sin_total',$estados,$funcionariosByEstado3);
 
         return $this->createResult($estados);
