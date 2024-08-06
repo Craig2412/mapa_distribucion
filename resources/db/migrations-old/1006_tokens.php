@@ -9,11 +9,11 @@ final class Tokens extends AbstractMigration
     {
         $tokens = $this->table('tokens');
         $tokens   ->addColumn('token', 'string', ['limit' => 10000])
-                  ->addColumn('id_usuario', 'integer', ['signed' => false])
+                  ->addColumn('id_user', 'integer', ['signed' => false])
                   ->addColumn('created', 'datetime')
                   ->addColumn('updated', 'datetime', ['null' => true])
 
-                  ->addIndex('id_usuario')
+                  ->addIndex('id_user')
                   ->create();
     }
 }

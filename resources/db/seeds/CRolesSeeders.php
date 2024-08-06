@@ -11,15 +11,6 @@ class CRolesSeeders extends AbstractSeed
             [
                 'id'    => 1,
                 'role'    => 'ADMINISTRADOR'
-            ],[
-                'id'    => 2,
-                'role'    => 'COMERCIO NACIONAL'
-            ],[
-                'id'    => 3,
-                'role'    => 'SAPI'
-            ],[
-                'id'    => 4,
-                'role'    => 'SENCAMER'
             ]
             ];
 

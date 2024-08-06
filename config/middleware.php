@@ -12,5 +12,5 @@ return function (App $app) {
     $app->addRoutingMiddleware();
     $app->add(BasePathMiddleware::class);
     $app->add(ErrorMiddleware::class);
-    $app->add(Tuupola());
+   // $app->add(Tuupola());
 };

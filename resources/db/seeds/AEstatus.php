@@ -11,14 +11,14 @@ class AEstatus extends AbstractSeed
         $data = [
             [
                 'id'    => 1,
-                'estatus'    => 'SI'
+                'estatus'    => 'Estatus 1'
             ],[
                 'id'    => 2,
-                'estatus'    => 'NO'
+                'estatus'    => 'Estatus 2'
     
             ],[
                 'id'    => 3,
-                'estatus'    => 'POR DEFINIR'
+                'estatus'    => 'Estatus 3'
             ]
             ];
 
