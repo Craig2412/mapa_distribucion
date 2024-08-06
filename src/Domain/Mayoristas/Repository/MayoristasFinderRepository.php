@@ -59,7 +59,6 @@ final class MayoristasFinderRepository
                     'datos_mayoristas.frecuencia_reposicion',
                     'datos_mayoristas.cantidad_trabajadores_directos',
                     'datos_mayoristas.volumen_mensual_comercializacion_mercancia',
-                    'datos_mayoristas.cantidad_locales_comerciales',
                     'datos_mayoristas.flota_vehicular'
                 ]
             )

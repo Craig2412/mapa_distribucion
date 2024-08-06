@@ -36,7 +36,6 @@ final class MayoristasFinderAction
             $mayoristass[] = [
                 'id' => $mayoristas->id,
                 //Datos_generales
-                    'id_datos_generales' => $mayoristas->id_datos_generales,
                     'razon_social' => $mayoristas->razon_social,
                     'coordenadas_x' => $mayoristas->coordenadas_x,
                     'coordenadas_y' => $mayoristas->coordenadas_y,
@@ -57,7 +56,6 @@ final class MayoristasFinderAction
                     //Parroquia
 
                     //Representante_legal
-                        'id_representante_legal' => $mayoristas->id_representante_legal,
                         'nombres_representante' => $mayoristas->nombres_representante,
                         'apellidos_representante' => $mayoristas->apellidos_representante,
                         'identificacion_representante' => $mayoristas->identificacion_representante,
@@ -71,7 +69,6 @@ final class MayoristasFinderAction
 
                 //Datos_generales
                 //Mayorista
-                    'id_tipo_mayorista' => $mayoristas->id_tipo_mayorista,
                     'tipo_mayorista' => $mayoristas->tipo_mayorista,
                     'cantidad_locales_comerciales' => $mayoristas->cantidad_locales_comerciales,
                     'capacidad_almacenamiento' => $mayoristas->capacidad_almacenamiento,

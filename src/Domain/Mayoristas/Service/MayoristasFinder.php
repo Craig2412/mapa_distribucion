@@ -48,20 +48,21 @@ final class MayoristasFinder
             $mayoristas->apellidos_representante = $mayoristasRow['apellidos'];
             $mayoristas->identificacion_representante = $mayoristasRow['identificacion'];
             $mayoristas->telefono_representante = $mayoristasRow['telefono_representante'];
-            $mayoristas->telefono_comercial = $mayoristasRow['telefono_empresa'];
+            $mayoristas->correo_representante = $mayoristasRow['correo_representante'];
+            $mayoristas->telefono_empresa = $mayoristasRow['telefono_empresa'];
             $mayoristas->correo_empresa = $mayoristasRow['correo_empresa'];
             $mayoristas->sector = $mayoristasRow['sector'];
             $mayoristas->sub_sector = $mayoristasRow['sub_sector'];
             $mayoristas->id_tipo_mayorista = $mayoristasRow['id_tipo_mayorista'];
             $mayoristas->tipo_mayorista = $mayoristasRow['tipo_mayorista'];
-            $mayoristas->cantidad_locales_empresaes = $mayoristasRow['cantidad_locales_empresaes'];
+            $mayoristas->cantidad_locales_comerciales = $mayoristasRow['cantidad_locales_comerciales'];
             $mayoristas->capacidad_almacenamiento = $mayoristasRow['capacidad_almacenamiento'];
             $mayoristas->capacidad_almacenamiento_frio = $mayoristasRow['capacidad_almacenamiento_frio'];
             $mayoristas->tamaño_infraestructura = $mayoristasRow['tamaño_infraestructura'];
             $mayoristas->precio_volumen = $mayoristasRow['precio_volumen'];
             $mayoristas->frecuencia_reposicion = $mayoristasRow['frecuencia_reposicion'];
             $mayoristas->cantidad_trabajadores_directos = $mayoristasRow['cantidad_trabajadores_directos'];
-            $mayoristas->volumen_mensual_empresaizacion_mercancia = $mayoristasRow['volumen_mensual_empresaizacion_mercancia'];
+            $mayoristas->volumen_mensual_comercializacion_mercancia = $mayoristasRow['volumen_mensual_comercializacion_mercancia'];
             $mayoristas->flota_vehicular = $mayoristasRow['flota_vehicular'];
             $result->mayoristass[] = $mayoristas;
         }
