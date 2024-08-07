@@ -49,11 +49,12 @@ return function (App $app) {
      $app->group(
         '/mayoristas',
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//
-            $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//
+            $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//COMPLETED
+            $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//COMPLETED
             $app->post('/excel', \App\Action\Mayoristas\MayoristasExcelCreatorAction::class);//
+            $app->post('', \App\Action\Roles\RolesCreatorAction::class);//
             $app->put('/{mayorista_id}', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
-            $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//
+            $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//COMPLETED
         }
     );
    

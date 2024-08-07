@@ -84,8 +84,7 @@ final class MayoristasRepository
             
             if (!$row) {
                 throw new DomainException(sprintf('Mayoristas not found: %s', $mayoristasId));
-        }
-        
+        }        
         return $row;
     }
     
@@ -98,7 +97,6 @@ final class MayoristasRepository
         ->execute();
 
         return $row;
-
     }
 
     public function existsMayoristasId(int $mayoristasId): bool
@@ -118,9 +116,7 @@ final class MayoristasRepository
 
     private function toRow(array $mayoristas): array
     {
-        
-        $updated = isset($mayoristas['updated']) ? $mayoristas['updated'] : null;
-        
+                
         return [
             'mayoristas' => strtoupper($mayoristas['mayoristas'])
         ];

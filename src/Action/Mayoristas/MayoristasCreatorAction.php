@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Action\Funcionarios;
+namespace App\Action\Mayoristas;
 
-use App\Domain\Funcionarios\Service\FuncionariosCreator;
+use App\Domain\Mayoristas\Service\MayoristasCreator;
 use App\Renderer\JsonRenderer;
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class FuncionariosCreatorAction
+final class MayoristasCreatorAction
 {
     private JsonRenderer $renderer;
 
-    private FuncionariosCreator $funcionariosCreator;
+    private MayoristasCreator $mayoristasCreator;
 
-    public function __construct(FuncionariosCreator $funcionariosCreator, JsonRenderer $renderer)
+    public function __construct(MayoristasCreator $mayoristasCreator, JsonRenderer $renderer)
     {
-        $this->funcionariosCreator = $funcionariosCreator;
+        $this->mayoristasCreator = $mayoristasCreator;
         $this->renderer = $renderer;
     }
 
@@ -25,11 +25,11 @@ final class FuncionariosCreatorAction
         // Extract the form data from the request body
         $data = (array)$request->getParsedBody();
         // Invoke the Domain with inputs and retain the result
-        $funcionariosId = $this->funcionariosCreator->createFuncionarios($data);
+        $mayoristasId = $this->mayoristasCreator->createMayoristas($data);
 
         // Build the HTTP response
         return $this->renderer
-            ->json($response, ['funcionarios_id' => $funcionariosId])
+            ->json($response, ['mayoristas_id' => $mayoristasId])
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }
