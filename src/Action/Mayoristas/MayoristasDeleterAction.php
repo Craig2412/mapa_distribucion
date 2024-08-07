@@ -1,21 +1,25 @@
 <?php
 
-namespace App\Action\Funcionarios;
+namespace App\Action\Mayoristas;
 
-use App\Domain\Funcionarios\Service\FuncionariosDeleter;
+use App\Domain\Mayoristas\Service\MayoristasDeleter;
+use App\Domain\Mayoristas\Data\MayoristasReaderResult;
+use App\Domain\Mayoristas\Service\MayoristasReader;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class FuncionariosDeleterAction
+final class MayoristasDeleterAction
 {
-    private FuncionariosDeleter $funcionariosDeleter;
+    private MayoristasDeleter $mayoristasDeleter;
+    private MayoristasReader $mayoristasReader;
 
     private JsonRenderer $renderer;
 
-    public function __construct(FuncionariosDeleter $funcionariosDeleter, JsonRenderer $renderer)
+    public function __construct(MayoristasDeleter $mayoristasDeleter, MayoristasReader $mayoristasReader, JsonRenderer $renderer)
     {
-        $this->funcionariosDeleter = $funcionariosDeleter;
+        $this->mayoristasDeleter = $mayoristasDeleter;
+        $this->mayoristasReader = $mayoristasReader;
         $this->renderer = $renderer;
     }
 
@@ -25,10 +29,10 @@ final class FuncionariosDeleterAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $funcionariosId = (int)$args['funcionarios_id'];
+        $mayoristasId = (int)$args['mayorista_id'];
 
         // Invoke the domain (service class)
-        $this->funcionariosDeleter->deleteFuncionarios($funcionariosId);
+        $this->mayoristasDeleter->deleteMayoristas($mayoristasId);
 
         // Render the json response
         return $this->renderer->json($response, 'Registro eliminado');

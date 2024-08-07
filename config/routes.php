@@ -52,8 +52,8 @@ return function (App $app) {
             $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//
             $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//
             $app->post('/excel', \App\Action\Mayoristas\MayoristasExcelCreatorAction::class);//
-            $app->put('/{mayoristas_id}', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
-            $app->delete('/{mayoristas_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//
+            $app->put('/{mayorista_id}', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
+            $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//
         }
     );
    

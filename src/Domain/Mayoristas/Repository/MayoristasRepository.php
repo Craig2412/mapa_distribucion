@@ -78,7 +78,7 @@ final class MayoristasRepository
             ->leftjoin(['parroquias'=>'parroquias'], 'parroquias.id = datos_generales_empresa.id_parroquia')
             ->leftjoin(['tipos_mayoristas'=>'tipos_mayoristas'], 'tipos_mayoristas.id = datos_mayoristas.id_tipo_mayorista');
         
-            $query->where(['id' => $mayoristasId]);
+            $query->where(['datos_mayoristas.id' => $mayoristasId]);
             
             $row = $query->execute()->fetch('assoc');
             
