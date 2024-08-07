@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Action\Funcionarios;
+namespace App\Action\Mayoristas;
 
-use App\Domain\Funcionarios\Data\FuncionariosReaderResult;
-use App\Domain\Funcionarios\Service\FuncionariosReader;
+use App\Domain\Mayoristas\Data\MayoristasReaderResult;
+use App\Domain\Mayoristas\Service\MayoristasReader;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class FuncionariosReaderAction
+final class MayoristasReaderAction
 {
-    private FuncionariosReader $funcionariosReader;
+    private MayoristasReader $mayoristasReader;
 
     private JsonRenderer $renderer;
 
-    public function __construct(FuncionariosReader $funcionariosReader, JsonRenderer $jsonRenderer)
+    public function __construct(MayoristasReader $mayoristasReader, JsonRenderer $jsonRenderer)
     {
-        $this->funcionariosReader = $funcionariosReader;
+        $this->mayoristasReader = $mayoristasReader;
         $this->renderer = $jsonRenderer;
     }
 
@@ -26,35 +26,64 @@ final class FuncionariosReaderAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $funcionariosId = (int)$args['funcionario_cedula'];
+        $mayoristasId = (int)$args['mayorista_id'];
 
         // Invoke the domain and get the result
-        $funcionarios = $this->funcionariosReader->getFuncionarios($funcionariosId);
+        $mayoristas = $this->mayoristasReader->getMayoristas($mayoristasId);
 
         // Transform result and render to json
-        return $this->renderer->json($response, $this->transform($funcionarios));
+        return $this->renderer->json($response, $this->transform($mayoristas));
     }
 
-    private function transform(FuncionariosReaderResult $funcionarios): array
+    private function transform(MayoristasReaderResult $mayoristas): array
     {
         return [
-                'id' => $funcionarios->id,
-                'cedula' => $funcionarios->cedula,
-                'apellidos_nombres' => $funcionarios->apellidos_nombres,
-                'telefono' => $funcionarios->telefono,
-                'correo' => $funcionarios->correo,
-                'serial_carnet' => $funcionarios->serial_carnet,
-                'codigo_carnet' => $funcionarios->codigo_carnet,    
-                'estado' => strtoupper($funcionarios->estado),
-                'municipio' => $funcionarios->municipio,
-                'localidad' => $funcionarios->localidad,
-                'nombre_centro_votacion' => $funcionarios->nombre_centro_votacion,
-                'id_estatus' => $funcionarios->id_estatus,
-                'entidad_principal' => $funcionarios->entidad_principal,
-                'entidad_adscripcion' => $funcionarios->entidad_adscripcion,
-                'departamento' => $funcionarios->departamento,
-                'created' => $funcionarios->created,
-                'updated' => $funcionarios->updated
+               'id' => $mayoristas->id,
+                //Datos_generales
+                    'razon_social' => $mayoristas->razon_social,
+                    'coordenadas_x' => $mayoristas->coordenadas_x,
+                    'coordenadas_y' => $mayoristas->coordenadas_y,
+                    'rif' => $mayoristas->rif,
+                    //Estado
+                        'id_estado' => $mayoristas->id_estado,
+                        'estado' => $mayoristas->estado,
+                    //Estado
+
+                    //Municipio
+                        'id_municipio' => $mayoristas->id_municipio,
+                        'municipio' => $mayoristas->municipio,
+                    //Municipio
+
+                    //Parroquia
+                        'id_parroquia' => $mayoristas->id_parroquia,
+                        'parroquia' => $mayoristas->parroquia,
+                    //Parroquia
+
+                    //Representante_legal
+                        'nombres_representante' => $mayoristas->nombres_representante,
+                        'apellidos_representante' => $mayoristas->apellidos_representante,
+                        'identificacion_representante' => $mayoristas->identificacion_representante,
+                        'telefono_representante' => $mayoristas->telefono_representante,
+                        'correo_representante' => $mayoristas->correo_representante,
+                    //Representante_legal
+                    'telefono_empresa' => $mayoristas->telefono_empresa,
+                    'correo_empresa' => $mayoristas->correo_empresa,
+                    'sector' => $mayoristas->sector,
+                    'sub_sector' => $mayoristas->sub_sector,
+
+                //Datos_generales
+                //Mayorista
+                    'tipo_mayorista' => $mayoristas->tipo_mayorista,
+                    'cantidad_locales_comerciales' => $mayoristas->cantidad_locales_comerciales,
+                    'capacidad_almacenamiento' => $mayoristas->capacidad_almacenamiento,
+                    'capacidad_almacenamiento_frio' => $mayoristas->capacidad_almacenamiento_frio,
+                    'tamaño_infraestructura' => $mayoristas->tamaño_infraestructura,
+                    'precio_volumen' => $mayoristas->precio_volumen,
+                    'frecuencia_reposicion' => $mayoristas->frecuencia_reposicion,
+                    'cantidad_trabajadores_directos' => $mayoristas->cantidad_trabajadores_directos,
+                    'volumen_mensual_comercializacion_mercancia' => $mayoristas->volumen_mensual_comercializacion_mercancia,
+                    'flota_vehicular' => $mayoristas->flota_vehicular
+                //Mayorista
         ];
     }
 }
