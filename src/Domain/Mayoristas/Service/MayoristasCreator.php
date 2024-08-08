@@ -26,13 +26,15 @@ final class MayoristasCreator
             ->createLogger();
     }
 
-    public function createMayoristas(array $data): int
+    public function createMayoristas(array $data, int $paso): int
     {
+     
+        
         // Input validation
-        $this->mayoristasValidator->validateMayoristas($data);
+        $this->mayoristasValidator->validateMayoristas($data,$paso);
 
         // Insert mayoristas and get new mayoristas ID
-        $mayoristasId = $this->repository->insertMayoristas($data);
+        $mayoristasId = $this->repository->insertMayoristas($data,$paso);
 
         // Logging
         $this->logger->info(sprintf('Mayoristas created successfully: %s', $mayoristasId));

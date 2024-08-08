@@ -52,7 +52,7 @@ return function (App $app) {
             $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//COMPLETED
             $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//COMPLETED
             $app->post('/excel', \App\Action\Mayoristas\MayoristasExcelCreatorAction::class);//
-            $app->post('', \App\Action\Roles\RolesCreatorAction::class);//
+            $app->post('', \App\Action\Mayoristas\MayoristasCreatorAction::class);//
             $app->put('/{mayorista_id}', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
             $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//COMPLETED
         }

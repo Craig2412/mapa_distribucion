@@ -15,11 +15,23 @@ final class MayoristasRepository
         $this->queryFactory = $queryFactory;
     }
     
-    public function insertMayoristas(array $mayoristas): int
+    public function insertMayoristas(array $mayoristas, int $paso): int
     {
-        return (int)$this->queryFactory->newInsert('datos_mayoristas', $this->toRow($mayoristas))
-        ->execute()
-        ->lastInsertId();
+                switch ($paso) {
+                    case '1':
+                        $tabla_bd = "datos_representante_legal";
+                        break;
+                    case '2':
+                        $tabla_bd = "datos_generales_empresa";
+                        break;
+                    case '3':
+                        $tabla_bd = "datos_mayoristas";
+                        break;
+                }
+
+                return (int)$this->queryFactory->newInsert($tabla_bd, $this->toRow($mayoristas,$paso))
+                        ->execute()
+                        ->lastInsertId();
     }
     
     public function getMayoristasById(int $mayoristasId): array
@@ -114,11 +126,35 @@ final class MayoristasRepository
         ->execute();
     }
 
-    private function toRow(array $mayoristas): array
+    private function toRow(array $mayoristas, int $paso): array
     {
-                
-        return [
-            'mayoristas' => strtoupper($mayoristas['mayoristas'])
-        ];
+        switch ($paso) {
+            case '1':
+                return [
+                    'nombres' => strtoupper($mayoristas['nombres']),
+                    'apellidos' =>  $mayoristas['apellidos'],
+                    'identificacion' => $mayoristas['identificacion'],
+                    'correo' => $mayoristas['correo'],
+                    'telefono' => $mayoristas['telefono']
+                ];
+                break;
+        case '3':
+            return [
+                'id_datos_generales' => $mayoristas['id_datos_generales'],
+                'id_tipo_mayorista' =>  $mayoristas['id_tipo_mayorista'],
+                'cantidad_locales_comerciales' => $mayoristas['cantidad_locales_comerciales'],
+                'capacidad_almacenamiento' => $mayoristas['capacidad_almacenamiento'],
+                'capacidad_almacenamiento_frio' => $mayoristas['capacidad_almacenamiento_frio'],
+                'tamaño_infraestructura' => $mayoristas['tamaño_infraestructura'],
+                'precio_volumen' => $mayoristas['precio_volumen'],
+                'frecuencia_reposicion' => $mayoristas['frecuencia_reposicion'],
+                'cantidad_trabajadores_directos' => $mayoristas['cantidad_trabajadores_directos'],
+                'volumen_mensual_comercializacion_mercancia' => $mayoristas['volumen_mensual_comercializacion_mercancia'],
+                'flota_vehicular' => $mayoristas['flota_vehicular']
+            ];
+            break;
+        }      
     }
 }
+
+
