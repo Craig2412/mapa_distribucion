@@ -129,15 +129,32 @@ final class MayoristasRepository
     private function toRow(array $mayoristas, int $paso): array
     {
         switch ($paso) {
-            case '1':
-                return [
-                    'nombres' => strtoupper($mayoristas['nombres']),
-                    'apellidos' =>  $mayoristas['apellidos'],
-                    'identificacion' => $mayoristas['identificacion'],
-                    'correo' => $mayoristas['correo'],
-                    'telefono' => $mayoristas['telefono']
-                ];
-                break;
+        case '1':
+            return [
+                'nombres' => strtoupper($mayoristas['nombres']),
+                'apellidos' =>  strtoupper($mayoristas['apellidos']),
+                'identificacion' => $mayoristas['identificacion'],
+                'correo' => strtoupper($mayoristas['correo']),
+                'telefono' => $mayoristas['telefono']
+            ];
+            break;
+        case '2':
+            return [
+                'razon_social' => strtoupper($mayoristas['razon_social']),
+                'coordenadas_x' =>  strtoupper($mayoristas['coordenadas_x']),
+                'coordenadas_y' => $mayoristas['coordenadas_y'],
+                'rif' => strtoupper($mayoristas['rif']),
+                'id_estado' => $mayoristas['id_estado'],
+                'id_municipio' => strtoupper($mayoristas['id_municipio']),
+                'id_parroquia' =>  strtoupper($mayoristas['id_parroquia']),
+                'id_representante_legal' =>  strtoupper($mayoristas['id_representante_legal']),
+                'telefono' => $mayoristas['telefono'],
+                'correo' => strtoupper($mayoristas['correo']),
+                'sector' => $mayoristas['sector'],
+                'sub_sector' => strtoupper($mayoristas['sub_sector'])
+                
+            ];
+            break;
         case '3':
             return [
                 'id_datos_generales' => $mayoristas['id_datos_generales'],

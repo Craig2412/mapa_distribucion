@@ -27,9 +27,7 @@ final class MayoristasCreator
     }
 
     public function createMayoristas(array $data, int $paso): int
-    {
-     
-        
+    {       
         // Input validation
         $this->mayoristasValidator->validateMayoristas($data,$paso);
 

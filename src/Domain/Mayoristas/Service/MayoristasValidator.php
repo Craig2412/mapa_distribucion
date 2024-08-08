@@ -82,6 +82,96 @@ final class MayoristasValidator
                     ]
                 );
                 break;
+            
+            case '2':
+                return $constraint->collection(
+                    [
+                        'razon_social' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->length(3,100)
+                            ]
+                            ),
+                        'coordenadas_x' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->length(1,300)
+                            ]
+                            ),
+                        'coordenadas_y' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,300)
+                            ]
+                            ),
+                        'rif' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->length(1,15)
+                            ]
+                            ),
+                        
+                        'id_estado' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,3)
+                            ]
+                            ),
+                        'id_municipio' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->length(1,5)
+                            ]
+                            ),
+                        'id_parroquia' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->length(1,5)
+                            ]
+                            ),
+                        'id_representante_legal' => $constraint->required(
+                            [
+                                $constraint->positive(),
+                                $constraint->notBlank(),
+                                $constraint->length(1,5)
+                            ]
+                            ),
+                        'telefono' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,11)
+                            ]
+                            ),
+                        'correo' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->email(),
+                                $constraint->length(8,200)
+                            ]
+                            ),
+                        
+                        'sector' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,150)
+                            ]
+                            ),
+                        'sub_sector' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,150)
+                            ]
+                        )
+                    ]
+                );
+                break;
+
+
             case '3':
                 return $constraint->collection(
                     [
@@ -89,7 +179,7 @@ final class MayoristasValidator
                             [
                                 $constraint->notBlank(),
                                 $constraint->positive(),
-                                $constraint->length(1,3)
+                                $constraint->length(1,11)
                             ]
                             ),
                         'id_tipo_mayorista' => $constraint->required(

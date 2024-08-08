@@ -27,13 +27,16 @@ final class MayoristasCreatorAction
         //Inserto el representante
         $representanteId = $this->mayoristasCreator->createMayoristas($data["datos_representante"],1);
         if ($representanteId > 0) {
-            if ($data["datos_generales_empresa"]["id_representante_legal"]) {
-                var_dump("1");
+            if (!($data["datos_generales_empresa"]["id_representante_legal"])) {
+                $data["datos_generales_empresa"]["id_representante_legal"] = $representanteId;
             }
            
             //Inserto los datos generales de la empresa
             $datosGeneralesId = $this->mayoristasCreator->createMayoristas($data["datos_generales_empresa"],2);  
             if ($datosGeneralesId) {
+                if (!($data["datos_mayorista"]["id_datos_generales"])) {
+                    $data["datos_mayoristas"]["id_datos_generales"] = $datosGeneralesId;
+                }
                 
                 //Inserto los datos del mayorista
                 $mayoristasId = $this->mayoristasCreator->createMayoristas($data["datos_mayoristas"],3);
@@ -64,12 +67,13 @@ final class MayoristasCreatorAction
 /*
 {
     "datos_representante" : {
-        "nombres" : "Mombre 1 y 2",
+        "nombres" : "Nombre 1 y 2",
         "apellidos" : "Apellido 1 y 2",
         "identificacion" : "Cedula",
         "correo" : "correo@gmail.com",
         "telefono" : "4127008592"
     },
+
     "datos_generales_empresa" : {
         "razon_social" : "Nombre Empresa",
         "coordenadas_x" : "coordenadas_x",
@@ -84,6 +88,7 @@ final class MayoristasCreatorAction
         "sub_sector" : "sub_sector",
         ("id_representante_legal" : "id_representante_legal")->opcional
     },
+
     "datos_mayoristas" : {
         ("id_datos_generales" : 3,)->opcional
         "id_tipo_mayorista" : 1,
