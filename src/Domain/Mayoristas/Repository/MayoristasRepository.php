@@ -103,8 +103,20 @@ final class MayoristasRepository
     public function updateMayoristas(int $mayoristasId, array $mayoristas): array
     {
         $row = $this->toRow($mayoristas);
+
+        switch ($paso) {
+            case '1':
+                $tabla_bd = "datos_representante_legal";
+                break;
+            case '2':
+                $tabla_bd = "datos_generales_empresa";
+                break;
+            case '3':
+                $tabla_bd = "datos_mayoristas";
+                break;
+        }
         
-        $this->queryFactory->newUpdate('datos_mayoristas', $row)
+        $this->queryFactory->newUpdate($tabla_bd, $row)
         ->where(['id' => $mayoristasId])
         ->execute();
 
@@ -124,6 +136,24 @@ final class MayoristasRepository
         $this->queryFactory->newDelete('datos_mayoristas')
         ->where(['id' => $mayoristasId])
         ->execute();
+    }
+
+    private function toRowUpdate(array $mayoristas): array
+    {      
+        $array=[];
+        foreach ($mayoristas as $key => $value) {
+            $array["$key"]=$value;
+        }
+/*
+        if (empty($mayoristas['responsable'])) {
+            unset($array['responsable']);
+        }
+        if (empty($mayoristas['id_responsable'])) {
+            unset($array['id_responsable']);
+        }
+*/
+
+        return $array;
     }
 
     private function toRow(array $mayoristas, int $paso): array

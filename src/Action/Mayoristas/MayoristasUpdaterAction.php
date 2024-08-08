@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Action\Funcionarios;
+namespace App\Action\Mayoristas;
 
-use App\Domain\Funcionarios\Service\FuncionariosUpdater;
-use App\Domain\Funcionarios\Service\FuncionariosReader;
+use App\Domain\Mayoristas\Service\MayoristasUpdater;
+use App\Domain\Mayoristas\Service\MayoristasReader;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class FuncionariosUpdaterAction
+final class MayoristasUpdaterAction
 {
-    private FuncionariosUpdater $funcionariosUpdater;
-    private FuncionariosReader $funcionariosReader;
+    private MayoristasUpdater $mayoristasUpdater;
+    private MayoristasReader $mayoristasReader;
 
     private JsonRenderer $renderer;
 
     public function __construct(
-        FuncionariosUpdater $funcionariosUpdater, 
-        FuncionariosReader $funcionariosReader, 
+        MayoristasUpdater $mayoristasUpdater, 
+        MayoristasReader $mayoristasReader, 
         JsonRenderer $jsonRenderer)
     {
-        $this->funcionariosReader = $funcionariosReader;
-        $this->funcionariosUpdater = $funcionariosUpdater;
+        $this->mayoristasReader = $mayoristasReader;
+        $this->mayoristasUpdater = $mayoristasUpdater;
         $this->renderer = $jsonRenderer;
     }
 
@@ -31,20 +31,17 @@ final class FuncionariosUpdaterAction
         array $args
     ): ResponseInterface {
         // Extract the form data from the request body
-        $funcionariosId = (int)$args['funcionarios_id'];
-        $data = (array)$request->getParsedBody();
+        $mayoristasId = (int)$args['mayoristas_id'];
+        $data = (array)$request->getParsedBody();     
 
-        $validacion_voto = $this->funcionariosReader->getFuncionariosId($funcionariosId);
-        
-        if ($validacion_voto->id_estatus === 3) {
             // Invoke the Domain with inputs and retain the result
-            $new_data = $this->funcionariosUpdater->updateFuncionarios($funcionariosId, $data);
+            $new_data_representante = $this->mayoristasUpdater->updateMayoristas($mayoristasId, $data["datos_representante"],1);
+            $new_data_general = $this->mayoristasUpdater->updateMayoristas($mayoristasId, $data["datos_generales_empresa"],2);
+            $new_data_mayorista = $this->mayoristasUpdater->updateMayoristas($mayoristasId, $data["datos_mayoristas"],3);
     
             // Build the HTTP response
             return $this->renderer->json($response,['Datos nuevos' => $new_data]);
-        }else {
-            return $this->renderer->json($response,['error' => 'Encuesta respondida']);
-        }
+        
 
     }
 }
