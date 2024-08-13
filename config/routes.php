@@ -45,6 +45,31 @@ return function (App $app) {
         }
     );
 
+    // Rubros
+    $app->group(
+        '/rubros',
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('', \App\Action\Rubros\RubrosFinderAction::class);//completed
+            $app->get('/{rubros_id}', \App\Action\Rubros\RubrosReaderAction::class);//completed
+            $app->post('', \App\Action\Rubros\RubrosCreatorAction::class);//completed
+            $app->put('/{rubros_id}', \App\Action\Rubros\RubrosUpdaterAction::class);//completed
+            $app->delete('/{rubros_id}', \App\Action\Rubros\RubrosDeleterAction::class);//completed
+        }
+    );
+    // Estados
+    $app->group(
+        '/estados',
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('', \App\Action\Estados\EstadosFinderAction::class);//completed
+            $app->get('/{estados_id}', \App\Action\Estados\EstadosReaderAction::class);//completed
+            $app->post('', \App\Action\Estados\EstadosCreatorAction::class);//completed
+            $app->put('/{estados_id}', \App\Action\Estados\EstadosUpdaterAction::class);//completed
+            $app->delete('/{estados_id}', \App\Action\Estados\EstadosDeleterAction::class);//completed
+        }
+    );
+
     // Mayoristas
      $app->group(
         '/mayoristas',
