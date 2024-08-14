@@ -9,5 +9,8 @@ final class RubrosReaderResult
 {
     public ?int $id = null;
 
-    public ?string $rubros = null;    
+    public ?string $rubro = null;    
+    public ?string $presentacion = null;    
+    public ?string $precio_ves = null;    
+    public ?string $precio_ptr = null;    
 }

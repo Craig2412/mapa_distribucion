@@ -10,17 +10,17 @@ final class RubrosUpdater
 {
     private RubrosRepository $repository;
 
-    private RubrosValidator $rubrosValidator;
+    private RubrosValidatorUpdate $rubrosValidatorUpdate;
 
     private LoggerInterface $logger;
 
     public function __construct(
         RubrosRepository $repository,
-        RubrosValidator $rubrosValidator,
+        RubrosValidatorUpdate $rubrosValidatorUpdate,
         LoggerFactory $loggerFactory
     ) {
         $this->repository = $repository;
-        $this->rubrosValidator = $rubrosValidator;
+        $this->rubrosValidatorUpdate = $rubrosValidatorUpdate;
         $this->logger = $loggerFactory
             ->addFileHandler('rubros_updater.log')
             ->createLogger();
@@ -29,7 +29,7 @@ final class RubrosUpdater
     public function updateRubros(int $rubrosId, array $data): array
     {
         // Input validation
-        $this->rubrosValidator->validateRubrosUpdate($rubrosId, $data);
+        $this->rubrosValidatorUpdate->validateRubrosUpdate($rubrosId, $data);
 
         // Update the row
         $values = $this->repository->updateRubros($rubrosId, $data);

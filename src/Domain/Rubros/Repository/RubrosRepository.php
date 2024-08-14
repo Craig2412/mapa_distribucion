@@ -48,7 +48,7 @@ final class RubrosRepository
     
     public function updateRubros(int $rubrosId, array $rubros): array
     {
-        $row = $this->toRow($rubros);
+        $row = $this->toRowUpdate($rubros);
         
         $this->queryFactory->newUpdate('rubros', $row)
         ->where(['id' => $rubrosId])
@@ -74,8 +74,7 @@ final class RubrosRepository
     }
 
     private function toRow(array $rubros): array
-    {
-        
+    {        
         $updated = isset($rubros['updated']) ? $rubros['updated'] : null;
         
         return [
@@ -84,5 +83,21 @@ final class RubrosRepository
             'precio_ves' => strtoupper($rubros['precio_ves']),
             'precio_ptr' => strtoupper($rubros['precio_ptr'])
         ];
+    }
+
+    private function toRowUpdate(array $funcionarios): array
+    {
+        $updated = isset($funcionarios['updated']) ? $funcionarios['updated'] : null;
+        
+        $array=[];
+        foreach ($funcionarios as $key => $value) {
+            $array["$key"]=$value;
+        }
+/*
+        if (empty($funcionarios['id_responsable'])) {
+            unset($array['id_responsable']);
+        }
+*/
+        return $array;
     }
 }

@@ -101,7 +101,6 @@ final class MayoristasValidator
                         'coordenadas_y' => $constraint->required(
                             [
                                 $constraint->notBlank(),
-                                $constraint->positive(),
                                 $constraint->length(1,300)
                             ]
                             ),
@@ -191,56 +190,47 @@ final class MayoristasValidator
                             ),
                         'cantidad_locales_comerciales' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,3)
+                                $constraint->length(0,3)
                             ]
                             ),
                         'capacidad_almacenamiento' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,7)
+                                $constraint->length(0,7)
                             ]
                             ),
                         'capacidad_almacenamiento_frio' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,7)
+                                $constraint->length(0,7)
                             ]
                             ),
                         'tamaño_infraestructura' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,7)
+                                $constraint->length(0,7)
                             ]
                             ),
                         'precio_volumen' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,100)
+                                $constraint->length(0,100)
                             ]
                             ),
                         'frecuencia_reposicion' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,40)
+                                $constraint->length(0,40)
                             ]
                             ),
                         'cantidad_trabajadores_directos' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,7)
+                                $constraint->length(0,7)
                             ]
                             ),
                         'volumen_mensual_comercializacion_mercancia' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,10)
+                                $constraint->length(0,10)
                             ]
                             ),
                         'flota_vehicular' => $constraint->required(
                             [
-                                $constraint->notBlank(),
-                                $constraint->length(1,7)
+                                $constraint->length(0,7)
                             ]
                         )
                     ]

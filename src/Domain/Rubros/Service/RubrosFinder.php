@@ -32,7 +32,10 @@ final class RubrosFinder
         foreach ($rubrosRows as $rubrosRow) {
             $rubros = new RubrosFinderItem();
             $rubros->id = $rubrosRow['id'];
-            $rubros->rubros = $rubrosRow['rubros'];
+            $rubros->rubro = $rubrosRow['rubro'];
+            $rubros->presentacion = $rubrosRow['presentacion'];
+            $rubros->precio_ves = $rubrosRow['precio_ves'];
+            $rubros->precio_ptr = $rubrosRow['precio_ptr'];
             
 
             $result->rubross[] = $rubros;

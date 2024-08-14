@@ -38,7 +38,7 @@ final class RubrosFinderAction
         foreach ($result->rubross as $rubros) {
             $rubross[] = [
                 'id' => $rubros->id,
-                'rubros' => $rubros->rubros,
+                'rubro' => $rubros->rubro,
                 'presentacion' => $rubros->presentacion,
                 'precio_ves' => $rubros->precio_ves,
                 'precio_ptr' => $rubros->precio_ptr

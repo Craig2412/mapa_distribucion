@@ -43,7 +43,10 @@ final class RubrosReader
         // Create domain result
         $result = new RubrosReaderResult();
         $result->id = $rubrosRow['id'];
-        $result->rubros = $rubrosRow['rubros'];
+        $result->rubro = $rubrosRow['rubro'];
+        $result->presentacion = $rubrosRow['presentacion'];
+        $result->precio_ves = $rubrosRow['precio_ves'];
+        $result->precio_ptr = $rubrosRow['precio_ptr'];
         
         return $result;
     }

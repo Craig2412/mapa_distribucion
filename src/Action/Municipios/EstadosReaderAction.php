@@ -39,7 +39,7 @@ final class RubrosReaderAction
     {
         return [
             'id' => $rubros->id,
-            'rubro' => $rubros->rubro,
+            'rubros' => $rubros->rubros,
             'presentacion' => $rubros->presentacion,
             'precio_ves' => $rubros->precio_ves,
             'precio_ptr' => $rubros->precio_ptr

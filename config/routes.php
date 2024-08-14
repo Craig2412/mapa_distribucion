@@ -69,6 +69,30 @@ return function (App $app) {
             $app->delete('/{estados_id}', \App\Action\Estados\EstadosDeleterAction::class);//completed
         }
     );
+    // Municipios
+    $app->group(
+        '/municipios',
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('/byEstado/{estado_id}', \App\Action\Municipios\MunicipiosFinderAction::class);//completed
+            $app->get('/{municipios_id}', \App\Action\Municipios\MunicipiosReaderAction::class);//completed
+            $app->post('', \App\Action\Municipios\MunicipiosCreatorAction::class);//completed
+            $app->put('/{municipios_id}', \App\Action\Municipios\MunicipiosUpdaterAction::class);//completed
+            $app->delete('/{municipios_id}', \App\Action\Municipios\MunicipiosDeleterAction::class);//completed
+        }
+    );
+    // Parroquias
+    $app->group(
+        '/parroquias',
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('/byMunicipio/{municipio_id}', \App\Action\Parroquias\ParroquiasFinderAction::class);//completed
+            $app->get('/{parroquias_id}', \App\Action\Parroquias\ParroquiasReaderAction::class);//completed
+            $app->post('', \App\Action\Parroquias\ParroquiasCreatorAction::class);//completed
+            $app->put('/{parroquias_id}', \App\Action\Parroquias\ParroquiasUpdaterAction::class);//completed
+            $app->delete('/{parroquias_id}', \App\Action\Parroquias\ParroquiasDeleterAction::class);//completed
+        }
+    );
 
     // Mayoristas
      $app->group(
