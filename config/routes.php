@@ -57,6 +57,18 @@ return function (App $app) {
             $app->delete('/{rubros_id}', \App\Action\Rubros\RubrosDeleterAction::class);//completed
         }
     );
+    // RepresentanteLegal
+    $app->group(
+        '/representanteLegal',
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('', \App\Action\RepresentanteLegal\RepresentanteLegalFinderAction::class);//
+            $app->get('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalReaderAction::class);//
+            $app->post('', \App\Action\RepresentanteLegal\RepresentanteLegalCreatorAction::class);//
+            $app->put('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalUpdaterAction::class);//
+            $app->delete('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalDeleterAction::class);//
+        }
+    );
     // Estados
     $app->group(
         '/estados',

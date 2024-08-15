@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2024 a las 01:46:45
+-- Tiempo de generación: 15-08-2024 a las 18:55:13
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -554,7 +554,7 @@ CREATE TABLE `datos_generales_empresa` (
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
   `id_representante_legal` int(11) NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` bigint(11) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `sector` varchar(150) NOT NULL,
   `sub_sector` varchar(150) NOT NULL
@@ -594,7 +594,7 @@ CREATE TABLE `datos_representante_legal` (
   `apellidos` text NOT NULL,
   `identificacion` int(9) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `telefono` int(12) NOT NULL
+  `telefono` bigint(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -2197,7 +2197,7 @@ INSERT INTO `parroquias` (`id`, `id_municipio`, `parroquia`) VALUES
 
 CREATE TABLE `rubros` (
   `id` int(11) NOT NULL,
-  `rubro` int(11) NOT NULL,
+  `rubro` varchar(100) NOT NULL,
   `presentacion` varchar(70) NOT NULL,
   `precio_ves` float NOT NULL,
   `precio_ptr` float NOT NULL
@@ -2219,7 +2219,10 @@ CREATE TABLE `tipos_mayoristas` (
 --
 
 INSERT INTO `tipos_mayoristas` (`id`, `tipo_mayorista`) VALUES
-(1, 'Distribuidora');
+(1, 'DISTRIBUIDORA'),
+(2, 'MERCADO MAYORISTA'),
+(3, 'EMPAQUETADORA'),
+(4, 'CENTRO DE BENEFICIO');
 
 -- --------------------------------------------------------
 
@@ -2349,19 +2352,19 @@ ALTER TABLE `ciudades`
 -- AUTO_INCREMENT de la tabla `datos_generales_empresa`
 --
 ALTER TABLE `datos_generales_empresa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_mayoristas`
 --
 ALTER TABLE `datos_mayoristas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_representante_legal`
 --
 ALTER TABLE `datos_representante_legal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -2403,7 +2406,7 @@ ALTER TABLE `rubros`
 -- AUTO_INCREMENT de la tabla `tipos_mayoristas`
 --
 ALTER TABLE `tipos_mayoristas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_movilizacion`
