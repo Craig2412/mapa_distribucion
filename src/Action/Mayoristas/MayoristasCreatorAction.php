@@ -29,6 +29,8 @@ final class MayoristasCreatorAction
         if ($representanteId > 0) {
             if (!($data["datos_generales_empresa"]["id_representante_legal"])) {
                 $data["datos_generales_empresa"]["id_representante_legal"] = $representanteId;
+                $data["datos_generales_empresa"]["coordenadas_x"] = str_replace(",", ".", $data["datos_generales_empresa"]["coordenadas_x"]);
+                $data["datos_generales_empresa"]["coordenadas_y"] = str_replace(",", ".", $data["datos_generales_empresa"]["coordenadas_y"]);
             }
            
             //Inserto los datos generales de la empresa
