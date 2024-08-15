@@ -27,7 +27,6 @@ final class RepresentanteLegalFinderRepository
                 'telefono'
             ]
         );
-
         return $query->execute()->fetchAll('assoc') ?: [];
         
     }

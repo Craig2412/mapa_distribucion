@@ -1,44 +1,45 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\RepresentanteLegal\Service;
 
-use App\Domain\Rubros\Data\RubrosFinderItem;
-use App\Domain\Rubros\Data\RubrosFinderResult;
-use App\Domain\Rubros\Repository\RubrosFinderRepository;
+use App\Domain\RepresentanteLegal\Data\RepresentanteLegalFinderItem;
+use App\Domain\RepresentanteLegal\Data\RepresentanteLegalFinderResult;
+use App\Domain\RepresentanteLegal\Repository\RepresentanteLegalFinderRepository;
 
-final class RubrosFinder
+final class RepresentanteLegalFinder
 {
-    private RubrosFinderRepository $repository;
+    private RepresentanteLegalFinderRepository $repository;
 
-    public function __construct(RubrosFinderRepository $repository)
+    public function __construct(RepresentanteLegalFinderRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function findRubross(): RubrosFinderResult
+    public function findRepresentanteLegals(): RepresentanteLegalFinderResult
     {
         // Input validation
         // ...
 
-        $rubross = $this->repository->findRubross();
+        $representanteLegals = $this->repository->findRepresentanteLegals();
 
-        return $this->createResult($rubross);
+        return $this->createResult($representanteLegals);
     }
 
-    private function createResult(array $rubrosRows): RubrosFinderResult
+    private function createResult(array $representanteLegalRows): RepresentanteLegalFinderResult
     {
-        $result = new RubrosFinderResult();
+        $result = new RepresentanteLegalFinderResult();
 
-        foreach ($rubrosRows as $rubrosRow) {
-            $rubros = new RubrosFinderItem();
-            $rubros->id = $rubrosRow['id'];
-            $rubros->rubro = $rubrosRow['rubro'];
-            $rubros->presentacion = $rubrosRow['presentacion'];
-            $rubros->precio_ves = $rubrosRow['precio_ves'];
-            $rubros->precio_ptr = $rubrosRow['precio_ptr'];
+        foreach ($representanteLegalRows as $representanteLegalRow) {
+            $representanteLegal = new RepresentanteLegalFinderItem();
+            $representanteLegal->id = $representanteLegalRow['id'];
+            $representanteLegal->nombres = $representanteLegalRow['nombres'];
+            $representanteLegal->apellidos = $representanteLegalRow['apellidos'];
+            $representanteLegal->identificacion = $representanteLegalRow['identificacion'];
+            $representanteLegal->correo = $representanteLegalRow['correo'];
+            $representanteLegal->telefono = $representanteLegalRow['telefono'];
             
 
-            $result->rubross[] = $rubros;
+            $result->representanteLegals[] = $representanteLegal;
         }
 
         return $result;

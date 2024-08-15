@@ -8,7 +8,7 @@ use App\Domain\RepresentanteLegal\Repository\RepresentanteLegalRepository;
 /**
  * Service.
  */
-final class RepresentanteLegalReader
+final class RepresentanteLegalbyCedulaReader
 {
     private RepresentanteLegalRepository $repository;
 
@@ -23,31 +23,31 @@ final class RepresentanteLegalReader
     }
 
     /**
-     * Read a representanteLegal.
+     * Read a representanteLegalbyCedula.
      *
-     * @param int $representanteLegalId The representanteLegal id
+     * @param int $representanteLegalbyCedulaId The representanteLegalbyCedula id
      *
      * @return RepresentanteLegalReaderResult The result
      */
-    public function getRepresentanteLegal(int $representanteLegalId): RepresentanteLegalReaderResult
+    public function getRepresentanteLegalbyCedula(string $representanteLegalbyCedulaId): RepresentanteLegalReaderResult
     {
         // Input validation
         // ...
 
         // Fetch data from the database
-        $representanteLegalRow = $this->repository->getRepresentanteLegalById($representanteLegalId);
+        $representanteLegalbyCedulaRow = $this->repository->getRepresentanteLegalbyCedulaById($representanteLegalbyCedulaId);
 
         // Optional: Add or invoke your complex business logic here
         // ...
 
         // Create domain result
         $result = new RepresentanteLegalReaderResult();
-        $result->id = $representanteLegalRow['id'];
-        $result->nombres = $representanteLegalRow['nombres'];
-        $result->apellidos = $representanteLegalRow['apellidos'];
-        $result->identificacion = $representanteLegalRow['identificacion'];
-        $result->correo = $representanteLegalRow['correo'];
-        $result->telefono = $representanteLegalRow['telefono'];
+        $result->id = $representanteLegalbyCedulaRow['id'];
+        $result->nombres = $representanteLegalbyCedulaRow['nombres'];
+        $result->apellidos = $representanteLegalbyCedulaRow['apellidos'];
+        $result->identificacion = $representanteLegalbyCedulaRow['identificacion'];
+        $result->correo = $representanteLegalbyCedulaRow['correo'];
+        $result->telefono = $representanteLegalbyCedulaRow['telefono'];
         
         return $result;
     }

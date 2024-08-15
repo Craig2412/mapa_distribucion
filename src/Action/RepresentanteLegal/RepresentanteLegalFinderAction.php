@@ -38,10 +38,11 @@ final class RepresentanteLegalFinderAction
         foreach ($result->representanteLegals as $representanteLegal) {
             $representanteLegals[] = [
                 'id' => $representanteLegal->id,
-                'rubro' => $representanteLegal->rubro,
-                'presentacion' => $representanteLegal->presentacion,
-                'precio_ves' => $representanteLegal->precio_ves,
-                'precio_ptr' => $representanteLegal->precio_ptr
+                'nombres' => $representanteLegal->nombres,
+                'apellidos' => $representanteLegal->apellidos,
+                'identificacion' => $representanteLegal->identificacion,
+                'telefono' => $representanteLegal->telefono,
+                'correo' => $representanteLegal->correo
             ];
         }
 

@@ -59,14 +59,28 @@ return function (App $app) {
     );
     // RepresentanteLegal
     $app->group(
-        '/representanteLegal',
+        '/representante',
         function (RouteCollectorProxy $app) {
            
             $app->get('', \App\Action\RepresentanteLegal\RepresentanteLegalFinderAction::class);//
             $app->get('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalReaderAction::class);//
+            $app->get('/byCedula/{representanteLegal_cedula}', \App\Action\RepresentanteLegal\RepresentanteLegalbyCedulaReaderAction::class);//
             $app->post('', \App\Action\RepresentanteLegal\RepresentanteLegalCreatorAction::class);//
             $app->put('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalUpdaterAction::class);//
             $app->delete('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalDeleterAction::class);//
+        }
+    );
+    // Empresas
+    $app->group(
+        '/empresas',
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('', \App\Action\Empresas\EmpresasFinderAction::class);//
+            $app->get('/{empresa_id}', \App\Action\Empresas\EmpresasReaderAction::class);//
+            $app->get('/byRif/{empresa_rif}', \App\Action\Empresas\EmpresasbyCedulaReaderAction::class);//
+            $app->post('', \App\Action\Empresas\EmpresasCreatorAction::class);//
+            $app->put('/{empresa_id}', \App\Action\Empresas\EmpresasUpdaterAction::class);//
+            $app->delete('/{empresa_id}', \App\Action\Empresas\EmpresasDeleterAction::class);//
         }
     );
     // Estados

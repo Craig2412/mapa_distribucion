@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\RepresentanteLegal\Service;
 
-use App\Domain\Rubros\Repository\RubrosRepository;
+use App\Domain\RepresentanteLegal\Repository\RepresentanteLegalRepository;
 use App\Factory\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
-final class RubrosValidatorUpdate
+final class RepresentanteLegalValidatorUpdate
 {
-    private RubrosRepository $repository;
+    private RepresentanteLegalRepository $repository;
 
-    public function __construct(RubrosRepository $repository)
+    public function __construct(RepresentanteLegalRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function validateRubrosUpdate(int $rubrossId, array $data): void
+    public function validateRepresentanteLegalUpdate(int $representanteLegalsId, array $data): void
     {
-        if (!$this->repository->existsRubrosId($rubrossId)) {
-            throw new DomainException(sprintf('Rubros not found: %s', $rubrossId));
+        if (!$this->repository->existsRepresentanteLegalId($representanteLegalsId)) {
+            throw new DomainException(sprintf('RepresentanteLegal not found: %s', $representanteLegalsId));
         }
 
-        $this->validateRubros($data);
+        $this->validateRepresentanteLegal($data);
     }
 
-    public function validateRubros(array $data): void
+    public function validateRepresentanteLegal(array $data): void
     {
         $validator = Validation::createValidator();
         $violations = $validator->validate($data, $this->createConstraints());
@@ -43,32 +43,38 @@ final class RubrosValidatorUpdate
 
         return $constraint->collection(
             [
-                'rubro' => $constraint->optional(
+                'nombres' => $constraint->optional(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(2, 100)
+                        $constraint->length(2, 150)
                     ]
                     ),
-                'presentacion' => $constraint->optional(
+                'apellidos' => $constraint->optional(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(2, 100)
+                        $constraint->length(2, 150)
                     ]
                     ),
-                'precio_ves' => $constraint->optional(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->positive(),
-                        $constraint->length(1, 11)
-                    ]
-                    ),
-                'precio_ptr' => $constraint->optional(
+                'identificacion' => $constraint->optional(
                     [
                         $constraint->notBlank(),
                         $constraint->positive(),
-                        $constraint->length(1, 11)
+                        $constraint->length(6, 10)
                     ]
                     ),
+                'correo' => $constraint->optional(
+                    [
+                        $constraint->notBlank(),
+                        $constraint->email(),
+                        $constraint->length(9, 100)
+                    ]
+                    ),
+                'telefono' => $constraint->optional(
+                    [
+                        $constraint->notBlank(),
+                        $constraint->length(10, 11)
+                    ]
+                )
             ]
         );
     }

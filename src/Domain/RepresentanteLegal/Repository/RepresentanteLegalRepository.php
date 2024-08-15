@@ -17,14 +17,14 @@ final class RepresentanteLegalRepository
     
     public function insertRepresentanteLegal(array $representanteLegal): int
     {
-        return (int)$this->queryFactory->newInsert('data_representante_legal', $this->toRow($representanteLegal))
+        return (int)$this->queryFactory->newInsert('datos_representante_legal', $this->toRow($representanteLegal))
         ->execute()
         ->lastInsertId();
     }
     
     public function getRepresentanteLegalById(int $representanteLegalId): array
     {
-        $query = $this->queryFactory->newSelect('data_representante_legal');
+        $query = $this->queryFactory->newSelect('datos_representante_legal');
         $query->select(
             [
                 'id',
@@ -46,12 +46,37 @@ final class RepresentanteLegalRepository
         
         return $row;
     }
+
+    public function getRepresentanteLegalbyCedulaById(string $representanteLegalId): array
+    {
+        $query = $this->queryFactory->newSelect('datos_representante_legal');
+        $query->select(
+            [
+                'id',
+                'nombres',
+                'apellidos',
+                'identificacion',
+                'correo',
+                'telefono'
+            ]
+            );
+            
+            $query->where(['identificacion' => $representanteLegalId]);
+            
+            $row = $query->execute()->fetch('assoc');
+            
+            if (!$row) {
+                throw new DomainException(sprintf('RepresentanteLegal not found: %s', $representanteLegalId));
+        }
+        
+        return $row;
+    }
     
     public function updateRepresentanteLegal(int $representanteLegalId, array $representanteLegal): array
     {
         $row = $this->toRowUpdate($representanteLegal);
         
-        $this->queryFactory->newUpdate('data_representante_legal', $row)
+        $this->queryFactory->newUpdate('datos_representante_legal', $row)
         ->where(['id' => $representanteLegalId])
         ->execute();
 
@@ -61,7 +86,7 @@ final class RepresentanteLegalRepository
 
     public function existsRepresentanteLegalId(int $representanteLegalId): bool
     {
-        $query = $this->queryFactory->newSelect('data_representante_legal');
+        $query = $this->queryFactory->newSelect('datos_representante_legal');
         $query->select('id')->where(['id' => $representanteLegalId]);
         
         return (bool)$query->execute()->fetch('assoc');
@@ -69,7 +94,7 @@ final class RepresentanteLegalRepository
     
     public function deleteRepresentanteLegalById(int $representanteLegalId): void
     {
-        $this->queryFactory->newDelete('data_representante_legal')
+        $this->queryFactory->newDelete('datos_representante_legal')
         ->where(['id' => $representanteLegalId])
         ->execute();
     }
