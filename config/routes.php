@@ -87,8 +87,8 @@ return function (App $app) {
         '/estados',
         function (RouteCollectorProxy $app) {
            
-            $app->get('', \App\Action\Estados\EstadosFinderAction::class);//
-            $app->get('/{estados_id}', \App\Action\Estados\EstadosReaderAction::class);//
+            $app->get('', \App\Action\Estados\EstadosFinderAction::class);//completed
+            $app->get('/{estados_id}', \App\Action\Estados\EstadosReaderAction::class);//completed
             $app->post('', \App\Action\Estados\EstadosCreatorAction::class);//
             $app->put('/{estados_id}', \App\Action\Estados\EstadosUpdaterAction::class);//
             $app->delete('/{estados_id}', \App\Action\Estados\EstadosDeleterAction::class);//
@@ -99,8 +99,8 @@ return function (App $app) {
         '/municipios',
         function (RouteCollectorProxy $app) {
            
-            $app->get('/byEstado/{estado_id}', \App\Action\Municipios\MunicipiosFinderAction::class);//
-            $app->get('/{municipios_id}', \App\Action\Municipios\MunicipiosReaderAction::class);//
+            $app->get('/byEstado/{estado_id}', \App\Action\Municipios\MunicipiosFinderAction::class);//completed
+            $app->get('/{municipios_id}', \App\Action\Municipios\MunicipiosReaderAction::class);//completed
             $app->post('', \App\Action\Municipios\MunicipiosCreatorAction::class);//
             $app->put('/{municipios_id}', \App\Action\Municipios\MunicipiosUpdaterAction::class);//
             $app->delete('/{municipios_id}', \App\Action\Municipios\MunicipiosDeleterAction::class);//
@@ -111,8 +111,8 @@ return function (App $app) {
         '/parroquias',
         function (RouteCollectorProxy $app) {
            
-            $app->get('/byMunicipio/{municipio_id}', \App\Action\Parroquias\ParroquiasFinderAction::class);//
-            $app->get('/{parroquias_id}', \App\Action\Parroquias\ParroquiasReaderAction::class);//
+            $app->get('/byMunicipio/{municipio_id}', \App\Action\Parroquias\ParroquiasFinderAction::class);//completed
+            $app->get('/{parroquias_id}', \App\Action\Parroquias\ParroquiasReaderAction::class);//completed
             $app->post('', \App\Action\Parroquias\ParroquiasCreatorAction::class);//
             $app->put('/{parroquias_id}', \App\Action\Parroquias\ParroquiasUpdaterAction::class);//
             $app->delete('/{parroquias_id}', \App\Action\Parroquias\ParroquiasDeleterAction::class);//
@@ -123,12 +123,11 @@ return function (App $app) {
      $app->group(
         '/mayoristas',
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//COMPLETED
-            $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//COMPLETED
-            $app->post('/excel', \App\Action\Mayoristas\MayoristasExcelCreatorAction::class);//
-            $app->post('', \App\Action\Mayoristas\MayoristasCreatorAction::class);//
+            $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//completed
+            $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//completed
+            $app->post('', \App\Action\Mayoristas\MayoristasCreatorAction::class);//completed
             $app->put('/{mayorista_id}', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
-            $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//COMPLETED
+            $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//completed
         }
     );
    

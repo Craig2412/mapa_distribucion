@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Action\Rubros;
+namespace App\Action\Estados;
 
-use App\Domain\Rubros\Data\RubrosReaderResult;
-use App\Domain\Rubros\Service\RubrosReader;
+use App\Domain\Estados\Data\EstadosReaderResult;
+use App\Domain\Estados\Service\EstadosReader;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class RubrosReaderAction
+final class EstadosReaderAction
 {
-    private RubrosReader $rubrosReader;
+    private EstadosReader $estadosReader;
 
     private JsonRenderer $renderer;
 
-    public function __construct(RubrosReader $rubrosReader, JsonRenderer $jsonRenderer)
+    public function __construct(EstadosReader $estadosReader, JsonRenderer $jsonRenderer)
     {
-        $this->rubrosReader = $rubrosReader;
+        $this->estadosReader = $estadosReader;
         $this->renderer = $jsonRenderer;
     }
 
@@ -26,23 +26,20 @@ final class RubrosReaderAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $rubrosId = (int)$args['rubros_id'];
+        $estadosId = (int)$args['estados_id'];
 
         // Invoke the domain and get the result
-        $rubros = $this->rubrosReader->getRubros($rubrosId);
+        $estados = $this->estadosReader->getEstados($estadosId);
 
         // Transform result and render to json
-        return $this->renderer->json($response, $this->transform($rubros));
+        return $this->renderer->json($response, $this->transform($estados));
     }
 
-    private function transform(RubrosReaderResult $rubros): array
+    private function transform(EstadosReaderResult $estados): array
     {
         return [
-            'id' => $rubros->id,
-            'rubros' => $rubros->rubros,
-            'presentacion' => $rubros->presentacion,
-            'precio_ves' => $rubros->precio_ves,
-            'precio_ptr' => $rubros->precio_ptr
+            'id' => $estados->id,
+            'estado' => $estados->estado
         ];
     }
 }

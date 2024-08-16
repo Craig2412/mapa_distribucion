@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Estatus\Repository;
+namespace App\Domain\Estados\Repository;
 
 use App\Factory\QueryFactory;
 use DomainException;
 
-final class EstatusRepository
+final class EstadosRepository
 {
     private QueryFactory $queryFactory;
 
@@ -15,68 +15,65 @@ final class EstatusRepository
         $this->queryFactory = $queryFactory;
     }
     
-    public function insertEstatus(array $estatus): int
+    public function insertEstados(array $estados): int
     {
-        return (int)$this->queryFactory->newInsert('estatus', $this->toRow($estatus))
+        return (int)$this->queryFactory->newInsert('estados', $this->toRow($estados))
         ->execute()
         ->lastInsertId();
     }
     
-    public function getEstatusById(int $estatusId): array
+    public function getEstadosById(int $estadosId): array
     {
-        $query = $this->queryFactory->newSelect('estatus');
+        $query = $this->queryFactory->newSelect('estados');
         $query->select(
             [
                 'id',
-                'estatus'
+                'estado'
                 ]
             );
             
-            $query->where(['id' => $estatusId]);
+            $query->where(['id' => $estadosId]);
             
             $row = $query->execute()->fetch('assoc');
             
             if (!$row) {
-                throw new DomainException(sprintf('Estatus not found: %s', $estatusId));
+                throw new DomainException(sprintf('Estados not found: %s', $estadosId));
         }
         
         return $row;
     }
     
-    public function updateEstatus(int $estatusId, array $estatus): array
+    public function updateEstados(int $estadosId, array $estados): array
     {
-        $row = $this->toRow($estatus);
+        $row = $this->toRow($estados);
         
-        $this->queryFactory->newUpdate('estatus', $row)
-        ->where(['id' => $estatusId])
+        $this->queryFactory->newUpdate('estados', $row)
+        ->where(['id' => $estadosId])
         ->execute();
 
         return $row;
 
     }
 
-    public function existsEstatusId(int $estatusId): bool
+    public function existsEstadosId(int $estadosId): bool
     {
-        $query = $this->queryFactory->newSelect('estatus');
-        $query->select('id')->where(['id' => $estatusId]);
+        $query = $this->queryFactory->newSelect('estados');
+        $query->select('id')->where(['id' => $estadosId]);
         
         return (bool)$query->execute()->fetch('assoc');
     }
     
-    public function deleteEstatusById(int $estatusId): void
+    public function deleteEstadosById(int $estadosId): void
     {
-        $this->queryFactory->newDelete('estatus')
-        ->where(['id' => $estatusId])
+        $this->queryFactory->newDelete('estados')
+        ->where(['id' => $estadosId])
         ->execute();
     }
 
-    private function toRow(array $estatus): array
+    private function toRow(array $estados): array
     {
-        
-        $updated = isset($estatus['updated']) ? $estatus['updated'] : null;
-        
         return [
-            'estatus' => strtoupper($estatus['estatus'])
+            'estado' => strtoupper($estados['estado'])
         ];
     }
 }

@@ -100,9 +100,9 @@ final class MayoristasRepository
         return $row;
     }
     
-    public function updateMayoristas(int $mayoristasId, array $mayoristas): array
+    public function updateMayoristas(int $mayoristasId, array $mayoristas, int $paso): array
     {
-        $row = $this->toRow($mayoristas);
+        $row = $this->toRowUpdate($mayoristas);
 
         switch ($paso) {
             case '1':
@@ -144,15 +144,6 @@ final class MayoristasRepository
         foreach ($mayoristas as $key => $value) {
             $array["$key"]=$value;
         }
-/*
-        if (empty($mayoristas['responsable'])) {
-            unset($array['responsable']);
-        }
-        if (empty($mayoristas['id_responsable'])) {
-            unset($array['id_responsable']);
-        }
-*/
-
         return $array;
     }
 
