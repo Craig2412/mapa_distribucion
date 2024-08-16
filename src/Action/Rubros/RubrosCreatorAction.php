@@ -26,6 +26,7 @@ final class RubrosCreatorAction
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
+        $data["precio_ptr"] = str_replace("," , "." , $data["precio_ptr"]);
         $rubrosId = $this->rubrosCreator->createRubros($data);
 
         // Build the HTTP response
@@ -34,3 +35,11 @@ final class RubrosCreatorAction
             ->withStatus(StatusCodeInterface::STATUS_CREATED);
     }
 }
+/*
+{
+    "rubro" : "Aceite",
+    "presentacion" : "500ml",
+    "precio_ves" : 500,
+    "precio_ptr" : 0.00006
+}
+*/

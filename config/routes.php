@@ -36,18 +36,18 @@ return function (App $app) {
         '/roles',
         function (RouteCollectorProxy $app) {
            
-            $app->get('', \App\Action\Roles\RolesFinderAction::class);//completed
+            $app->get('', \App\Action\Roles\RolesFinderAction::class);//
             $app->get('/adscripciones', \App\Action\Roles\AdscripcionesFinderAction::class);//
-            $app->get('/{roles_id}', \App\Action\Roles\RolesReaderAction::class);//completed
-            $app->post('', \App\Action\Roles\RolesCreatorAction::class);//completed
-            $app->put('/{roles_id}', \App\Action\Roles\RolesUpdaterAction::class);//completed
-            $app->delete('/{roles_id}', \App\Action\Roles\RolesDeleterAction::class);//completed
+            $app->get('/{roles_id}', \App\Action\Roles\RolesReaderAction::class);//
+            $app->post('', \App\Action\Roles\RolesCreatorAction::class);//
+            $app->put('/{roles_id}', \App\Action\Roles\RolesUpdaterAction::class);//
+            $app->delete('/{roles_id}', \App\Action\Roles\RolesDeleterAction::class);//
         }
     );
 
     // Rubros
     $app->group(
-        '/rubros',
+        '/rubros',//completed
         function (RouteCollectorProxy $app) {
            
             $app->get('', \App\Action\Rubros\RubrosFinderAction::class);//completed
@@ -61,10 +61,9 @@ return function (App $app) {
     $app->group(
         '/representante',
         function (RouteCollectorProxy $app) {
-           
             $app->get('', \App\Action\RepresentanteLegal\RepresentanteLegalFinderAction::class);//
             $app->get('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalReaderAction::class);//
-            $app->get('/byCedula/{representanteLegal_cedula}', \App\Action\RepresentanteLegal\RepresentanteLegalbyCedulaReaderAction::class);//
+            $app->get('/byCedula/{representanteLegal_cedula}', \App\Action\RepresentanteLegal\RepresentanteLegalbyCedulaReaderAction::class);//completed
             $app->post('', \App\Action\RepresentanteLegal\RepresentanteLegalCreatorAction::class);//
             $app->put('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalUpdaterAction::class);//
             $app->delete('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalDeleterAction::class);//
@@ -88,11 +87,11 @@ return function (App $app) {
         '/estados',
         function (RouteCollectorProxy $app) {
            
-            $app->get('', \App\Action\Estados\EstadosFinderAction::class);//completed
-            $app->get('/{estados_id}', \App\Action\Estados\EstadosReaderAction::class);//completed
-            $app->post('', \App\Action\Estados\EstadosCreatorAction::class);//completed
-            $app->put('/{estados_id}', \App\Action\Estados\EstadosUpdaterAction::class);//completed
-            $app->delete('/{estados_id}', \App\Action\Estados\EstadosDeleterAction::class);//completed
+            $app->get('', \App\Action\Estados\EstadosFinderAction::class);//
+            $app->get('/{estados_id}', \App\Action\Estados\EstadosReaderAction::class);//
+            $app->post('', \App\Action\Estados\EstadosCreatorAction::class);//
+            $app->put('/{estados_id}', \App\Action\Estados\EstadosUpdaterAction::class);//
+            $app->delete('/{estados_id}', \App\Action\Estados\EstadosDeleterAction::class);//
         }
     );
     // Municipios
@@ -100,11 +99,11 @@ return function (App $app) {
         '/municipios',
         function (RouteCollectorProxy $app) {
            
-            $app->get('/byEstado/{estado_id}', \App\Action\Municipios\MunicipiosFinderAction::class);//completed
-            $app->get('/{municipios_id}', \App\Action\Municipios\MunicipiosReaderAction::class);//completed
-            $app->post('', \App\Action\Municipios\MunicipiosCreatorAction::class);//completed
-            $app->put('/{municipios_id}', \App\Action\Municipios\MunicipiosUpdaterAction::class);//completed
-            $app->delete('/{municipios_id}', \App\Action\Municipios\MunicipiosDeleterAction::class);//completed
+            $app->get('/byEstado/{estado_id}', \App\Action\Municipios\MunicipiosFinderAction::class);//
+            $app->get('/{municipios_id}', \App\Action\Municipios\MunicipiosReaderAction::class);//
+            $app->post('', \App\Action\Municipios\MunicipiosCreatorAction::class);//
+            $app->put('/{municipios_id}', \App\Action\Municipios\MunicipiosUpdaterAction::class);//
+            $app->delete('/{municipios_id}', \App\Action\Municipios\MunicipiosDeleterAction::class);//
         }
     );
     // Parroquias
@@ -112,11 +111,11 @@ return function (App $app) {
         '/parroquias',
         function (RouteCollectorProxy $app) {
            
-            $app->get('/byMunicipio/{municipio_id}', \App\Action\Parroquias\ParroquiasFinderAction::class);//completed
-            $app->get('/{parroquias_id}', \App\Action\Parroquias\ParroquiasReaderAction::class);//completed
-            $app->post('', \App\Action\Parroquias\ParroquiasCreatorAction::class);//completed
-            $app->put('/{parroquias_id}', \App\Action\Parroquias\ParroquiasUpdaterAction::class);//completed
-            $app->delete('/{parroquias_id}', \App\Action\Parroquias\ParroquiasDeleterAction::class);//completed
+            $app->get('/byMunicipio/{municipio_id}', \App\Action\Parroquias\ParroquiasFinderAction::class);//
+            $app->get('/{parroquias_id}', \App\Action\Parroquias\ParroquiasReaderAction::class);//
+            $app->post('', \App\Action\Parroquias\ParroquiasCreatorAction::class);//
+            $app->put('/{parroquias_id}', \App\Action\Parroquias\ParroquiasUpdaterAction::class);//
+            $app->delete('/{parroquias_id}', \App\Action\Parroquias\ParroquiasDeleterAction::class);//
         }
     );
 

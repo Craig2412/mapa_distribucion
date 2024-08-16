@@ -80,8 +80,8 @@ final class RubrosRepository
         return [
             'rubro' => strtoupper($rubros['rubro']),
             'presentacion' => strtoupper($rubros['presentacion']),
-            'precio_ves' => strtoupper($rubros['precio_ves']),
-            'precio_ptr' => strtoupper($rubros['precio_ptr'])
+            'precio_ves' => $rubros['precio_ves'],
+            'precio_ptr' => $rubros['precio_ptr']
         ];
     }
 
@@ -91,13 +91,8 @@ final class RubrosRepository
         
         $array=[];
         foreach ($funcionarios as $key => $value) {
-            $array["$key"]=$value;
+            $array["$key"]=strtoupper($value);
         }
-/*
-        if (empty($funcionarios['id_responsable'])) {
-            unset($array['id_responsable']);
-        }
-*/
         return $array;
     }
 }

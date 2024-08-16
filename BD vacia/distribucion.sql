@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 18:55:13
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 16-08-2024 a las 04:56:53
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `ciudades` (
   `id_estado` int(11) NOT NULL,
   `ciudad` varchar(200) NOT NULL,
   `capital` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `ciudades`
@@ -558,7 +558,7 @@ CREATE TABLE `datos_generales_empresa` (
   `correo` varchar(100) NOT NULL,
   `sector` varchar(150) NOT NULL,
   `sub_sector` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -580,7 +580,7 @@ CREATE TABLE `datos_mayoristas` (
   `volumen_mensual_comercializacion_mercancia` int(11) NOT NULL,
   `flota_vehicular` int(11) NOT NULL,
   `delete_logico` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -592,10 +592,10 @@ CREATE TABLE `datos_representante_legal` (
   `id` int(11) NOT NULL,
   `nombres` text NOT NULL,
   `apellidos` text NOT NULL,
-  `identificacion` int(9) NOT NULL,
+  `identificacion` varchar(10) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `telefono` bigint(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -607,7 +607,7 @@ CREATE TABLE `estados` (
   `id` int(11) NOT NULL,
   `estado` varchar(250) NOT NULL,
   `iso_3166-2` varchar(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `estados`
@@ -651,7 +651,7 @@ CREATE TABLE `formas_movilizacion_mercancia` (
   `id` int(11) NOT NULL,
   `id_tipo_movilizacion` int(11) NOT NULL,
   `id_mayorista` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -663,7 +663,7 @@ CREATE TABLE `municipios` (
   `id` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
   `municipio` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `municipios`
@@ -1017,7 +1017,7 @@ CREATE TABLE `origenes_producto` (
   `id` int(11) NOT NULL,
   `importacion` tinyint(1) NOT NULL COMMENT '1 si 0 no',
   `origen_especifico` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1030,7 +1030,7 @@ CREATE TABLE `origen_rubro_mayorista` (
   `id_mayorista` int(11) NOT NULL,
   `id_origen` int(11) NOT NULL,
   `id_rubro` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1042,7 +1042,7 @@ CREATE TABLE `parroquias` (
   `id` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `parroquia` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `parroquias`
@@ -2201,7 +2201,7 @@ CREATE TABLE `rubros` (
   `presentacion` varchar(70) NOT NULL,
   `precio_ves` float NOT NULL,
   `precio_ptr` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2212,7 +2212,7 @@ CREATE TABLE `rubros` (
 CREATE TABLE `tipos_mayoristas` (
   `id` int(11) NOT NULL,
   `tipo_mayorista` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipos_mayoristas`
@@ -2233,7 +2233,7 @@ INSERT INTO `tipos_mayoristas` (`id`, `tipo_mayorista`) VALUES
 CREATE TABLE `tipos_movilizacion` (
   `id` int(11) NOT NULL,
   `tipo_movilizacion` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipos_movilizacion`
