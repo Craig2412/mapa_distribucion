@@ -59,14 +59,14 @@ return function (App $app) {
     );
     // RepresentanteLegal
     $app->group(
-        '/representante',
+        '/representante',//completed
         function (RouteCollectorProxy $app) {
-            $app->get('', \App\Action\RepresentanteLegal\RepresentanteLegalFinderAction::class);//
-            $app->get('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalReaderAction::class);//
+            $app->get('', \App\Action\RepresentanteLegal\RepresentanteLegalFinderAction::class);//completed
+            $app->get('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalReaderAction::class);//completed
             $app->get('/byCedula/{representanteLegal_cedula}', \App\Action\RepresentanteLegal\RepresentanteLegalbyCedulaReaderAction::class);//completed
-            $app->post('', \App\Action\RepresentanteLegal\RepresentanteLegalCreatorAction::class);//
-            $app->put('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalUpdaterAction::class);//
-            $app->delete('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalDeleterAction::class);//
+            $app->post('', \App\Action\RepresentanteLegal\RepresentanteLegalCreatorAction::class);//completed
+            $app->put('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalUpdaterAction::class);//completed
+            $app->delete('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalDeleterAction::class);//completed
         }
     );
     // Empresas

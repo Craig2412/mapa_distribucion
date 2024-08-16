@@ -113,18 +113,11 @@ final class RepresentanteLegalRepository
     }
 
     private function toRowUpdate(array $funcionarios): array
-    {
-        $updated = isset($funcionarios['updated']) ? $funcionarios['updated'] : null;
-        
+    {        
         $array=[];
         foreach ($funcionarios as $key => $value) {
-            $array["$key"]=$value;
+            $array["$key"]= strtoupper($value);
         }
-/*
-        if (empty($funcionarios['id_responsable'])) {
-            unset($array['id_responsable']);
-        }
-*/
         return $array;
     }
 }
