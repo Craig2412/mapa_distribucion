@@ -10,29 +10,29 @@ final class MayoristasUpdater
 {
     private MayoristasRepository $repository;
 
-    private MayoristasValidator $mayoristasValidator;
+    private MayoristasValidatorUpdate $mayoristasValidatorUpdate;
 
     private LoggerInterface $logger;
 
     public function __construct(
         MayoristasRepository $repository,
-        MayoristasValidator $mayoristasValidator,
+        MayoristasValidatorUpdate $mayoristasValidatorUpdate,
         LoggerFactory $loggerFactory
     ) {
         $this->repository = $repository;
-        $this->mayoristasValidator = $mayoristasValidator;
+        $this->mayoristasValidatorUpdate = $mayoristasValidatorUpdate;
         $this->logger = $loggerFactory
             ->addFileHandler('mayoristas_updater.log')
             ->createLogger();
     }
 
-    public function updateMayoristas(int $mayoristasId, array $data): array
+    public function updateMayoristas(int $mayoristasId, array $data, int $paso): array
     {
         // Input validation
-        $this->mayoristasValidator->validateMayoristasUpdate($mayoristasId, $data);
+        $this->mayoristasValidatorUpdate->validateMayoristasUpdate($mayoristasId, $data, $paso);
 
         // Update the row
-        $values = $this->repository->updateMayoristas($mayoristasId, $data);
+        $values = $this->repository->updateMayoristas($mayoristasId, $data, $paso);
 
         // Logging
         $this->logger->info(sprintf('Mayoristas updated successfully: %s', $mayoristasId));

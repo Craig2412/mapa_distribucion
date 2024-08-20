@@ -35,14 +35,14 @@ final class MayoristasCreatorAction
            
             //Inserto los datos generales de la empresa
             $datosGeneralesId = $this->mayoristasCreator->createMayoristas($data["datos_generales_empresa"],2);  
-            if ($datosGeneralesId) {
+            if ($datosGeneralesId > 0) {
                 if (!($data["datos_mayorista"]["id_datos_generales"])) {
                     $data["datos_mayoristas"]["id_datos_generales"] = $datosGeneralesId;
                 }
                 
                 //Inserto los datos del mayorista
                 $mayoristasId = $this->mayoristasCreator->createMayoristas($data["datos_mayoristas"],3);
-                if ($mayoristasId) {
+                if ($mayoristasId > 0) {
                     return $this->renderer
                         ->json($response, ['mayoristas_id' => $mayoristasId])
                         ->withStatus(StatusCodeInterface::STATUS_CREATED);

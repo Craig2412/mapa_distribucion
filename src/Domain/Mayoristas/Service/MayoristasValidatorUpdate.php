@@ -18,13 +18,13 @@ final class MayoristasValidatorUpdate
         $this->repository = $repository;
     }
 
-    public function validateMayoristasUpdate(int $mayoristassId, array $data): void
+    public function validateMayoristasUpdate(int $mayoristassId, array $data, int $paso): void
     {
         if (!$this->repository->existsMayoristasId($mayoristassId)) {
             throw new DomainException(sprintf('Mayoristas not found: %s', $mayoristassId));
         }
 
-        $this->validateMayoristas($data);
+        $this->validateMayoristas($data, $paso);
     }
 
     public function validateMayoristas(array $data, int $paso): void
@@ -64,6 +64,13 @@ final class MayoristasValidatorUpdate
                                 $constraint->length(1,10)
                             ]
                             ),
+                        'id' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,10)
+                            ]
+                            ),
                         'correo' => $constraint->optional(
                             [
                                 $constraint->notBlank(),
@@ -92,6 +99,13 @@ final class MayoristasValidatorUpdate
                                 $constraint->length(3,100)
                             ]
                             ),
+                        'id' => $constraint->required(
+                        [
+                            $constraint->notBlank(),
+                            $constraint->positive(),
+                            $constraint->length(1,10)
+                        ]
+                        ),
                         'coordenadas_x' => $constraint->optional(
                             [
                                 $constraint->notBlank(),
@@ -179,6 +193,13 @@ final class MayoristasValidatorUpdate
                                 $constraint->notBlank(),
                                 $constraint->positive(),
                                 $constraint->length(1,11)
+                            ]
+                            ),
+                        'id' => $constraint->required(
+                            [
+                                $constraint->notBlank(),
+                                $constraint->positive(),
+                                $constraint->length(1,10)
                             ]
                             ),
                         'id_tipo_mayorista' => $constraint->optional(

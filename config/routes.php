@@ -126,7 +126,7 @@ return function (App $app) {
             $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//completed
             $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//completed
             $app->post('', \App\Action\Mayoristas\MayoristasCreatorAction::class);//completed
-            $app->put('/{mayorista_id}', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
+            $app->put('', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
             $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//completed
         }
     );
