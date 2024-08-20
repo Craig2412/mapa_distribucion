@@ -74,7 +74,7 @@ final class MayoristasUpdaterAction
 /* TODOS OPCIONALES
 {
     "datos_representante" : {
-        "id" : "1",
+        "id" : "1", -> obligatorio
         "nombres" : "Nombre 1 y 2",
         "apellidos" : "Apellido 1 y 2",
         "identificacion" : "Cedula",
@@ -83,7 +83,7 @@ final class MayoristasUpdaterAction
     },
 
     "datos_generales_empresa" : {
-        "id" : "1",
+        "id" : "1", -> obligatorio
         "razon_social" : "Nombre Empresa",
         "coordenadas_x" : "coordenadas_x",
         "coordenadas_y" : "coordenadas_y",
@@ -99,7 +99,7 @@ final class MayoristasUpdaterAction
     },
 
     "datos_mayoristas" : {
-        "id" : 3,
+        "id" : 3, -> obligatorio
         "id_datos_generales" : 3,
         "id_tipo_mayorista" : 1,
         "cantidad_locales_comerciales" : 1,
