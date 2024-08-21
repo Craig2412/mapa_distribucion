@@ -15,11 +15,11 @@ final class EmpresasFinderRepository
 
     public function findEmpresass(): array
     {
-        $query = $this->queryFactory->newSelect('datos_representante_legal');
+        $query = $this->queryFactory->newSelect('datos_generales_empresa');
 
         $query->select(
             [
-               'id',
+                'id',
                 'razon_social',
                 'coordenadas_x',
                 'coordenadas_y',
@@ -34,6 +34,7 @@ final class EmpresasFinderRepository
                 'sub_sector'
             ]
         );
+        
         return $query->execute()->fetchAll('assoc') ?: [];
         
     }

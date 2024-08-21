@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Empresa\Data;
+namespace App\Domain\Empresas\Data;
 
 /**
  * DTO.
  */
-final class EmpresaFinderItem
+final class EmpresasFinderItem
 {
     public ?int $id = null;
 
