@@ -64,13 +64,6 @@ final class MayoristasValidatorUpdate
                                 $constraint->length(1,10)
                             ]
                             ),
-                        'id' => $constraint->required(
-                            [
-                                $constraint->notBlank(),
-                                $constraint->positive(),
-                                $constraint->length(1,10)
-                            ]
-                            ),
                         'correo' => $constraint->optional(
                             [
                                 $constraint->notBlank(),
@@ -99,13 +92,6 @@ final class MayoristasValidatorUpdate
                                 $constraint->length(3,100)
                             ]
                             ),
-                        'id' => $constraint->required(
-                        [
-                            $constraint->notBlank(),
-                            $constraint->positive(),
-                            $constraint->length(1,10)
-                        ]
-                        ),
                         'coordenadas_x' => $constraint->optional(
                             [
                                 $constraint->notBlank(),
@@ -195,13 +181,6 @@ final class MayoristasValidatorUpdate
                                 $constraint->length(1,11)
                             ]
                             ),
-                        'id' => $constraint->required(
-                            [
-                                $constraint->notBlank(),
-                                $constraint->positive(),
-                                $constraint->length(1,10)
-                            ]
-                            ),
                         'id_tipo_mayorista' => $constraint->optional(
                             [
                                 $constraint->notBlank(),
@@ -259,7 +238,6 @@ final class MayoristasValidatorUpdate
                 break;
             
             default:
-                # code...
                 break;
         }
 

@@ -37,21 +37,30 @@ final class MayoristasUpdaterAction
             // Invoke the Domain with inputs and retain the result
         if (count($data) > 0) {
             if ($data["datos_representante"]["id"] && count($data["datos_representante"]) > 1) {
-                $new_data_representante = $this->mayoristasUpdater->updateMayoristas($data["datos_representante"]["id"], $data["datos_representante"],1);
+                $idActualizar = $data["datos_representante"]["id"] +0;
+                unset($data["datos_representante"]["id"]);
+
+                $new_data_representante = $this->mayoristasUpdater->updateMayoristas($idActualizar, $data["datos_representante"],1);
                 if ($new_data_representante) {
                     $new_data["datos_representante"] = $new_data_representante;
                 }
             }
             
             if ($data["datos_generales_empresa"]["id"] && count($data["datos_generales_empresa"]) > 1) {
-                $new_data_general = $this->mayoristasUpdater->updateMayoristas($data["datos_generales_empresa"]["id"], $data["datos_generales_empresa"],2);
+                $idActualizar = $data["datos_generales_empresa"]["id"]+0;
+                unset($data["datos_generales_empresa"]["id"]);
+
+                $new_data_general = $this->mayoristasUpdater->updateMayoristas($idActualizar, $data["datos_generales_empresa"],2);
                 if ($new_data_general) {
                     $new_data["datos_generales_empresa"] = $new_data_general;
                 }
             }
 
             if ($data["datos_mayoristas"]["id"] && count($data["datos_mayoristas"]) > 1) {
-                $new_data_general = $this->mayoristasUpdater->updateMayoristas($data["datos_mayoristas"]["id"], $data["datos_mayoristas"],3);
+                $idActualizar = $data["datos_mayoristas"]["id"]+0;
+                unset($data["datos_mayoristas"]["id"]);
+
+                $new_data_general = $this->mayoristasUpdater->updateMayoristas($idActualizar, $data["datos_mayoristas"],3);
                 if ($new_data_general) {
                     $new_data["datos_mayoristas"] = $new_data_general;
                 }

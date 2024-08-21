@@ -117,7 +117,7 @@ final class MayoristasRepository
         }
         
         $this->queryFactory->newUpdate($tabla_bd, $row)
-        ->where(['id' => $row["id"]])
+        ->where(['id' => $mayoristasId])
         ->execute();
 
         return $row;
