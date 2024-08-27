@@ -27,23 +27,28 @@ final class EmpresasRepository
         $query = $this->queryFactory->newSelect('datos_generales_empresa');
         $query->select(
             [
-                'id',
-                'razon_social',
-                'coordenadas_x',
-                'coordenadas_y',
-                'rif',
-                'id_estado',
-                'id_municipio',
-                'id_parroquia',
-                'id_representante_legal',
-                'telefono',
-                'correo',
-                'sector',
-                'sub_sector'
+                'datos_generales_empresa.id',
+                'datos_generales_empresa.razon_social',
+                'datos_generales_empresa.coordenadas_x',
+                'datos_generales_empresa.coordenadas_y',
+                'datos_generales_empresa.rif',
+                'datos_generales_empresa.id_estado',
+                'e.estado',
+                'datos_generales_empresa.id_municipio',
+                'm.municipio',
+                'datos_generales_empresa.id_parroquia',
+                'p.parroquia',
+                'datos_generales_empresa.id_representante_legal',
+                'datos_generales_empresa.telefono',
+                'datos_generales_empresa.correo',
+                'datos_generales_empresa.sector',
+                'datos_generales_empresa.sub_sector'
             ]
-            );
-            
-            $query->where(['id' => $empresasId]);
+            )
+            ->innerjoin(['e'=>'estados'], 'datos_generales_empresa.id_estado = e.id')
+            ->innerjoin(['m'=>'municipios'], 'datos_generales_empresa.id_municipio = m.id')
+            ->innerjoin(['p'=>'parroquias'], 'datos_generales_empresa.id_parroquia = p.id');
+            $query->where(['datos_generales_empresa.id' => $empresasId]);
             
             $row = $query->execute()->fetch('assoc');
             

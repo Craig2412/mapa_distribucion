@@ -57,6 +57,20 @@ return function (App $app) {
             $app->delete('/{rubros_id}', \App\Action\Rubros\RubrosDeleterAction::class);//completed
         }
     );
+
+    // TiposMayoristas
+    $app->group(
+        '/tiposMayoristas',//
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('', \App\Action\TiposMayoristas\TiposMayoristasFinderAction::class);//
+            $app->get('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasReaderAction::class);//
+            $app->post('', \App\Action\TiposMayoristas\TiposMayoristasCreatorAction::class);//
+            $app->put('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasUpdaterAction::class);//
+            $app->delete('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasDeleterAction::class);//
+        }
+    );
+
     // RepresentanteLegal
     $app->group(
         '/representante',//completed

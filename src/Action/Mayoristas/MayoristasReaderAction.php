@@ -74,6 +74,7 @@ final class MayoristasReaderAction
                 //Datos_generales
                 //Mayorista
                     'tipo_mayorista' => $mayoristas->tipo_mayorista,
+                    'id_tipo_mayorista' => $mayoristas->id_tipo_mayorista,
                     'cantidad_locales_comerciales' => $mayoristas->cantidad_locales_comerciales,
                     'capacidad_almacenamiento' => $mayoristas->capacidad_almacenamiento,
                     'capacidad_almacenamiento_frio' => $mayoristas->capacidad_almacenamiento_frio,

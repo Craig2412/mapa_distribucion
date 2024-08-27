@@ -26,7 +26,7 @@ final class EmpresasReaderAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $empresasId = (int)$args['empresas_id'];
+        $empresasId = (int)$args['empresa_id'];
 
         // Invoke the domain and get the result
         $empresas = $this->empresasReader->getEmpresas($empresasId);
@@ -44,8 +44,11 @@ final class EmpresasReaderAction
             'coordenadas_y' => $empresas->coordenadas_y,
             'rif' => $empresas->rif,
             'id_estado' => $empresas->id_estado,
+            'estado' => $empresas->estado,
             'id_municipio' => $empresas->id_municipio,
+            'municipio' => $empresas->municipio,
             'id_parroquia' => $empresas->id_parroquia,
+            'parroquia' => $empresas->parroquia,
             'id_representante_legal' => $empresas->id_representante_legal,
             'telefono' => $empresas->telefono,
             'correo' => $empresas->correo,

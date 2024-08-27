@@ -17,8 +17,11 @@ final class EmpresasReaderResult
     public ?string $sector = null;    
     public ?string $sub_sector = null;    
     public ?int $id_estado = null;    
+    public ?string $estado = null;    
     public ?int $id_municipio = null;    
+    public ?string $municipio = null;    
     public ?int $id_parroquia = null;    
+    public ?string $parroquia = null;    
     public ?int $id_representante_legal = null;    
     public ?int $telefono = null;        
 }

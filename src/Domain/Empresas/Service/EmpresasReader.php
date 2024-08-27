@@ -48,8 +48,11 @@ final class EmpresasReader
         $result->coordenadas_y = $empresasRow['coordenadas_y'];
         $result->rif = $empresasRow['rif'];
         $result->id_estado = $empresasRow['id_estado'];
+        $result->estado = $empresasRow['estado'];
         $result->id_municipio = $empresasRow['id_municipio'];
+        $result->municipio = $empresasRow['municipio'];
         $result->id_parroquia = $empresasRow['id_parroquia'];
+        $result->parroquia = $empresasRow['parroquia'];
         $result->id_representante_legal = $empresasRow['id_representante_legal'];
         $result->telefono = $empresasRow['telefono'];
         $result->correo = $empresasRow['correo'];

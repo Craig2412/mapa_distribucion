@@ -56,12 +56,14 @@ final class MayoristasFinderAction
                     //Parroquia
 
                     //Representante_legal
+                        'id_representante_legal' => $mayoristas->id_representante_legal,
                         'nombres_representante' => $mayoristas->nombres_representante,
                         'apellidos_representante' => $mayoristas->apellidos_representante,
                         'identificacion_representante' => $mayoristas->identificacion_representante,
                         'telefono_representante' => $mayoristas->telefono_representante,
                         'correo_representante' => $mayoristas->correo_representante,
                     //Representante_legal
+                    'id_empresa' => $mayoristas->id_datos_generales,
                     'telefono_empresa' => $mayoristas->telefono_empresa,
                     'correo_empresa' => $mayoristas->correo_empresa,
                     'sector' => $mayoristas->sector,
