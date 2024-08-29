@@ -34,8 +34,7 @@ return function (App $app) {
     // Roles
     $app->group(
         '/roles',
-        function (RouteCollectorProxy $app) {
-           
+        function (RouteCollectorProxy $app) {           
             $app->get('', \App\Action\Roles\RolesFinderAction::class);//
             $app->get('/adscripciones', \App\Action\Roles\AdscripcionesFinderAction::class);//
             $app->get('/{roles_id}', \App\Action\Roles\RolesReaderAction::class);//
@@ -48,8 +47,7 @@ return function (App $app) {
     // Rubros
     $app->group(
         '/rubros',//completed
-        function (RouteCollectorProxy $app) {
-           
+        function (RouteCollectorProxy $app) {           
             $app->get('', \App\Action\Rubros\RubrosFinderAction::class);//completed
             $app->get('/{rubros_id}', \App\Action\Rubros\RubrosReaderAction::class);//completed
             $app->post('', \App\Action\Rubros\RubrosCreatorAction::class);//completed
@@ -61,8 +59,7 @@ return function (App $app) {
     // TiposMayoristas
     $app->group(
         '/tiposMayoristas',//
-        function (RouteCollectorProxy $app) {
-           
+        function (RouteCollectorProxy $app) {           
             $app->get('', \App\Action\TiposMayoristas\TiposMayoristasFinderAction::class);//completed
             $app->get('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasReaderAction::class);//completed
             $app->post('', \App\Action\TiposMayoristas\TiposMayoristasCreatorAction::class);//completed
@@ -74,8 +71,7 @@ return function (App $app) {
     // TiposMovilizacion
     $app->group(
         '/tiposMovilizacion',//completed
-        function (RouteCollectorProxy $app) {
-           
+        function (RouteCollectorProxy $app) {           
             $app->get('', \App\Action\TiposMovilizacion\TiposMovilizacionFinderAction::class);//completed
             $app->get('/{tiposMovilizacion_id}', \App\Action\TiposMovilizacion\TiposMovilizacionReaderAction::class);//completed
             $app->post('', \App\Action\TiposMovilizacion\TiposMovilizacionCreatorAction::class);//completed
