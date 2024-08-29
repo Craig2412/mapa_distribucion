@@ -25,7 +25,7 @@ final class TiposMovilizacionDeleterAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $tiposMovilizacionId = (int)$args['iposMovilizacion_id'];
+        $tiposMovilizacionId = (int)$args['tiposMovilizacion_id'];
 
         // Invoke the domain (service class)
         $this->iposMovilizacionDeleter->deleteTiposMovilizacion($tiposMovilizacionId);

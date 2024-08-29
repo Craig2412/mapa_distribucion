@@ -9,13 +9,13 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class TiposMayoristasDeleterAction
 {
-    private TiposMayoristasDeleter $iposMayoristasDeleter;
+    private TiposMayoristasDeleter $tiposMayoristasDeleter;
 
     private JsonRenderer $renderer;
 
-    public function __construct(TiposMayoristasDeleter $iposMayoristasDeleter, JsonRenderer $renderer)
+    public function __construct(TiposMayoristasDeleter $tiposMayoristasDeleter, JsonRenderer $renderer)
     {
-        $this->iposMayoristasDeleter = $iposMayoristasDeleter;
+        $this->iposMayoristasDeleter = $tiposMayoristasDeleter;
         $this->renderer = $renderer;
     }
 
@@ -25,10 +25,10 @@ final class TiposMayoristasDeleterAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $iposMayoristasId = (int)$args['iposMayoristas_id'];
+        $tiposMayoristasId = (int)$args['tiposMayoristas_id'];
 
         // Invoke the domain (service class)
-        $this->iposMayoristasDeleter->deleteTiposMayoristas($iposMayoristasId);
+        $this->iposMayoristasDeleter->deleteTiposMayoristas($tiposMayoristasId);
 
         // Render the json response
         return $this->renderer->json($response, 'Registro eliminado');
