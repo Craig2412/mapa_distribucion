@@ -17,7 +17,7 @@ final class TiposMayoristasRepository
     
     public function insertTiposMayoristas(array $tiposMayoristas): int
     {
-        return (int)$this->queryFactory->newInsert('tiposMayoristas', $this->toRow($tiposMayoristas))
+        return (int)$this->queryFactory->newInsert('tipos_mayoristas', $this->toRow($tiposMayoristas))
         ->execute()
         ->lastInsertId();
     }
@@ -26,10 +26,10 @@ final class TiposMayoristasRepository
     {
         $query = $this->queryFactory->newSelect('tipos_mayoristas');
         $query->select(
-            [
-              'id',
-              'tipo_mayorista'
-            ]
+                [
+                'id',
+                'tipo_mayorista'
+                ]
             );
             
             $query->where(['id' => $tiposMayoristasId]);
@@ -47,7 +47,7 @@ final class TiposMayoristasRepository
     {
         $row = $this->toRow($tiposMayoristas);
         
-        $this->queryFactory->newUpdate('tiposMayoristas', $row)
+        $this->queryFactory->newUpdate('tipos_mayoristas', $row)
         ->where(['id' => $tiposMayoristasId])
         ->execute();
 
@@ -65,7 +65,7 @@ final class TiposMayoristasRepository
     
     public function deleteTiposMayoristasById(int $tiposMayoristasId): void
     {
-        $this->queryFactory->newDelete('tiposMayoristas')
+        $this->queryFactory->newDelete('tipos_mayoristas')
         ->where(['id' => $tiposMayoristasId])
         ->execute();
     }
@@ -73,7 +73,7 @@ final class TiposMayoristasRepository
     private function toRow(array $tiposMayoristas): array
     {        
         $array=[];
-        foreach ($funcionarios as $key => $value) {
+        foreach ($tiposMayoristas as $key => $value) {
             $array["$key"]=strtoupper($value);
         }
         return $array;

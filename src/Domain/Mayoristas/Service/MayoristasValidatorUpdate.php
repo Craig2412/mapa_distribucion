@@ -3,6 +3,8 @@
 namespace App\Domain\Mayoristas\Service;
 
 use App\Domain\Mayoristas\Repository\MayoristasRepository;
+use App\Domain\Empresas\Repository\EmpresasRepository;
+use App\Domain\RepresentanteLegal\Repository\RepresentanteLegalRepository;
 use App\Factory\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
@@ -12,19 +14,42 @@ use Symfony\Component\Validator\Validation;
 final class MayoristasValidatorUpdate
 {
     private MayoristasRepository $repository;
+    private EmpresasRepository $repositoryEmpresas;
+    private RepresentanteLegalRepository $repositoryRepresentanteLegal;
 
-    public function __construct(MayoristasRepository $repository)
+    public function __construct(MayoristasRepository $repository, EmpresasRepository $repositoryEmpresas, RepresentanteLegalRepository $repositoryRepresentanteLegal)
     {
         $this->repository = $repository;
+        $this->repositoryEmpresas = $repositoryEmpresas;
+        $this->repositoryRepresentanteLegal = $repositoryRepresentanteLegal;
     }
 
     public function validateMayoristasUpdate(int $mayoristassId, array $data, int $paso): void
     {
-        if (!$this->repository->existsMayoristasId($mayoristassId)) {
-            throw new DomainException(sprintf('Mayoristas not found: %s', $mayoristassId));
+        switch ($paso) {
+            case '3':
+                if (!$this->repository->existsMayoristasId($mayoristassId)) {
+                    throw new DomainException(sprintf('Mayoristas not found: %s', $mayoristassId));
+                }
+        
+                $this->validateMayoristas($data, $paso);
+            break;
+            case '2':
+                if (!$this->repository->existsEmpresasId($mayoristassId)) {
+                    throw new DomainException(sprintf('Empresa not found: %s', $mayoristassId));
+                }
+        
+                $this->validateMayoristas($data, $paso);
+            break;
+            case '1':
+                if (!$this->repository->existsRepresentanteLegalId($mayoristassId)) {
+                    throw new DomainException(sprintf('Representante not found: %s', $mayoristassId));
+                }
+        
+                $this->validateMayoristas($data, $paso);
+            break;
         }
-
-        $this->validateMayoristas($data, $paso);
+       
     }
 
     public function validateMayoristas(array $data, int $paso): void

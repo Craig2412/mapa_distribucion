@@ -63,11 +63,24 @@ return function (App $app) {
         '/tiposMayoristas',//
         function (RouteCollectorProxy $app) {
            
-            $app->get('', \App\Action\TiposMayoristas\TiposMayoristasFinderAction::class);//
-            $app->get('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasReaderAction::class);//
-            $app->post('', \App\Action\TiposMayoristas\TiposMayoristasCreatorAction::class);//
+            $app->get('', \App\Action\TiposMayoristas\TiposMayoristasFinderAction::class);//completed
+            $app->get('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasReaderAction::class);//completed
+            $app->post('', \App\Action\TiposMayoristas\TiposMayoristasCreatorAction::class);//completed
             $app->put('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasUpdaterAction::class);//
             $app->delete('/{tiposMayoristas_id}', \App\Action\TiposMayoristas\TiposMayoristasDeleterAction::class);//
+        }
+    );
+
+    // TiposMovilizacion
+    $app->group(
+        '/tiposMovilizacion',//
+        function (RouteCollectorProxy $app) {
+           
+            $app->get('', \App\Action\TiposMovilizacion\TiposMovilizacionFinderAction::class);//
+            $app->get('/{tiposMovilizacion_id}', \App\Action\TiposMovilizacion\TiposMovilizacionReaderAction::class);//
+            $app->post('', \App\Action\TiposMovilizacion\TiposMovilizacionCreatorAction::class);//
+            $app->put('/{tiposMovilizacion_id}', \App\Action\TiposMovilizacion\TiposMovilizacionUpdaterAction::class);//
+            $app->delete('/{tiposMovilizacion_id}', \App\Action\TiposMovilizacion\TiposMovilizacionDeleterAction::class);//
         }
     );
 
