@@ -35,14 +35,14 @@ final class MayoristasValidatorUpdate
                 $this->validateMayoristas($data, $paso);
             break;
             case '2':
-                if (!$this->repository->existsEmpresasId($mayoristassId)) {
+                if (!$this->repositoryEmpresas->existsEmpresasId($mayoristassId)) {
                     throw new DomainException(sprintf('Empresa not found: %s', $mayoristassId));
                 }
         
                 $this->validateMayoristas($data, $paso);
             break;
             case '1':
-                if (!$this->repository->existsRepresentanteLegalId($mayoristassId)) {
+                if (!$this->repositoryRepresentanteLegal->existsRepresentanteLegalId($mayoristassId)) {
                     throw new DomainException(sprintf('Representante not found: %s', $mayoristassId));
                 }
         
