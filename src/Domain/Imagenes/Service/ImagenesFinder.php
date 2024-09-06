@@ -1,44 +1,40 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Rubros\Data\RubrosFinderItem;
-use App\Domain\Rubros\Data\RubrosFinderResult;
-use App\Domain\Rubros\Repository\RubrosFinderRepository;
+use App\Domain\Imagenes\Data\ImagenesFinderItem;
+use App\Domain\Imagenes\Data\ImagenesFinderResult;
+use App\Domain\Imagenes\Repository\ImagenesFinderRepository;
 
-final class RubrosFinder
+final class ImagenesFinder
 {
-    private RubrosFinderRepository $repository;
+    private ImagenesFinderRepository $repository;
 
-    public function __construct(RubrosFinderRepository $repository)
+    public function __construct(ImagenesFinderRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function findRubross(): RubrosFinderResult
+    public function findImageness(int $id_mayorista): ImagenesFinderResult
     {
-        // Input validation
-        // ...
+    
+        $imageness = $this->repository->findImageness($id_mayorista);
 
-        $rubross = $this->repository->findRubross();
-
-        return $this->createResult($rubross);
+        return $this->createResult($imageness);
     }
 
-    private function createResult(array $rubrosRows): RubrosFinderResult
+    private function createResult(array $imagenesRows): ImagenesFinderResult
     {
-        $result = new RubrosFinderResult();
+        $result = new ImagenesFinderResult();
 
-        foreach ($rubrosRows as $rubrosRow) {
-            $rubros = new RubrosFinderItem();
-            $rubros->id = $rubrosRow['id'];
-            $rubros->rubro = $rubrosRow['rubro'];
-            $rubros->presentacion = $rubrosRow['presentacion'];
-            $rubros->precio_ves = $rubrosRow['precio_ves'];
-            $rubros->precio_ptr = $rubrosRow['precio_ptr'];
+        foreach ($imagenesRows as $imagenesRow) {
+            $imagenes = new ImagenesFinderItem();
+            $imagenes->id = $imagenesRow['id'];
+            $imagenes->id_img = $imagenesRow['id_img'];
+            $imagenes->url = $imagenesRow['url'];
             
 
-            $result->rubross[] = $rubros;
+            $result->imageness[] = $imagenes;
         }
 
         return $result;

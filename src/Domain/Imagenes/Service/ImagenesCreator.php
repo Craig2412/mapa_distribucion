@@ -1,42 +1,43 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Rubros\Repository\RubrosRepository;
+use App\Domain\Imagenes\Repository\ImagenesRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 
-final class RubrosCreator
+final class ImagenesCreator
 {
-    private RubrosRepository $repository;
+    private ImagenesRepository $repository;
 
-    private RubrosValidator $rubrosValidator;
+    private ImagenesValidator $imagenesValidator;
 
     private LoggerInterface $logger;
 
     public function __construct(
-        RubrosRepository $repository,
-        RubrosValidator $rubrosValidator,
+        ImagenesRepository $repository,
+        ImagenesValidator $imagenesValidator,
         LoggerFactory $loggerFactory
     ) {
         $this->repository = $repository;
-        $this->rubrosValidator = $rubrosValidator;
+        $this->imagenesValidator = $imagenesValidator;
         $this->logger = $loggerFactory
-            ->addFileHandler('rubros_creator.log')
+            ->addFileHandler('imagenes_creator.log')
             ->createLogger();
     }
 
-    public function createRubros(array $data): int
+    public function createImagenes(array $data): int
     {
         // Input validation
-        $this->rubrosValidator->validateRubros($data);
+        $this->imagenesValidator->validateImagenes($data);
 
-        // Insert rubros and get new rubros ID
-        $rubrosId = $this->repository->insertRubros($data);
+        // Insert imagenes and get new imagenes ID
+        $imagenesId = $this->repository->insertImagenes($data);
+
 
         // Logging
-        $this->logger->info(sprintf('Rubros created successfully: %s', $rubrosId));
+        $this->logger->info(sprintf('Imagenes created successfully: %s', $imagenesId));
 
-        return $rubrosId;
+        return $imagenesId;
     }
 }

@@ -17,7 +17,15 @@ final class ImagenesRepository
     
     public function insertImagenes(array $imagenes): int
     {
+        
         return (int)$this->queryFactory->newInsert('imagenes', $this->toRow($imagenes))
+        ->execute()
+        ->lastInsertId();
+    }
+
+    public function insertImagenesAsignacion(array $imagenes): int
+    {
+        return (int)$this->queryFactory->newInsert('img_mayorista', $this->toRow($imagenes))
         ->execute()
         ->lastInsertId();
     }
@@ -26,12 +34,9 @@ final class ImagenesRepository
     {
         $query = $this->queryFactory->newSelect('imagenes');
         $query->select(
-            [
-                'id',
-                'rubro',
-                'presentacion',
-                'precio_ves',
-                'precio_ptr'
+                [
+                    'id',
+                    'url'
                 ]
             );
             
@@ -69,28 +74,24 @@ final class ImagenesRepository
     public function deleteImagenesById(int $imagenesId): void
     {
         $this->queryFactory->newDelete('imagenes')
-        ->where(['id' => $imagenesId])
+        ->where(['id_img' => $imagenesId])
         ->execute();
     }
 
     private function toRow(array $imagenes): array
     {        
-        $updated = isset($imagenes['updated']) ? $imagenes['updated'] : null;
-        
-        return [
-            'rubro' => strtoupper($imagenes['rubro']),
-            'presentacion' => strtoupper($imagenes['presentacion']),
-            'precio_ves' => $imagenes['precio_ves'],
-            'precio_ptr' => $imagenes['precio_ptr']
-        ];
-    }
-
-    private function toRowUpdate(array $funcionarios): array
-    {
-        $updated = isset($funcionarios['updated']) ? $funcionarios['updated'] : null;
         
         $array=[];
-        foreach ($funcionarios as $key => $value) {
+        foreach ($imagenes as $key => $value) {
+            $array["$key"]=$value;
+        }
+        return $array;
+    }
+
+    private function toRowUpdate(array $imagenes): array
+    {
+        $array=[];
+        foreach ($imagenes as $key => $value) {
             $array["$key"]=strtoupper($value);
         }
         return $array;

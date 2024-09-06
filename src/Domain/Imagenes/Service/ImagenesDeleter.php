@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Rubros\Repository\RubrosRepository;
+use App\Domain\Imagenes\Repository\ImagenesRepository;
 
-final class RubrosDeleter
+final class ImagenesDeleter
 {
-    private RubrosRepository $repository;
+    private ImagenesRepository $repository;
 
-    public function __construct(RubrosRepository $repository)
+    public function __construct(ImagenesRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function deleteRubros(int $rubrosId): void
+    public function deleteImagenes(int $imagenesId): void
     {
 
-        $this->repository->deleteRubrosById($rubrosId);
+        $this->repository->deleteImagenesById($imagenesId);
     }
 }

@@ -60,11 +60,10 @@ return function (App $app) {
     $app->group(
         '/imagenes',//
         function (RouteCollectorProxy $app) {           
-            $app->get('', \App\Action\Imagenes\ImagenesFinderAction::class);//
-            $app->get('/{imagenes_id}', \App\Action\Imagenes\ImagenesReaderAction::class);//
-            $app->post('', \App\Action\Imagenes\ImagenesCreatorAction::class);//
-            $app->put('/{imagenes_id}', \App\Action\Imagenes\ImagenesUpdaterAction::class);//
-            $app->delete('/{imagenes_id}', \App\Action\Imagenes\ImagenesDeleterAction::class);//
+            $app->get('/{id_mayorista}', \App\Action\Imagenes\ImagenesFinderAction::class);//completed
+            $app->get('/unica/{imagenes_id}', \App\Action\Imagenes\ImagenesReaderAction::class);//completed
+            $app->post('', \App\Action\Imagenes\ImagenesCreatorAction::class);//completed
+            $app->delete('/{imagenes_id}', \App\Action\Imagenes\ImagenesDeleterAction::class);//completed
         }
     );
 

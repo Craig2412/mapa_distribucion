@@ -1,52 +1,49 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Rubros\Data\RubrosReaderResult;
-use App\Domain\Rubros\Repository\RubrosRepository;
+use App\Domain\Imagenes\Data\ImagenesReaderResult;
+use App\Domain\Imagenes\Repository\ImagenesRepository;
 
 /**
  * Service.
  */
-final class RubrosReader
+final class ImagenesReader
 {
-    private RubrosRepository $repository;
+    private ImagenesRepository $repository;
 
     /**
      * The constructor.
      *
-     * @param RubrosRepository $repository The repository
+     * @param ImagenesRepository $repository The repository
      */
-    public function __construct(RubrosRepository $repository)
+    public function __construct(ImagenesRepository $repository)
     {
         $this->repository = $repository;
     }
 
     /**
-     * Read a rubros.
+     * Read a imagenes.
      *
-     * @param int $rubrosId The rubros id
+     * @param int $imagenesId The imagenes id
      *
-     * @return RubrosReaderResult The result
+     * @return ImagenesReaderResult The result
      */
-    public function getRubros(int $rubrosId): RubrosReaderResult
+    public function getImagenes(int $imagenesId): ImagenesReaderResult
     {
         // Input validation
         // ...
 
         // Fetch data from the database
-        $rubrosRow = $this->repository->getRubrosById($rubrosId);
+        $imagenesRow = $this->repository->getImagenesById($imagenesId);
 
         // Optional: Add or invoke your complex business logic here
         // ...
 
         // Create domain result
-        $result = new RubrosReaderResult();
-        $result->id = $rubrosRow['id'];
-        $result->rubro = $rubrosRow['rubro'];
-        $result->presentacion = $rubrosRow['presentacion'];
-        $result->precio_ves = $rubrosRow['precio_ves'];
-        $result->precio_ptr = $rubrosRow['precio_ptr'];
+        $result = new ImagenesReaderResult();
+        $result->id = $imagenesRow['id'];
+        $result->url = $imagenesRow['url'];
         
         return $result;
     }

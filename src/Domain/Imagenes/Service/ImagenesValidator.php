@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Rubros\Repository\RubrosRepository;
+use App\Domain\Imagenes\Repository\ImagenesRepository;
 use App\Factory\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
-final class RubrosValidator
+final class ImagenesValidator
 {
-    private RubrosRepository $repository;
+    private ImagenesRepository $repository;
 
-    public function __construct(RubrosRepository $repository)
+    public function __construct(ImagenesRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function validateRubrosUpdate(int $rubrossId, array $data): void
+    public function validateImagenesUpdate(int $imagenesId, array $data): void
     {
-        if (!$this->repository->existsRubrosId($rubrossId)) {
-            throw new DomainException(sprintf('Rubros not found: %s', $rubrossId));
+        if (!$this->repository->existsImagenesId($imagenesId)) {
+            throw new DomainException(sprintf('Imagenes not found: %s', $imagenesId));
         }
 
-        $this->validateRubros($data);
+        $this->validateImagenes($data);
     }
 
-    public function validateRubros(array $data): void
+    public function validateImagenes(array $data): void
     {
         $validator = Validation::createValidator();
         $violations = $validator->validate($data, $this->createConstraints());
@@ -43,32 +43,12 @@ final class RubrosValidator
 
         return $constraint->collection(
             [
-                'rubro' => $constraint->required(
+                'url' => $constraint->required(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(2, 100)
+                        $constraint->length(10, 30000)
                     ]
-                    ),
-                'presentacion' => $constraint->required(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->length(2, 100)
-                    ]
-                    ),
-                'precio_ves' => $constraint->required(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->positive(),
-                        $constraint->length(1, 11)
-                    ]
-                    ),
-                'precio_ptr' => $constraint->required(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->positive(),
-                        $constraint->length(1, 11)
-                    ]
-                    ),
+                )
             ]
         );
     }

@@ -13,16 +13,20 @@ final class ImagenesFinderRepository
         $this->queryFactory = $queryFactory;
     }
 
-    public function findImageness(): array
+    public function findImageness(int $id_mayorista): array
     {
-        $query = $this->queryFactory->newSelect('imagenes');
+        $query = $this->queryFactory->newSelect('img_mayorista');
 
         $query->select(
             [
-                'id',
-                'url'
+                'img_mayorista.id',
+                'img_mayorista.id_img',
+                'img_mayorista.id_mayorista',
+                'imagenes.url'
             ]
-        );
+        )->leftjoin(['imagenes'=>'imagenes'], 'imagenes.id = img_mayorista.id_img');
+
+        $query->where(['img_mayorista.id_mayorista' => $id_mayorista]);
 
         return $query->execute()->fetchAll('assoc') ?: [];
         

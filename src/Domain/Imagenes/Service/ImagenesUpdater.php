@@ -1,41 +1,41 @@
 <?php
 
-namespace App\Domain\Rubros\Service;
+namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Rubros\Repository\RubrosRepository;
+use App\Domain\Imagenes\Repository\ImagenesRepository;
 use App\Factory\LoggerFactory;
 use Psr\Log\LoggerInterface;
 
-final class RubrosUpdater
+final class ImagenesUpdater
 {
-    private RubrosRepository $repository;
+    private ImagenesRepository $repository;
 
-    private RubrosValidatorUpdate $rubrosValidatorUpdate;
+    private ImagenesValidatorUpdate $imagenesValidatorUpdate;
 
     private LoggerInterface $logger;
 
     public function __construct(
-        RubrosRepository $repository,
-        RubrosValidatorUpdate $rubrosValidatorUpdate,
+        ImagenesRepository $repository,
+        ImagenesValidatorUpdate $imagenesValidatorUpdate,
         LoggerFactory $loggerFactory
     ) {
         $this->repository = $repository;
-        $this->rubrosValidatorUpdate = $rubrosValidatorUpdate;
+        $this->imagenesValidatorUpdate = $imagenesValidatorUpdate;
         $this->logger = $loggerFactory
-            ->addFileHandler('rubros_updater.log')
+            ->addFileHandler('imagenes_updater.log')
             ->createLogger();
     }
 
-    public function updateRubros(int $rubrosId, array $data): array
+    public function updateImagenes(int $imagenesId, array $data): array
     {
         // Input validation
-        $this->rubrosValidatorUpdate->validateRubrosUpdate($rubrosId, $data);
+        $this->imagenesValidatorUpdate->validateImagenesUpdate($imagenesId, $data);
 
         // Update the row
-        $values = $this->repository->updateRubros($rubrosId, $data);
+        $values = $this->repository->updateImagenes($imagenesId, $data);
 
         // Logging
-        $this->logger->info(sprintf('Rubros updated successfully: %s', $rubrosId));
+        $this->logger->info(sprintf('Imagenes updated successfully: %s', $imagenesId));
         return $values;
     }
 }

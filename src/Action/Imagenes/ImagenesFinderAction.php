@@ -20,12 +20,13 @@ final class ImagenesFinderAction
         $this->renderer = $jsonRenderer;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         // Optional: Pass parameters from the request to the service method
         // ...
+        $id_mayorista = (int)$args['id_mayorista'];
 
-        $imageness = $this->imagenesFinder->findImageness();
+        $imageness = $this->imagenesFinder->findImageness($id_mayorista);
 
         // Transform result and render to json
         return $this->renderer->json($response, $this->transform($imageness));
@@ -38,6 +39,7 @@ final class ImagenesFinderAction
         foreach ($result->imageness as $imagenes) {
             $imageness[] = [
                 'id' => $imagenes->id,
+                'id_img' => $imagenes->id_img,
                 'url' => $imagenes->url
             ];
         }

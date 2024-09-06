@@ -2,32 +2,32 @@
 
 namespace App\Domain\Imagenes\Service;
 
-use App\Domain\Imagenes\Repository\ImagenesRepository;
+use App\Domain\Mayoristas\Repository\MayoristasRepository;
 use App\Factory\ConstraintFactory;
 use DomainException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
-final class ImagenesValidatorUpdate
+final class ImagenesAsignacionValidator
 {
-    private ImagenesRepository $repository;
+    private MayoristasRepository $repository;
 
-    public function __construct(ImagenesRepository $repository)
+    public function __construct(MayoristasRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function validateImagenesUpdate(int $imagenesId, array $data): void
+    public function validateImagenesAsignacionUpdate(int $imagenesAsignacionId, array $data): void
     {
-        if (!$this->repository->existsImagenesId($imagenesId)) {
-            throw new DomainException(sprintf('Imagenes not found: %s', $imagenesId));
+        if (!$this->repository->existsMayoristasId($imagenesAsignacionId)) {
+            throw new DomainException(sprintf('ImagenesAsignacion not found: %s', $imagenesAsignacionId));
         }
 
-        $this->validateImagenes($data);
+        $this->validateImagenesAsignacion($data);
     }
 
-    public function validateImagenes(array $data): void
+    public function validateImagenesAsignacion(array $data): void
     {
         $validator = Validation::createValidator();
         $violations = $validator->validate($data, $this->createConstraints());
@@ -43,17 +43,18 @@ final class ImagenesValidatorUpdate
 
         return $constraint->collection(
             [
-                'url' => $constraint->optional(
-                    [
-                        $constraint->notBlank(),
-                        $constraint->length(2, 100)
-                    ]),
-                    
-                'id_mayorista' => $constraint->optional(
+                'id_mayorista' => $constraint->required(
                     [
                         $constraint->notBlank(),
                         $constraint->positive(),
-                        $constraint->length(1,1000)
+                        $constraint->length(1, 1000)
+                    ]
+                ),
+                'id_img' => $constraint->required(
+                    [
+                        $constraint->notBlank(),
+                        $constraint->positive(),
+                        $constraint->length(1, 1000)
                     ]
                 )
             ]
