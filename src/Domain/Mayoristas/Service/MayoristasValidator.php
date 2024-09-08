@@ -33,7 +33,7 @@ final class MayoristasValidator
         $violations = $validator->validate($data, $this->createConstraints($paso));
 
         if ($violations->count()) {
-            throw new ValidationFailedException('Please check your input', $violations);
+            throw new ValidationFailedException('Varificar dato', $violations);
         }
     }
 
