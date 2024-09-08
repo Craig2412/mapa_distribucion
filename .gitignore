@@ -3,6 +3,13 @@ nbproject/
 composer.phar
 composer.lock
 config/
+censo/
+mapa/
+react/
+public/
+test/
+resources/
+src-old
 .DS_STORE
 cache.properties
 .php_cs.cache
