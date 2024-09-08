@@ -9,6 +9,7 @@ resources/
 src-old/
 composer.phar
 composer.lock
+config/
 .DS_STORE
 cache.properties
 .php_cs.cache
