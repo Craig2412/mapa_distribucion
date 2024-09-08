@@ -12,10 +12,10 @@ return function (array $settings): array {
     $settings['logger']['level'] = \Monolog\Level::Debug;
 
     // Database
-    $settings['db']['host'] = '172.16.0.8';
+    $settings['db']['host'] = 'localhost';
     $settings['db']['username'] = 'root';
-    $settings['db']['database'] = 'sisfac_bdv';
-    $settings['db']['password'] = 'dEC0DpfDlBbc';
+    $settings['db']['database'] = 'distribucion';
+    $settings['db']['password'] = '';
     $settings['db']['encoding'] = 'utf8';
 
     $_ENV['bcrypt']= 12;
