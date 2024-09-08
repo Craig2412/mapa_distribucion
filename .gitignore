@@ -1,5 +1,12 @@
 .idea/
 nbproject/
+config/
+censo/
+mapa/
+react/
+public/
+resources/
+src-old/
 composer.phar
 composer.lock
 config/
