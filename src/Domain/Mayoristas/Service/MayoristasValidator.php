@@ -33,7 +33,7 @@ final class MayoristasValidator
         $violations = $validator->validate($data, $this->createConstraints($paso));
 
         if ($violations->count()) {
-            throw new ValidationFailedException('Varificar dato', $violations);
+            throw new ValidationFailedException('Varificar Datos', $violations);
         }
     }
 
@@ -48,13 +48,13 @@ final class MayoristasValidator
                         'nombres' => $constraint->required(
                             [
                                 $constraint->notBlank(),
-                                $constraint->length(3,100)
+                                $constraint->length(2,150)
                             ]
                             ),
                         'apellidos' => $constraint->required(
                             [
                                 $constraint->notBlank(),
-                                $constraint->length(1,100)
+                                $constraint->length(1,150)
                             ]
                             ),
                         'identificacion' => $constraint->required(
