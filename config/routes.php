@@ -66,7 +66,7 @@ return function (App $app) {
             $app->put('/{imagenes_id}', \App\Action\Imagenes\ImagenesUpdaterAction::class);//
             $app->delete('/{imagenes_id}', \App\Action\Imagenes\ImagenesDeleterAction::class);//
         }
-    );
+    ); 
 
     // TiposMayoristas
     $app->group(
@@ -152,7 +152,4 @@ return function (App $app) {
             $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//completed
         }
     );
-   
-
-
 };

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-09-2024 a las 18:56:53
+-- Tiempo de generación: 10-09-2024 a las 00:29:18
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -165,14 +165,58 @@ CREATE TABLE `formas_movilizacion_mercancia` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `historial_mayorista`
+--
+
+CREATE TABLE `historial_mayorista` (
+  `id` int(11) NOT NULL,
+  `id_mayorista` int(11) NOT NULL,
+  `campo` varchar(100) NOT NULL,
+  `dato_nuevo` varchar(100) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `imagenes`
 --
 
 CREATE TABLE `imagenes` (
   `id` int(11) NOT NULL,
-  `url` mediumtext NOT NULL,
+  `url` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id`, `url`) VALUES
+(1, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
+(2, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
+(3, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
+(4, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
+(5, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `img_mayorista`
+--
+
+CREATE TABLE `img_mayorista` (
+  `id` int(11) NOT NULL,
+  `id_img` int(11) NOT NULL,
   `id_mayorista` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `img_mayorista`
+--
+
+INSERT INTO `img_mayorista` (`id`, `id_img`, `id_mayorista`) VALUES
+(1, 5, 1),
+(2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -1806,10 +1850,24 @@ ALTER TABLE `formas_movilizacion_mercancia`
   ADD KEY `id_mayorista` (`id_mayorista`);
 
 --
+-- Indices de la tabla `historial_mayorista`
+--
+ALTER TABLE `historial_mayorista`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_mayorista` (`id_mayorista`);
+
+--
 -- Indices de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `img_mayorista`
+--
+ALTER TABLE `img_mayorista`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `id_img` (`id_img`),
   ADD KEY `id_mayorista` (`id_mayorista`);
 
 --
@@ -1894,10 +1952,22 @@ ALTER TABLE `formas_movilizacion_mercancia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `historial_mayorista`
+--
+ALTER TABLE `historial_mayorista`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `img_mayorista`
+--
+ALTER TABLE `img_mayorista`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `municipios`
@@ -1963,10 +2033,11 @@ ALTER TABLE `formas_movilizacion_mercancia`
   ADD CONSTRAINT `formas_movilizacion_mercancia_ibfk_2` FOREIGN KEY (`id_tipo_movilizacion`) REFERENCES `tipos_movilizacion` (`id`);
 
 --
--- Filtros para la tabla `imagenes`
+-- Filtros para la tabla `img_mayorista`
 --
-ALTER TABLE `imagenes`
-  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_mayorista`) REFERENCES `datos_mayoristas` (`id`);
+ALTER TABLE `img_mayorista`
+  ADD CONSTRAINT `img_mayorista_ibfk_1` FOREIGN KEY (`id_mayorista`) REFERENCES `datos_mayoristas` (`id`),
+  ADD CONSTRAINT `img_mayorista_ibfk_2` FOREIGN KEY (`id_img`) REFERENCES `imagenes` (`id`);
 
 --
 -- Filtros para la tabla `municipios`
