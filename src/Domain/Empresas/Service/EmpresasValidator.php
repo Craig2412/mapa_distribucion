@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\RepresentanteLegal\Service;
+namespace App\Domain\Empresas\Service;
 
 use App\Domain\RepresentanteLegal\Repository\RepresentanteLegalRepository;
 use App\Factory\ConstraintFactory;
@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
-final class RepresentanteLegalValidator
+final class EmpresasValidator
 {
     private RepresentanteLegalRepository $repository;
 
@@ -20,10 +20,6 @@ final class RepresentanteLegalValidator
 
     public function validateRepresentanteLegalUpdate(int $representanteLegalsId, array $data): void
     {
-        if (!$this->repository->existsRepresentanteLegalId($representanteLegalsId)) {
-            throw new DomainException(sprintf('RepresentanteLegal not found: %s', $representanteLegalsId));
-        }
-
         $this->validateRepresentanteLegal($data);
     }
 
@@ -33,7 +29,7 @@ final class RepresentanteLegalValidator
         $violations = $validator->validate($data, $this->createConstraints());
 
         if ($violations->count()) {
-            throw new ValidationFailedException('Please check your input', $violations);
+            throw new ValidationFailedException('Varificar Datos', $violations);
         }
     }
 
@@ -43,7 +39,7 @@ final class RepresentanteLegalValidator
 
         return $constraint->collection(
             [
-                'razon_social' => $constraint->required(
+               'razon_social' => $constraint->required(
                     [
                         $constraint->notBlank(),
                         $constraint->length(3,100)

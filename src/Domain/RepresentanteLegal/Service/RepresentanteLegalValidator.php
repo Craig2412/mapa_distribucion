@@ -33,7 +33,7 @@ final class RepresentanteLegalValidator
         $violations = $validator->validate($data, $this->createConstraints());
 
         if ($violations->count()) {
-            throw new ValidationFailedException('Please check your input', $violations);
+            throw new ValidationFailedException('Verificar Datos.', $violations);
         }
     }
 
@@ -52,27 +52,27 @@ final class RepresentanteLegalValidator
                 'apellidos' => $constraint->required(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(2, 150)
+                        $constraint->length(1, 150)
                     ]
                     ),
                 'identificacion' => $constraint->required(
                     [
                         $constraint->notBlank(),
                         $constraint->positive(),
-                        $constraint->length(6, 10)
+                        $constraint->length(1, 10)
                     ]
                     ),
                 'correo' => $constraint->required(
                     [
                         $constraint->notBlank(),
                         $constraint->email(),
-                        $constraint->length(9, 100)
+                        $constraint->length(1, 200)
                     ]
                     ),
                 'telefono' => $constraint->required(
                     [
                         $constraint->notBlank(),
-                        $constraint->length(10, 11)
+                        $constraint->length(1, 11)
                     ]
                     ),
             ]

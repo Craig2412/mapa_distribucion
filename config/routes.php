@@ -100,6 +100,7 @@ return function (App $app) {
             $app->get('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalReaderAction::class);//completed
             $app->get('/byCedula/{representanteLegal_cedula}', \App\Action\RepresentanteLegal\RepresentanteLegalbyCedulaReaderAction::class);//completed
             $app->post('', \App\Action\RepresentanteLegal\RepresentanteLegalCreatorAction::class);//completed
+            $app->post('/validador', \App\Action\RepresentanteLegal\RepresentanteLegalValidadorAction::class);//completed
             $app->put('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalUpdaterAction::class);//completed
             $app->delete('/{representanteLegal_id}', \App\Action\RepresentanteLegal\RepresentanteLegalDeleterAction::class);//completed
         }
@@ -112,6 +113,7 @@ return function (App $app) {
             $app->get('/{empresa_id}', \App\Action\Empresas\EmpresasReaderAction::class);//
             $app->get('/byRif/{empresa_rif}', \App\Action\Empresas\EmpresasbyCedulaReaderAction::class);//
             $app->post('', \App\Action\Empresas\EmpresasCreatorAction::class);//
+            $app->post('/validador', \App\Action\Empresas\EmpresasValidadorAction::class);//
             $app->put('/{empresa_id}', \App\Action\Empresas\EmpresasUpdaterAction::class);//
             $app->delete('/{empresa_id}', \App\Action\Empresas\EmpresasDeleterAction::class);//
         }
