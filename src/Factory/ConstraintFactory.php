@@ -24,27 +24,27 @@ final class ConstraintFactory
 
     public function notBlank(): Assert\NotBlank
     {
-        return new Assert\NotBlank(['message' => 'El campo "{{ field }}" no puede estar vacío']);
+        return new Assert\NotBlank(['message' => 'El campo no puede estar vacío']);
     }
 
     public function length(int $min = null, int $max = null): Assert\Length
     {
         $options = ['min' => $min, 'max' => $max];
         if ($min !== null) {
-            $options['minMessage'] = 'El campo "{{ field }}" debe tener al menos {{ min }} caracteres';
+            $options['minMessage'] = 'El campo debe tener al menos {{ limit }} caracteres';
         } elseif ($max !== null) {
-            $options['maxMessage'] = 'El campo "{{ field }}" no puede tener más de {{ max }} caracteres';
+            $options['maxMessage'] = 'El campo no puede tener más de {{ limit }} caracteres';
         }
         return new Assert\Length($options);
     }
 
     public function positive(): Assert\Positive
     {
-        return new Assert\Positive(['message' => 'El campo "{{ field }}" debe ser positivo']);
+        return new Assert\Positive(['message' => 'El campo debe ser positivo']);
     }
 
     public function email(): Assert\Email
     {
-        return new Assert\Email(['message' => 'El campo "{{ field }}" no es una dirección de correo electrónico válida']);
+        return new Assert\Email(['message' => 'El campo no es una dirección de correo electrónico válida']);
     }
 }
