@@ -113,6 +113,20 @@ final class MayoristasRepository
                 break;
             case '3':
                 $tabla_bd = "datos_mayoristas";
+                
+                foreach ($row as $key => $value) {
+                    $historialM = (int)$this->queryFactory->newInsert('historial_mayorista', 
+                    [
+                        'id_mayorista' => $mayoristasId,
+                        'campo' =>  $key,
+                        'dato_nuevo' => $value,
+                        'fecha' => $this->fecha
+                    ])
+                    ->execute()
+                    ->lastInsertId();
+                }
+
+
                 break;
         }
         
