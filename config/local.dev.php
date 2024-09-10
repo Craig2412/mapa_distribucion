@@ -15,7 +15,7 @@ return function (array $settings): array {
     $settings['db']['host'] = 'localhost';
     $settings['db']['username'] = 'root';
     $settings['db']['database'] = 'distribucion';
-    $settings['db']['password'] = '';
+    $settings['db']['password'] = 'My123@Password';
     $settings['db']['encoding'] = 'utf8';
 
     $_ENV['bcrypt']= 12;
