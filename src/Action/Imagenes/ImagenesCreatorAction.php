@@ -38,7 +38,7 @@ final class ImagenesCreatorAction
             $data["id_mayorista"] = $id_mayorista;
             
             $imagenesAsignacionId = $this->imagenesAsignacionCreator->createImagenesAsignacion($data);
-            if ($imagenesId > 1) {
+            if ($imagenesAsignacionId > 0) {
                   // Build the HTTP response
                 return $this->renderer
                 ->json($response, ['Message' => "Insercion Exitosa"])
