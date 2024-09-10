@@ -73,4 +73,23 @@ final class MayoristasFinderRepository
         return $query->execute()->fetchAll('assoc') ?: [];
         
     }
+
+    public function findImgMayoristass($img): array
+    {
+        $query = $this->queryFactory->newSelect('img_mayorista');
+
+        $query->select(
+                [
+                    'img_mayorista.id_img',
+                    'i.url'
+                ]
+            )
+
+            ->leftjoin(['i'=>'imagenes'], 'imagenes.id = img_mayorista.id');
+
+            $query->where(['img_mayorista.id_mayorista' => $img]);
+           
+        return $query->execute()->fetchAll('assoc') ?: [];
+        
+    }
 }

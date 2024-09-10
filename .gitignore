@@ -1,6 +1,6 @@
 .idea/
 nbproject/
-config/
+config/local.dev.php
 censo/
 mapa/
 react/
@@ -9,7 +9,6 @@ resources/
 src-old/
 composer.phar
 composer.lock
-config/
 censo/
 mapa/
 react/
@@ -46,7 +45,6 @@ public/.env
 env.php
 config/env.php
 
-config/*
 #!public/assets/
 #public/assets/*
 #!public/assets/.htaccess
