@@ -81,7 +81,8 @@ final class MayoristasFinderAction
                     'frecuencia_reposicion' => $mayoristas->frecuencia_reposicion,
                     'cantidad_trabajadores_directos' => $mayoristas->cantidad_trabajadores_directos,
                     'volumen_mensual_comercializacion_mercancia' => $mayoristas->volumen_mensual_comercializacion_mercancia,
-                    'flota_vehicular' => $mayoristas->flota_vehicular
+                    'flota_vehicular' => $mayoristas->flota_vehicular,
+                    'imagenes' => $mayoristas->imagenes
                 //Mayorista
             ];
         }

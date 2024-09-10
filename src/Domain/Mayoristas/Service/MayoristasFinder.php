@@ -33,9 +33,12 @@ final class MayoristasFinder
             $mayoristas = new MayoristasFinderItem();
             $mayoristas->id = $mayoristasRow['id'];
             $imagenes = $this->repository->findImgMayorista($mayoristasRow['id']);
-
-            var_dump($imagenes);
-
+            $img = [];
+            for ($i=0; $i < count($imagenes) ; $i++) { 
+               array_push($img, $imagenes[$i]['url']);
+            }
+            
+            $mayoristas->imagenes = $img;
             $mayoristas->id_datos_generales = $mayoristasRow['id_datos_generales'];
             $mayoristas->razon_social = $mayoristasRow['razon_social'];
             $mayoristas->coordenadas_x = $mayoristasRow['coordenadas_x'];

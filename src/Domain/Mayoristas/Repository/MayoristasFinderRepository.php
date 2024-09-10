@@ -74,18 +74,17 @@ final class MayoristasFinderRepository
         
     }
 
-    public function findImgMayoristass($img): array
+    public function findImgMayorista($img): array
     {
         $query = $this->queryFactory->newSelect('img_mayorista');
 
         $query->select(
                 [
-                    'img_mayorista.id_img',
                     'i.url'
                 ]
             )
 
-            ->leftjoin(['i'=>'imagenes'], 'imagenes.id = img_mayorista.id');
+            ->leftjoin(['i'=>'imagenes'], 'i.id = img_mayorista.id_img');
 
             $query->where(['img_mayorista.id_mayorista' => $img]);
            

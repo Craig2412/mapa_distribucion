@@ -42,6 +42,7 @@ final class MayoristasFinderItem
     public ?string $sub_sector = null;
     public ?string $tipo_mayorista = null;
     public ?string $frecuencia_reposicion = null;
+    public ?array $imagenes = null;
 
 }
 
