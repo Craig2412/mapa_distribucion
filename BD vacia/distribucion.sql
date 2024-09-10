@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2024 a las 00:29:18
+-- Tiempo de generación: 10-09-2024 a las 21:10:12
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -78,7 +78,7 @@ CREATE TABLE `datos_mayoristas` (
 --
 
 INSERT INTO `datos_mayoristas` (`id`, `id_datos_generales`, `id_tipo_mayorista`, `cantidad_locales_comerciales`, `capacidad_almacenamiento`, `capacidad_almacenamiento_frio`, `tamaño_infraestructura`, `precio_volumen`, `frecuencia_reposicion`, `cantidad_trabajadores_directos`, `volumen_mensual_comercializacion_mercancia`, `flota_vehicular`, `delete_logico`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, '1', 1, 100000, 1, 0);
+(1, 1, 1, 1, 1, 1, 1, 1, '15000', 14568, 1212, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -176,6 +176,48 @@ CREATE TABLE `historial_mayorista` (
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `historial_mayorista`
+--
+
+INSERT INTO `historial_mayorista` (`id`, `id_mayorista`, `campo`, `dato_nuevo`, `fecha`) VALUES
+(1, 1, 'id_datos_generales', '3', '2024-09-10'),
+(2, 1, 'id_tipo_mayorista', '1', '2024-09-10'),
+(3, 1, 'cantidad_locales_comerciales', '1', '2024-09-10'),
+(4, 1, 'capacidad_almacenamiento', '1', '2024-09-10'),
+(5, 1, 'capacidad_almacenamiento_frio', '1', '2024-09-10'),
+(6, 1, 'tamaño_infraestructura', '1', '2024-09-10'),
+(7, 1, 'precio_volumen', '1', '2024-09-10'),
+(8, 1, 'frecuencia_reposicion', '1', '2024-09-10'),
+(9, 1, 'cantidad_trabajadores_directos', '1', '2024-09-10'),
+(10, 1, 'volumen_mensual_comercializacion_mercancia', '1', '2024-09-10'),
+(11, 1, 'flota_vehicular', '1', '2024-09-10'),
+(12, 1, 'id_datos_generales', '1', '2024-09-10'),
+(13, 1, 'id_tipo_mayorista', '1', '2024-09-10'),
+(14, 1, 'cantidad_locales_comerciales', '1', '2024-09-10'),
+(15, 1, 'capacidad_almacenamiento', '1', '2024-09-10'),
+(16, 1, 'capacidad_almacenamiento_frio', '1', '2024-09-10'),
+(17, 1, 'tamaño_infraestructura', '1', '2024-09-10'),
+(18, 1, 'precio_volumen', '1', '2024-09-10'),
+(19, 1, 'frecuencia_reposicion', '1', '2024-09-10'),
+(20, 1, 'cantidad_trabajadores_directos', '1', '2024-09-10'),
+(21, 1, 'volumen_mensual_comercializacion_mercancia', '1', '2024-09-10'),
+(22, 1, 'flota_vehicular', '1', '2024-09-10'),
+(23, 1, 'id_datos_generales', '1', '2024-09-10'),
+(24, 1, 'id_tipo_mayorista', '1', '2024-09-10'),
+(25, 1, 'cantidad_locales_comerciales', '1', '2024-09-10'),
+(26, 1, 'capacidad_almacenamiento', '1', '2024-09-10'),
+(27, 1, 'capacidad_almacenamiento_frio', '1', '2024-09-10'),
+(28, 1, 'tamaño_infraestructura', '1', '2024-09-10'),
+(29, 1, 'precio_volumen', '1', '2024-09-10'),
+(30, 1, 'frecuencia_reposicion', '15000', '2024-09-10'),
+(31, 1, 'cantidad_trabajadores_directos', '1', '2024-09-10'),
+(32, 1, 'volumen_mensual_comercializacion_mercancia', '1', '2024-09-10'),
+(33, 1, 'flota_vehicular', '1000', '2024-09-10'),
+(34, 1, 'cantidad_trabajadores_directos', '14568', '2024-09-10'),
+(35, 1, 'volumen_mensual_comercializacion_mercancia', '1212', '2024-09-10'),
+(36, 1, 'flota_vehicular', '10', '2024-09-10');
+
 -- --------------------------------------------------------
 
 --
@@ -192,10 +234,6 @@ CREATE TABLE `imagenes` (
 --
 
 INSERT INTO `imagenes` (`id`, `url`) VALUES
-(1, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
-(2, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
-(3, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
-(4, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE'),
 (5, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DqkWZMyPAbHI&psig=AOvVaw1DoE0DBw9qJY0YLPin1Tog&ust=1725727882775000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiu8anirogDFQAAAAAdAAAAABAE');
 
 -- --------------------------------------------------------
@@ -215,8 +253,7 @@ CREATE TABLE `img_mayorista` (
 --
 
 INSERT INTO `img_mayorista` (`id`, `id_img`, `id_mayorista`) VALUES
-(1, 5, 1),
-(2, 3, 1);
+(1, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -1860,7 +1897,8 @@ ALTER TABLE `historial_mayorista`
 -- Indices de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `url` (`url`) USING HASH;
 
 --
 -- Indices de la tabla `img_mayorista`
@@ -1955,7 +1993,7 @@ ALTER TABLE `formas_movilizacion_mercancia`
 -- AUTO_INCREMENT de la tabla `historial_mayorista`
 --
 ALTER TABLE `historial_mayorista`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
