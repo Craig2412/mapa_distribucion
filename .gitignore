@@ -1,6 +1,6 @@
 .idea/
 nbproject/
-config/
+
 censo/
 mapa/
 react/
@@ -9,7 +9,7 @@ resources/
 src-old/
 composer.phar
 composer.lock
-config/
+
 censo/
 mapa/
 react/
