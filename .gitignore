@@ -9,7 +9,7 @@ resources/
 src-old/
 composer.phar
 composer.lock
-
+config/local.dev.php
 censo/
 mapa/
 react/
