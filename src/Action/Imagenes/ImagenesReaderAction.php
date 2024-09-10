@@ -3,6 +3,7 @@
 namespace App\Action\Imagenes;
 
 use App\Domain\Imagenes\Data\ImagenesReaderResult;
+use App\Domain\Imagenes\Data\ImagenesFinderResult;
 use App\Domain\Imagenes\Service\ImagenesReader;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
@@ -26,7 +27,7 @@ final class ImagenesReaderAction
         array $args
     ): ResponseInterface {
         // Fetch parameters from the request
-        $imagenesId = (int)$args['imagenes_id'];
+        $imagenesId = (int)$args['id_mayorista'];
 
         // Invoke the domain and get the result
         $imagenes = $this->imagenesReader->getImagenes($imagenesId);
@@ -35,11 +36,20 @@ final class ImagenesReaderAction
         return $this->renderer->json($response, $this->transform($imagenes));
     }
 
-    private function transform(ImagenesReaderResult $imagenes): array
+    public function transform(ImagenesFinderResult $result): array
     {
+        $imageness = [];
+
+        foreach ($result->imageness as $imagenes) {
+            $imageness[] = [
+                'id' => $imagenes->id,
+                'id_img' => $imagenes->id_img,
+                'url' => $imagenes->url
+            ];
+        }
+
         return [
-            'id' => $imagenes->id,
-            'url' => $imagenes->url
+            'imageness' => $imageness,
         ];
     }
 }

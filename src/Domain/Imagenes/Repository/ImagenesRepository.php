@@ -35,14 +35,15 @@ final class ImagenesRepository
         $query = $this->queryFactory->newSelect('imagenes');
         $query->select(
                 [
-                    'id',
-                    'url'
+                    'imagenes.id',
+                    'url',
+                    'id_img'
                 ]
-            );
+            )->innerjoin(['m'=>'img_mayorista'], 'm.id_img = imagenes.id');
             
-            $query->where(['id' => $imagenesId]);
+            $query->where(['m.id_mayorista' => $imagenesId]);
             
-            $row = $query->execute()->fetch('assoc');
+            $row = $query->execute()->fetchAll('assoc') ?: [];
             
             if (!$row) {
                 throw new DomainException(sprintf('Imagenes not found: %s', $imagenesId));
