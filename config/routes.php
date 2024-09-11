@@ -55,14 +55,21 @@ return function (App $app) {
             $app->delete('/{rubros_id}', \App\Action\Rubros\RubrosDeleterAction::class);//completed
         }
     );
+    // Historial
+    $app->group(
+        '/historial',//
+        function (RouteCollectorProxy $app) {           
+            $app->get('/mayorista/{id_mayorista}', \App\Action\Historial\HistorialMayoristaFinderAction::class);//
+        }
+    );
 
     // Imagenes
     $app->group(
         '/imagenes',//
         function (RouteCollectorProxy $app) {           
-            $app->get('', \App\Action\Imagenes\ImagenesFinderAction::class);//
-            $app->get('/{imagenes_id}', \App\Action\Imagenes\ImagenesReaderAction::class);//
-            $app->post('', \App\Action\Imagenes\ImagenesCreatorAction::class);//
+            $app->get('', \App\Action\Imagenes\ImagenesFinderAction::class);//completed
+            $app->get('/{imagenes_id}', \App\Action\Imagenes\ImagenesReaderAction::class);//completed
+            $app->post('', \App\Action\Imagenes\ImagenesCreatorAction::class);//completed
             $app->put('/{imagenes_id}', \App\Action\Imagenes\ImagenesUpdaterAction::class);//
             $app->delete('/{imagenes_id}', \App\Action\Imagenes\ImagenesDeleterAction::class);//
         }
@@ -89,6 +96,18 @@ return function (App $app) {
             $app->post('', \App\Action\TiposMovilizacion\TiposMovilizacionCreatorAction::class);//completed
             $app->put('/{tiposMovilizacion_id}', \App\Action\TiposMovilizacion\TiposMovilizacionUpdaterAction::class);//completed
             $app->delete('/{tiposMovilizacion_id}', \App\Action\TiposMovilizacion\TiposMovilizacionDeleterAction::class);//completed
+        }
+    );
+
+    // FormasMovilizacion
+    $app->group(
+        '/formasMovilizacionMayoristas',//
+        function (RouteCollectorProxy $app) {           
+            $app->get('/{id_mayorista}', \App\Action\FormasMovilizacion\FormasMovilizacionFinderAction::class);//
+            $app->get('/unique/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionReaderAction::class);//
+            $app->post('', \App\Action\FormasMovilizacion\FormasMovilizacionCreatorAction::class);//
+            $app->put('/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionUpdaterAction::class);//
+            $app->delete('/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionDeleterAction::class);//
         }
     );
 
@@ -150,7 +169,7 @@ return function (App $app) {
             $app->get('', \App\Action\Mayoristas\MayoristasFinderAction::class);//completed
             $app->get('/unico/{mayorista_id}', \App\Action\Mayoristas\MayoristasReaderAction::class);//completed
             $app->post('', \App\Action\Mayoristas\MayoristasCreatorAction::class);//completed
-            $app->put('', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//
+            $app->put('', \App\Action\Mayoristas\MayoristasUpdaterAction::class);//completed
             $app->delete('/{mayorista_id}', \App\Action\Mayoristas\MayoristasDeleterAction::class);//completed
         }
     );
