@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Action\FormasMovilizacion;
+namespace App\Action\RubrosOrigen;
 
-use App\Domain\FormasMovilizacion\Service\FormasMovilizacionUpdater;
+use App\Domain\RubrosOrigen\Service\RubrosOrigenUpdater;
 use App\Renderer\JsonRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class FormasMovilizacionUpdaterAction
+final class RubrosOrigenUpdaterAction
 {
-    private FormasMovilizacionUpdater $formasMovilizacionUpdater;
+    private RubrosOrigenUpdater $rubrosOrigenUpdater;
 
     private JsonRenderer $renderer;
 
-    public function __construct(FormasMovilizacionUpdater $formasMovilizacionUpdater, JsonRenderer $jsonRenderer)
+    public function __construct(RubrosOrigenUpdater $rubrosOrigenUpdater, JsonRenderer $jsonRenderer)
     {
-        $this->formasMovilizacionUpdater = $formasMovilizacionUpdater;
+        $this->rubrosOrigenUpdater = $rubrosOrigenUpdater;
         $this->renderer = $jsonRenderer;
     }
 
@@ -25,19 +25,13 @@ final class FormasMovilizacionUpdaterAction
         array $args
     ): ResponseInterface {
         // Extract the form data from the request body
-        $formasMovilizacionId = (int)$args['formasMovilizacion_id'];
+        $rubrosOrigenId = (int)$args['rubrosOrigen_id'];
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $new_data = $this->formasMovilizacionUpdater->updateFormasMovilizacion($formasMovilizacionId, $data);
+        $new_data = $this->rubrosOrigenUpdater->updateRubrosOrigen($rubrosOrigenId, $data);
 
         // Build the HTTP response
         return $this->renderer->json($response,['Datos nuevos' => $new_data]);
     }
 }
-/*
-{
-    "id_mayorista" : 1,
-    "id_tipo_movilizacion" : 1
-}
-*/

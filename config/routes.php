@@ -55,6 +55,19 @@ return function (App $app) {
             $app->delete('/{rubros_id}', \App\Action\Rubros\RubrosDeleterAction::class);//completed
         }
     );
+    
+    // RubrosOrigen
+    $app->group(
+        '/rubrosOrigen',//completed
+        function (RouteCollectorProxy $app) {           
+            $app->get('', \App\Action\RubrosOrigen\RubrosOrigenFinderAction::class);//completed
+            $app->get('/{rubrosOrigen_id}', \App\Action\RubrosOrigen\RubrosOrigenReaderAction::class);//completed
+            $app->post('', \App\Action\RubrosOrigen\RubrosOrigenCreatorAction::class);//completed
+            $app->put('/{rubrosOrigen_id}', \App\Action\RubrosOrigen\RubrosOrigenUpdaterAction::class);//completed
+            $app->delete('/{rubrosOrigen_id}', \App\Action\RubrosOrigen\RubrosOrigenDeleterAction::class);//completed
+        }
+    );
+
     // Historial
     $app->group(
         '/historial',//
@@ -101,13 +114,12 @@ return function (App $app) {
 
     // FormasMovilizacion
     $app->group(
-        '/formasMovilizacionMayoristas',//
+        '/formasMovilizacionMayoristas',//completed
         function (RouteCollectorProxy $app) {           
-            $app->get('/{id_mayorista}', \App\Action\FormasMovilizacion\FormasMovilizacionFinderAction::class);//
-            $app->get('/unique/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionReaderAction::class);//
-            $app->post('', \App\Action\FormasMovilizacion\FormasMovilizacionCreatorAction::class);//
-            $app->put('/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionUpdaterAction::class);//
-            $app->delete('/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionDeleterAction::class);//
+            $app->get('/{id_mayorista}', \App\Action\FormasMovilizacion\FormasMovilizacionFinderAction::class);//completed
+            $app->post('', \App\Action\FormasMovilizacion\FormasMovilizacionCreatorAction::class);//completed
+            $app->put('/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionUpdaterAction::class);//completed
+            $app->delete('/{formasMovilizacion_id}', \App\Action\FormasMovilizacion\FormasMovilizacionDeleterAction::class);//completed
         }
     );
 

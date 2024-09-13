@@ -32,8 +32,8 @@ final class FormasMovilizacionRepository
                 'formas_movilizacion_mercancia.id_tipo_movilizacion',
                 'tipos_movilizacion.tipo_movilizacion'
             ]
-            )->leftjoin(['tipos_movilizacion' => 'tipos_movilizacion'], 'tipos_movilizacion.id = formas.movilizacion.mercancia.id_tipo_movilizacion');
-            $query->where(['formas_movilizacion_mercancia.id.id_tipo_movilizacion' => $id_mayorista]);
+            )->leftjoin(['tipos_movilizacion'=>'tipos_movilizacion'], 'tipos_movilizacion.id = formas_movilizacion_mercancia.id_tipo_movilizacion');
+        $query->where(['formas_movilizacion_mercancia.id' => $id_mayorista]);
             
             $row = $query->execute()->fetch('assoc');
             
